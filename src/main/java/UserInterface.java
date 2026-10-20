@@ -11,6 +11,12 @@ public final class UserInterface {
         this.controller = controller;
     }
 
+    private static ParseResult<String> parseNotBlank(String input) {
+        return input.isBlank()
+                ? ParseResult.failure("Feltet må ikke være tomt")
+                : ParseResult.success(input);
+    }
+
     private static ParseResult<Integer> parseYearCreated(String input) {
         try {
             int output = Integer.parseInt(input);
@@ -79,12 +85,12 @@ public final class UserInterface {
     }
 
     private void createMovie() {
-        String title = prompt("Titel", ParseResult::success);
-        String director = prompt("Instruktør", ParseResult::success);
+        String title = prompt("Titel", UserInterface::parseNotBlank);
+        String director = prompt("Instruktør", UserInterface::parseNotBlank);
         int yearCreated = this.<Integer>prompt("Årstal", UserInterface::parseYearCreated);
         boolean inColor = prompt("I farver (ja/nej)", UserInterface::parseBoolean);
         int lengthInMinutes = prompt("Længde i minutter", UserInterface::parseLengthInMinutes);
-        String genre = prompt("Genre", ParseResult::success);
+        String genre = prompt("Genre", UserInterface::parseNotBlank);
 
         controller.addMovie(
                 title,
@@ -106,7 +112,7 @@ public final class UserInterface {
         while (true) {
             String hint = defaultValue == null ? "" : " [" + format.apply(defaultValue) + "]";
             System.out.print(prompt + hint + ": ");
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
             if (defaultValue != null && input.isEmpty()) return defaultValue;
             ParseResult<T> result = parser.apply(input);
             if (result.success) return result.output;
@@ -170,10 +176,10 @@ public final class UserInterface {
         System.out.println("Tryk Enter for at beholde den nuværende værdi.");
 
         String title = promptWithDefault(
-                "Titel", ParseResult::success,
+                "Titel", UserInterface::parseNotBlank,
                 selected.getTitle(), Object::toString);
         String director = promptWithDefault(
-                "Instruktør", ParseResult::success,
+                "Instruktør", UserInterface::parseNotBlank,
                 selected.getDirector(), Object::toString);
         int yearCreated = this.<Integer>promptWithDefault(
                 "Årstal", UserInterface::parseYearCreated,
@@ -185,7 +191,7 @@ public final class UserInterface {
                 "Længde i minutter", UserInterface::parseLengthInMinutes,
                 selected.getLengthInMinutes(), Object::toString);
         String genre = promptWithDefault(
-                "Genre", ParseResult::success,
+                "Genre", UserInterface::parseNotBlank,
                 selected.getGenre(), Object::toString);
 
         controller.editMovie(selected, title, director, yearCreated, inColor, lengthInMinutes, genre);
