@@ -15,15 +15,53 @@ public class Movie {
         this.genre = genre;
     }
 
+    // GETTERS:
     public String getTitle() {
         return title;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getYearCreated() {
+        return yearCreated;
     }
 
     public boolean isInColor() {
         return inColor;
     }
 
+    public int getLengthInMinutes() {
+        return lengthInMinutes;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    // SETTERS:
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setYearCreated(int yearCreated) {
+        this.yearCreated = yearCreated;
+    }
+
+    public void setInColor(boolean inColor) {
+        this.inColor = inColor;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }
