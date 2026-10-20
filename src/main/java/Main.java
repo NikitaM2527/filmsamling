@@ -3,5 +3,7 @@ public class Main {
         System.out.println("""
                 Velkommen til min filmsamling!
                 """);
+
+        new UserInterface(new Controller(new MovieCollection())).startProgram();
     }
 }
