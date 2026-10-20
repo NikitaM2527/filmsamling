@@ -47,7 +47,6 @@ public class MovieCollection {
     }
 
     public boolean deleteMovie(Movie movie) {
-        return false;
-        // TODO US6
+        return movies.remove(movie);
     }
 }
