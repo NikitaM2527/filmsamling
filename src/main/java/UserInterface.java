@@ -91,20 +91,15 @@ public final class UserInterface {
         );
     }
 
-    private static ParseResult<String> parseName(String name) {
-        return ParseResult.success("placeholder");
-    }
-
     private <T> T prompt(String prompt, Function<String, ParseResult<T>> parser) {
         ParseResult<T> result;
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine();
             result = parser.apply(input);
-            if (result.success) {
-                System.out.print("Ugyldigt input: ");
-                System.out.println(result.reason);
-            } else break;
+            if (result.success) break;
+            System.out.print("Ugyldigt input: ");
+            System.out.println(result.reason);
         }
 
         return result.output;
