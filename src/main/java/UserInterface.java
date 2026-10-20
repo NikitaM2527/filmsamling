@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.function.Function;
 
-public class UserInterface {
-    private Scanner scanner;
-    private Controller controller;
+public final class UserInterface {
+    private final Scanner scanner;
+    private final Controller controller;
 
     public UserInterface(Controller controller) {
         this.scanner = new Scanner(System.in);
@@ -42,7 +43,81 @@ public class UserInterface {
     }
 
     private void createMovie() {
+        String title = prompt("Titel: ", ParseResult::success);
+        String director = prompt("Instruktør: ", ParseResult::success);
 
+        int yearCreated = this.<Integer>prompt("Årstal: ", (input) -> {
+            try {
+                int output = Integer.parseInt(input);
+                if (output < 1888) {
+                    return ParseResult.failure(
+                            "Verdens første film blev udgivet i 1888");
+                }
+                return ParseResult.success(output);
+            } catch (NumberFormatException e) {
+                return ParseResult.failure("Indtast et heltal");
+            }
+        });
+        boolean inColor = prompt("I farver (ja/nej): ", (input) -> {
+            if (input.equalsIgnoreCase("ja")) {
+                return ParseResult.success(true);
+            } else if (input.equalsIgnoreCase("nej")) {
+                return ParseResult.success(false);
+            }
+
+            return ParseResult.failure("Svar ja eller nej");
+        });
+        int lengthInMinutes = prompt("Længde i minutter: ", (input) -> {
+            try {
+
+                int output = Integer.parseInt(input);
+                if (output <= 0) {
+                    return ParseResult.failure("En film er mindst 1 minut lang");
+                }
+                return ParseResult.success(output);
+            } catch (NumberFormatException e) {
+                return ParseResult.failure("Indtast et heltal");
+            }
+        });
+        String genre = prompt("Genre: ", ParseResult::success);
+
+        controller.addMovie(
+                title,
+                director,
+                yearCreated,
+                inColor,
+                lengthInMinutes,
+                genre
+        );
+    }
+
+    private static ParseResult<String> parseName(String name) {
+        return ParseResult.success("placeholder");
+    }
+
+    private <T> T prompt(String prompt, Function<String, ParseResult<T>> parser) {
+        ParseResult<T> result;
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            result = parser.apply(input);
+            if (result.success) {
+                System.out.print("Ugyldigt input: ");
+                System.out.println(result.reason);
+            } else break;
+        }
+
+        return result.output;
+    }
+
+    private record ParseResult<T>(T output, boolean success, String reason) {
+        private static <T> ParseResult<T> success(T value) {
+            return new ParseResult<>(value, true, "Valid");
+        }
+
+        private static <T> ParseResult<T> failure(String reason) {
+            return new ParseResult<>(null, false, reason);
+        }
     }
 
     private void showAllMovies() {
