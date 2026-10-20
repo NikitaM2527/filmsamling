@@ -97,35 +97,21 @@ public final class UserInterface {
     }
 
     private <T> T prompt(String prompt, Function<String, ParseResult<T>> parser) {
-        ParseResult<T> result;
-        while (true) {
-            System.out.print(prompt);
-            System.out.print(": ");
-            String input = scanner.nextLine();
-            result = parser.apply(input);
-            if (result.success) break;
-            System.out.print("Ugyldigt input: ");
-            System.out.println(result.reason);
-        }
-
-        return result.output;
+        return promptWithDefault(prompt, parser, null, null);
     }
 
     private <T> T promptWithDefault(
             String prompt, Function<String, ParseResult<T>> parser,
             T defaultValue, Function<T, String> format) {
-        ParseResult<T> result;
         while (true) {
-            System.out.print(prompt + " [" + format.apply(defaultValue) + "]: ");
+            String hint = defaultValue == null ? "" : " [" + format.apply(defaultValue) + "]";
+            System.out.print(prompt + hint + ": ");
             String input = scanner.nextLine();
-            if (input.isEmpty()) return defaultValue;
-            result = parser.apply(input);
-            if (result.success) break;
-            System.out.print("Ugyldigt input: ");
-            System.out.println(result.reason);
+            if (defaultValue != null && input.isEmpty()) return defaultValue;
+            ParseResult<T> result = parser.apply(input);
+            if (result.success) return result.output;
+            System.out.println("Ugyldigt input: " + result.reason);
         }
-
-        return result.output;
     }
 
     private record ParseResult<T>(T output, boolean success, String reason) {
