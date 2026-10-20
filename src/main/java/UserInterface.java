@@ -155,7 +155,7 @@ public final class UserInterface {
                 int num = prompt("Vælg nummer", (input) -> {
                     try {
                         int output = Integer.parseInt(input);
-                        if (output <= 0 || output > results.size()) {
+                        if (output < maxNum || output > maxNum) {
                             return ParseResult.failure("Tallet skal være mellem " + minNum + " og " + maxNum);
                         }
                         return ParseResult.success(output);
