@@ -13,8 +13,7 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> getMovies() {
-        return null;
-        // TODO US3
+        return new ArrayList<>(movies);
     }
 
     public int getNumberOfMovies() {
