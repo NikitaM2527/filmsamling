@@ -49,4 +49,13 @@ public class MovieCollection {
     public boolean deleteMovie(Movie movie) {
         return movies.remove(movie);
     }
+
+    public void markAsWatched(Movie movie) {
+        // US 5
+    }
+
+    public ArrayList<Movie> getMoviesNotWatchedForDays(int days) {
+        // US 2
+        return null;
+    }
 }
