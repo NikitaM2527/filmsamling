@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Controller {
-    MovieCollection movieCollection;
+    private final MovieCollection movieCollection;
 
     public Controller(MovieCollection movieCollection) {
         this.movieCollection = movieCollection;
@@ -16,14 +16,14 @@ public class Controller {
     }
 
     public ArrayList<Movie> searchMovies(String searchText) {
-        return new ArrayList<>(movieCollection.getMovies());
+        return new ArrayList<>(movieCollection.searchMovies(searchText));
     }
 
     public boolean editMovie(Movie movie, String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
-        return editMovie(movie, title, director, yearCreated, inColor, lengthInMinutes, genre);
+        return movieCollection.editMovie(movie, title, director, yearCreated, inColor, lengthInMinutes, genre);
     }
 
     public boolean deleteMovie(Movie movie) {
-        return deleteMovie(movie);
+        return movieCollection.deleteMovie(movie);
     }
 }
