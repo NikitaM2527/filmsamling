@@ -135,8 +135,37 @@ public final class UserInterface {
     }
 
     private void searchMovies() {
+        String title = prompt("Titel: ", ParseResult::success);
 
+        ArrayList<Movie> foundMovies = controller.searchMovies(title);
+
+        if (controller.getMovies().size() == 0) {
+            System.out.println("Der er ingen film i filmsamlingen.");
+            return;
+        }
+
+        switch (foundMovies.size()) {
+            case 0 -> {
+                System.out.println("Søgeresultatet: " + title + "fandt ingen resultater.");
+            }
+            case 1 -> {
+                System.out.println(foundMovies.get(0));
+            }
+            default -> {
+                for (Movie movie : foundMovies) {
+                    System.out.println("- " + movie.getTitle());
+                }
+            }
+        }
+
+
+
+        //No movies in ArrayList
+        //Found 0 movies
+        //Found exact match
+        //Found multiple matches
     }
+
 
     private void editMovie() {
         String query = prompt("Søg efter en titel", ParseResult::success);
