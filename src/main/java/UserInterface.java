@@ -139,11 +139,11 @@ public final class UserInterface {
     }
 
     private void searchMovies() {
-        String title = prompt("Titel: ", ParseResult::success);
+        String title = prompt("Titel", ParseResult::success);
 
         ArrayList<Movie> foundMovies = controller.searchMovies(title);
 
-        if (controller.getMovies().size() == 0) {
+        if (controller.getMovies().isEmpty()) {
             System.out.println("Der er ingen film i filmsamlingen.");
             return;
         }
