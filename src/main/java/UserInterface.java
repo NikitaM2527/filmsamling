@@ -131,7 +131,11 @@ public final class UserInterface {
     }
 
     private void showAllMovies() {
+        ArrayList<Movie> movies = controller.getMovies();
 
+        for (Movie movie : movies) {
+            System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+        }
     }
 
     private void searchMovies() {
