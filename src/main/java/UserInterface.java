@@ -153,11 +153,16 @@ public final class UserInterface {
                 System.out.println("Søgeresultatet: " + title + "fandt ingen resultater.");
             }
             case 1 -> {
-                System.out.println(foundMovies.get(0));
+                Movie m = foundMovies.get(0);
+                System.out.println("Titel (år): " + m.getTitle() + " (" + m.getYearCreated() + ")");
+                System.out.println("Instruktør: " + m.getDirector());
+                System.out.println("I farve: " + (m.isInColor() ? "ja" : "nej"));
+                System.out.println("Varighed: " + m.getLengthInMinutes());
+                System.out.println("Genre: " + m.getGenre());
             }
             default -> {
                 for (Movie movie : foundMovies) {
-                    System.out.println("- " + movie.getTitle());
+                    System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
                 }
             }
         }
