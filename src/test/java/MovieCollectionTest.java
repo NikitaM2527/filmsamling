@@ -6,29 +6,27 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MovieCollectionTest {
-
-    private MovieCollection searchAndEditCollection;
+    private MovieCollection sharedCollection;
 
     @BeforeEach
     void setUp() {
-        searchAndEditCollection = new MovieCollection();
+        sharedCollection = new MovieCollection();
 
-
-        searchAndEditCollection.addMovie("Dune",
+        sharedCollection.addMovie("Dune",
                 "Albert",
                 2021,
                 true,
                 120,
                 "Sci-Fi");
 
-        searchAndEditCollection.addMovie("Dune 2",
+        sharedCollection.addMovie("Dune 2",
                 "Albert",
                 2023,
                 true,
                 125,
                 "Sci-Fi");
 
-        searchAndEditCollection.addMovie("IT",
+        sharedCollection.addMovie("IT",
                 "Stephen King",
                 1960,
                 false,
@@ -120,26 +118,26 @@ public class MovieCollectionTest {
     @Test
     void searchMovies_noMatch() {
 
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("Nonexistent");
+        ArrayList<Movie> results = sharedCollection.searchMovies("Nonexistent");
         assertTrue(results.isEmpty());
     }
 
     @Test
     void searchMovies_exactTitleMatch() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("IT");
+        ArrayList<Movie> results = sharedCollection.searchMovies("IT");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
 
     @Test
     void searchMovies_multipleMatches() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("Dune");
+        ArrayList<Movie> results = sharedCollection.searchMovies("Dune");
         assertEquals(2, results.size());
     }
 
     @Test
     void searchMovies_caseInsensitive() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("it");
+        ArrayList<Movie> results = sharedCollection.searchMovies("it");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
@@ -147,30 +145,30 @@ public class MovieCollectionTest {
     //Extra
     @Test
     void searchMovies_partialMatch() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("I");
+        ArrayList<Movie> results = sharedCollection.searchMovies("I");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
 
     @Test
     void searchMovies_emptySearchString() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("");
+        ArrayList<Movie> results = sharedCollection.searchMovies("");
         assertEquals(3, results.size());
     }
 
     @Test
     void searchMovies_mixedCaseSearch() {
-        ArrayList<Movie> results = searchAndEditCollection.searchMovies("iT");
+        ArrayList<Movie> results = sharedCollection.searchMovies("iT");
         assertEquals("IT", results.getFirst().getTitle());
     }
 
     @Test
     void editedDirectorIsKeptAndTrueIsReturned() {
         // Arrange
-        Movie itMovie = searchAndEditCollection.searchMovies("IT").getFirst();
+        Movie itMovie = sharedCollection.searchMovies("IT").getFirst();
 
         // Act
-        boolean success = searchAndEditCollection.editMovie(
+        boolean success = sharedCollection.editMovie(
                 itMovie,
                 itMovie.getTitle(),
                 "Me",
@@ -178,7 +176,7 @@ public class MovieCollectionTest {
                 itMovie.isInColor(),
                 itMovie.getLengthInMinutes(),
                 itMovie.getGenre());
-        itMovie = searchAndEditCollection.searchMovies("IT").getFirst();
+        itMovie = sharedCollection.searchMovies("IT").getFirst();
         String newDirector = itMovie.getDirector();
 
         // Assert
@@ -204,7 +202,7 @@ public class MovieCollectionTest {
                 genre);
 
         // Act
-        boolean success = searchAndEditCollection.editMovie(nonExistentMovie,
+        boolean success = sharedCollection.editMovie(nonExistentMovie,
                 "Foobar",
                 "Somebody",
                 2001,
@@ -220,5 +218,21 @@ public class MovieCollectionTest {
         assertEquals(inColor, nonExistentMovie.isInColor());
         assertEquals(lengthInMinutes, nonExistentMovie.getLengthInMinutes());
         assertEquals(genre, nonExistentMovie.getGenre());
+    }
+
+    @Test
+    void deletedMovieIsRemovedFromTheCollectionAndTrueIsReturned() {
+        // Arrange
+        Movie itMovie = sharedCollection.searchMovies("IT").getFirst();
+
+        // Act
+        int preDeleteMovieCount = sharedCollection.getNumberOfMovies();
+        boolean success = sharedCollection.deleteMovie(itMovie);
+        int postDeleteMovieCount = sharedCollection.getNumberOfMovies();
+
+        // Assert
+        assertTrue(success);
+        assertEquals(3, preDeleteMovieCount);
+        assertEquals(2, postDeleteMovieCount);
     }
 }
