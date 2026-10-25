@@ -34,57 +34,24 @@ public class MovieCollectionTest {
                 "Thriller");
     }
 
-    /* addMovie
-    1) Tilføj én film
-    2) Korrekt data lagring (getMovies)
-     */
-
+    // getNumberOfMovies
 
     @Test
-    void addingMoviesCorrectly() {
+    void getNumberOfMovies_newCollectionIsEmpty() {
         // Arrange
         MovieCollection collection = new MovieCollection();
 
         // Act
-        collection.addMovie("IT",
-                "Stephen King",
-                1960,
-                false,
-                80,
-                "Thriller");
+        int numberOfMovies = collection.getNumberOfMovies();
 
         // Assert
-        assertEquals(1, collection.getNumberOfMovies());
-        assertEquals("IT", collection.getMovies().getFirst().getTitle());
+        assertEquals(0, numberOfMovies);
     }
 
-    @Test
-    void addingMultipleMovies() {
-        // Arrange
-        MovieCollection collection = new MovieCollection();
-
-        // Act
-        collection.addMovie("IT",
-                "Stephen King",
-                1960,
-                false,
-                80,
-                "Thriller");
-        collection.addMovie("Dune",
-                "Albert",
-                2021,
-                true,
-                120,
-                "Sci-Fi");
-
-        // Assert
-        assertEquals(2, collection.getNumberOfMovies());
-        assertEquals("IT", collection.getMovies().getFirst().getTitle());
-        assertEquals("Dune", collection.getMovies().getLast().getTitle());
-    }
+    // addMovie
 
     @Test
-    void collectionWithOneMovie() {
+    void addMovie_numberIsUpdatedAfterAdd() {
         // Arrange
         MovieCollection collection = new MovieCollection();
 
@@ -102,68 +69,134 @@ public class MovieCollectionTest {
     }
 
     @Test
-    void emptyCollection() {
+    void addMovie_isKeptInCollection() {
         // Arrange
         MovieCollection collection = new MovieCollection();
 
         // Act
-        int numberOfMovies = collection.getNumberOfMovies();
+        collection.addMovie("IT",
+                "Stephen King",
+                1960,
+                false,
+                80,
+                "Thriller");
+        int movieCountPostAdd = collection.getNumberOfMovies();
+        String firstTitle = collection.getMovies().getFirst().getTitle();
 
         // Assert
-        assertEquals(0, numberOfMovies);
+        assertEquals(1, movieCountPostAdd);
+        assertEquals("IT", firstTitle);
     }
 
-    //searchMovies() - Testing
+    @Test
+    void addMovie_multiple() {
+        // Arrange
+        MovieCollection collection = new MovieCollection();
+
+        // Act
+        collection.addMovie("IT",
+                "Stephen King",
+                1960,
+                false,
+                80,
+                "Thriller");
+        collection.addMovie("Dune",
+                "Albert",
+                2021,
+                true,
+                120,
+                "Sci-Fi");
+        int movieCountPostAdd = collection.getNumberOfMovies();
+        String firstTitle = collection.getMovies().getFirst().getTitle();
+        String lastTitle = collection.getMovies().getLast().getTitle();
+
+        // Assert
+        assertEquals(2, movieCountPostAdd);
+        assertEquals("IT", firstTitle);
+        assertEquals("Dune", lastTitle);
+    }
+
+    // searchMovies
 
     @Test
-    void searchMovies_noMatch() {
-
+    void searchMovies_noMatchReturnsEmptyList() {
+        // Act
         ArrayList<Movie> results = sharedCollection.searchMovies("Nonexistent");
+
+        // Assert
         assertTrue(results.isEmpty());
     }
 
     @Test
-    void searchMovies_exactTitleMatch() {
+    void searchMovies_exactTitleMatchReturnsRightTitle() {
+        // Act
         ArrayList<Movie> results = sharedCollection.searchMovies("IT");
-        assertEquals(1, results.size());
-        assertEquals("IT", results.getFirst().getTitle());
+        int matchCount = results.size();
+        String fullTitle = results.getFirst().getTitle();
+
+        // Assert
+        assertEquals(1, matchCount);
+        assertEquals("IT", fullTitle);
     }
 
     @Test
-    void searchMovies_multipleMatches() {
-        ArrayList<Movie> results = sharedCollection.searchMovies("Dune");
-        assertEquals(2, results.size());
-    }
-
-    @Test
-    void searchMovies_caseInsensitive() {
+    void searchMovies_lowerCaseTitleMatches() {
+        // Act
         ArrayList<Movie> results = sharedCollection.searchMovies("it");
-        assertEquals(1, results.size());
-        assertEquals("IT", results.getFirst().getTitle());
+        int matchCount = results.size();
+        String fullTitle = results.getFirst().getTitle();
+
+        // Assert
+        assertEquals(1, matchCount);
+        assertEquals("IT", fullTitle);
+    }
+
+    @Test
+    void searchMovies_mixedCaseSearchMatches() {
+        // Act
+        ArrayList<Movie> results = sharedCollection.searchMovies("iT");
+        String fullTitle = results.getFirst().getTitle();
+
+        // Assert
+        assertEquals("IT", fullTitle);
     }
 
     //Extra
     @Test
-    void searchMovies_partialMatch() {
+    void searchMovies_partialMatchReturnsOneMovie() {
+        // Act
         ArrayList<Movie> results = sharedCollection.searchMovies("I");
-        assertEquals(1, results.size());
-        assertEquals("IT", results.getFirst().getTitle());
+        int matchCount = results.size();
+        String fullTitle = results.getFirst().getTitle();
+
+        // Assert
+        assertEquals(1, matchCount);
+        assertEquals("IT", fullTitle);
     }
 
     @Test
-    void searchMovies_emptySearchString() {
+    void searchMovies_partialMatchReturnsTwoMovies() {
+        // Act
+        ArrayList<Movie> results = sharedCollection.searchMovies("Dune");
+        int matchCount = results.size();
+
+        // Assert
+        assertEquals(2, matchCount);
+    }
+
+    @Test
+    void searchMovies_emptySearchStringReturnsAllMovies() {
+        // Act
         ArrayList<Movie> results = sharedCollection.searchMovies("");
+
+        // Assert
         assertEquals(3, results.size());
     }
 
-    @Test
-    void searchMovies_mixedCaseSearch() {
-        ArrayList<Movie> results = sharedCollection.searchMovies("iT");
-        assertEquals("IT", results.getFirst().getTitle());
-    }
+    // editMovie
 
     @Test
-    void editedDirectorIsKeptAndTrueIsReturned() {
+    void editMovie_directorIsKeptAndTrueIsReturned() {
         // Arrange
         Movie itMovie = sharedCollection.searchMovies("IT").getFirst();
 
@@ -185,7 +218,7 @@ public class MovieCollectionTest {
     }
 
     @Test
-    void editingNonExistentMovieChangesNothingAndFalseIsReturned() {
+    void editMovie_nonExistentMovieReturnsFalse() {
         // Arrange
         String title = "Placeholder";
         String director = "Nobody";
@@ -220,8 +253,10 @@ public class MovieCollectionTest {
         assertEquals(genre, nonExistentMovie.getGenre());
     }
 
+    // deleteMovie
+
     @Test
-    void deletedMovieIsRemovedFromTheCollectionAndTrueIsReturned() {
+    void deleteMovie_goneFromCollectionAndTrueIsReturned() {
         // Arrange
         Movie itMovie = sharedCollection.searchMovies("IT").getFirst();
 
@@ -234,5 +269,31 @@ public class MovieCollectionTest {
         assertTrue(success);
         assertEquals(3, preDeleteMovieCount);
         assertEquals(2, postDeleteMovieCount);
+    }
+
+    @Test
+    void deleteMovie_nonExistentMovieReturnsFalse() {
+        // Arrange
+        String title = "Placeholder";
+        String director = "Nobody";
+        int yearCreated = 2000;
+        boolean inColor = false;
+        int lengthInMinutes = 60;
+        String genre = "Avant-Garde";
+        Movie nonExistentMovie = new Movie(
+                title,
+                director,
+                yearCreated,
+                inColor,
+                lengthInMinutes,
+                genre);
+
+        // Act
+        boolean success = sharedCollection.deleteMovie(nonExistentMovie);
+        int numberOfMovies = sharedCollection.getNumberOfMovies();
+
+        // Assert
+        assertFalse(success);
+        assertEquals(3, numberOfMovies);
     }
 }
