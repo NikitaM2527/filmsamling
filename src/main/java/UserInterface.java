@@ -59,6 +59,7 @@ public final class UserInterface {
         while (running) {
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
+            System.out.println();
             switch (choice) {
                 case "1" -> createMovie();
                 case "2" -> showAllMovies();
@@ -66,7 +67,11 @@ public final class UserInterface {
                 case "4" -> editMovie();
                 case "5" -> deleteMovie();
                 case "0" -> running = false;
-                default -> System.out.println("Ukendt valg: " + choice);
+                default -> {
+                    System.out.println("Ukendt valg: " + choice);
+                    System.out.println();
+                    printMenuOptions();
+                }
             }
         }
 
@@ -75,13 +80,13 @@ public final class UserInterface {
 
     private void printMenuOptions() {
         System.out.println("""
-           1. Opret en film
-           2. Vis alle film
-           3. Søg efter film
-           4. Redigér en film
-           5. Slet en film
-           0. Afslut
-           """);
+                1. Opret en film
+                2. Vis alle film
+                3. Søg efter film
+                4. Redigér en film
+                5. Slet en film
+                0. Afslut
+                """);
     }
 
     private void createMovie() {
@@ -100,6 +105,7 @@ public final class UserInterface {
                 lengthInMinutes,
                 genre
         );
+        // TODO Confirm with movie title (print)
     }
 
     private <T> T prompt(String prompt, Function<String, ParseResult<T>> parser) {
@@ -133,6 +139,8 @@ public final class UserInterface {
     private void showAllMovies() {
         ArrayList<Movie> movies = controller.getMovies();
 
+        // TODO Print message if empty
+
         for (Movie movie : movies) {
             System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
         }
@@ -150,7 +158,7 @@ public final class UserInterface {
 
         switch (foundMovies.size()) {
             case 0 -> {
-                System.out.println("Søgeresultatet: " + title + "fandt ingen resultater.");
+                System.out.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
             }
             case 1 -> {
                 Movie m = foundMovies.get(0);
@@ -166,7 +174,6 @@ public final class UserInterface {
                 }
             }
         }
-
 
 
         //No movies in ArrayList
@@ -233,9 +240,12 @@ public final class UserInterface {
                 selected.getGenre(), Object::toString);
 
         controller.editMovie(selected, title, director, yearCreated, inColor, lengthInMinutes, genre);
+
+        // TODO Print all movie info
     }
 
     private void printSearchResults(ArrayList<Movie> results) {
+        System.out.println("Søgningen giver flere resultater: ");
         for (int i = 0; i < results.size(); i++) {
             Movie m = results.get(i);
             System.out.println((i + 1) + ". " + m.getTitle() + " (" + m.getYearCreated() + ")");
@@ -243,7 +253,63 @@ public final class UserInterface {
     }
 
     private void deleteMovie() {
+        String title = prompt("Angiv filmens titel", UserInterface::parseNotBlank);
 
+        ArrayList<Movie> results = controller.searchMovies(title);
+
+        Movie selected;
+
+        switch (results.size()) {
+            case 0 -> selected = null;
+            case 1 -> selected = results.getFirst();
+            default -> {
+                printSearchResults(results);
+                System.out.println();
+
+                int minValue = 1;
+                int maxValue = results.size();
+
+                Function<String, ParseResult<Integer>> parseIntInRangeFromString = (String input) -> {
+                    try {
+                        int parsedInt = Integer.parseInt(input);
+                        if (parsedInt >= minValue && parsedInt <= maxValue) {
+                            return ParseResult.success(parsedInt);
+                        }
+                        return ParseResult.failure("Tallet skal være mellem " + minValue + " og " + maxValue);
+                    } catch (NumberFormatException e) {
+                        return ParseResult.failure("Vælg et heltal mellem " + minValue + " og " + maxValue);
+                    }
+                };
+                ParseResult<Integer> result = parseIntInRangeFromString.apply("bla");
+                // ParseResult.success = false
+                // ParseResult.output = null
+                // ParseResult.reason = "Vælg et heltal mellem 1 og 3"
+                ParseResult<Integer> result2 = parseIntInRangeFromString.apply("2");
+                // ParseResult.success = true
+                // ParseResult.output = 2
+                // ParseResult.reason = "Valid"
+
+                int answer = prompt("Vælg et nummer", parseIntInRangeFromString);
+
+                int index = answer - 1;
+
+                selected = results.get(index);
+            }
+        }
+
+        if (selected == null) {
+            System.out.println("Film findes ikke i samling.");
+            return;
+        }
+
+        boolean answer = prompt("Er du sikker på at du vil fjerne filmen fra samlingen?", UserInterface::parseBoolean);
+
+        if(answer) {
+            controller.deleteMovie(selected);
+            System.out.println("Filmen er fjernet fra samlingen.");
+        } else {
+            System.out.println("Filmen forbliver i samlingen.");
+        }
     }
 
     private void printGoodbye() {
