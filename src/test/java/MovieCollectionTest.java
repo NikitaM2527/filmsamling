@@ -3,33 +3,32 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MovieCollectionTest {
 
-    private MovieCollection searchCollection;
+    private MovieCollection searchAndEditCollection;
 
     @BeforeEach
     void setUp() {
-        searchCollection = new MovieCollection();
+        searchAndEditCollection = new MovieCollection();
 
 
-        searchCollection.addMovie("Dune",
+        searchAndEditCollection.addMovie("Dune",
                 "Albert",
                 2021,
                 true,
                 120,
                 "Sci-Fi");
 
-        searchCollection.addMovie("Dune 2",
+        searchAndEditCollection.addMovie("Dune 2",
                 "Albert",
                 2023,
                 true,
                 125,
                 "Sci-Fi");
 
-        searchCollection.addMovie("IT",
+        searchAndEditCollection.addMovie("IT",
                 "Stephen King",
                 1960,
                 false,
@@ -121,26 +120,26 @@ public class MovieCollectionTest {
     @Test
     void searchMovies_noMatch() {
 
-        ArrayList<Movie> results = searchCollection.searchMovies("Nonexistent");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("Nonexistent");
         assertTrue(results.isEmpty());
     }
 
     @Test
     void searchMovies_exactTitleMatch() {
-        ArrayList<Movie> results = searchCollection.searchMovies("IT");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("IT");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
 
     @Test
     void searchMovies_multipleMatches() {
-        ArrayList<Movie> results = searchCollection.searchMovies("Dune");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("Dune");
         assertEquals(2, results.size());
     }
 
     @Test
     void searchMovies_caseInsensitive() {
-        ArrayList<Movie> results = searchCollection.searchMovies("it");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("it");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
@@ -148,21 +147,78 @@ public class MovieCollectionTest {
     //Extra
     @Test
     void searchMovies_partialMatch() {
-        ArrayList<Movie> results = searchCollection.searchMovies("I");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("I");
         assertEquals(1, results.size());
         assertEquals("IT", results.getFirst().getTitle());
     }
 
     @Test
     void searchMovies_emptySearchString() {
-        ArrayList<Movie> results = searchCollection.searchMovies("");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("");
         assertEquals(3, results.size());
     }
 
     @Test
     void searchMovies_mixedCaseSearch() {
-        ArrayList<Movie> results = searchCollection.searchMovies("iT");
+        ArrayList<Movie> results = searchAndEditCollection.searchMovies("iT");
         assertEquals("IT", results.getFirst().getTitle());
     }
 
+    @Test
+    void editedDirectorIsKeptAndTrueIsReturned() {
+        // Arrange
+        Movie itMovie = searchAndEditCollection.searchMovies("IT").getFirst();
+
+        // Act
+        boolean success = searchAndEditCollection.editMovie(
+                itMovie,
+                itMovie.getTitle(),
+                "Me",
+                itMovie.getYearCreated(),
+                itMovie.isInColor(),
+                itMovie.getLengthInMinutes(),
+                itMovie.getGenre());
+        itMovie = searchAndEditCollection.searchMovies("IT").getFirst();
+        String newDirector = itMovie.getDirector();
+
+        // Assert
+        assertTrue(success);
+        assertEquals("Me", newDirector);
+    }
+
+    @Test
+    void editingNonExistentMovieChangesNothingAndFalseIsReturned() {
+        // Arrange
+        String title = "Placeholder";
+        String director = "Nobody";
+        int yearCreated = 2000;
+        boolean inColor = false;
+        int lengthInMinutes = 60;
+        String genre = "Avant-Garde";
+        Movie nonExistentMovie = new Movie(
+                title,
+                director,
+                yearCreated,
+                inColor,
+                lengthInMinutes,
+                genre);
+
+        // Act
+        boolean success = searchAndEditCollection.editMovie(nonExistentMovie,
+                "Foobar",
+                "Somebody",
+                2001,
+                true,
+                90,
+                "Run-of-the-mill");
+
+        // Assert
+        assertFalse(success);
+        assertEquals(title, nonExistentMovie.getTitle());
+        assertEquals(director, nonExistentMovie.getDirector());
+        assertEquals(yearCreated, nonExistentMovie.getYearCreated());
+        assertEquals(inColor, nonExistentMovie.isInColor());
+        assertEquals(lengthInMinutes, nonExistentMovie.getLengthInMinutes());
+        assertEquals(genre, nonExistentMovie.getGenre());
+    }
 }
