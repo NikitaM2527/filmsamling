@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.Function;
@@ -66,6 +68,8 @@ public final class UserInterface {
                 case "3" -> searchMovies();
                 case "4" -> editMovie();
                 case "5" -> deleteMovie();
+                case "6" -> markMovieAsWatched();
+                case "7" -> showDaysSinceLastWatched();
                 case "0" -> running = false;
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
@@ -73,6 +77,7 @@ public final class UserInterface {
                     printMenuOptions();
                 }
             }
+            System.out.println();
         }
 
         printGoodbye();
@@ -85,6 +90,8 @@ public final class UserInterface {
                 3. Søg efter film
                 4. Redigér en film
                 5. Slet en film
+                6. Marker en film som set
+                7. Vis film du ikke har set længe
                 0. Afslut
                 """);
     }
@@ -167,10 +174,19 @@ public final class UserInterface {
                 System.out.println("I farve: " + (m.isInColor() ? "ja" : "nej"));
                 System.out.println("Varighed: " + m.getLengthInMinutes());
                 System.out.println("Genre: " + m.getGenre());
+
+                LocalDate watchedDate = m.getLastWatched();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+                if (m.hasBeenWatched() && LocalDate.now().isBefore(m.getLastWatched())) {
+                    System.out.println("Sidst Set: " + watchedDate.format(formatter) + " (for " + m.getDaysSinceWatched(LocalDate.now()) + " dage siden)");
+                } else {
+                    System.out.println("Sidst Set: aldrig");
+                }
             }
             default -> {
                 for (Movie movie : foundMovies) {
-                    System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+                        System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
                 }
             }
         }
@@ -184,7 +200,7 @@ public final class UserInterface {
 
 
     private void editMovie() {
-        String query = prompt("Søg efter en titel", ParseResult::success);
+        String query = prompt("Søg efter en titel: ", ParseResult::success);
 
         ArrayList<Movie> results = controller.searchMovies(query);
 
@@ -309,6 +325,79 @@ public final class UserInterface {
             System.out.println("Filmen er fjernet fra samlingen.");
         } else {
             System.out.println("Filmen forbliver i samlingen.");
+        }
+    }
+
+    private void markMovieAsWatched() {
+        String query = prompt("Søg efter en titel", ParseResult::success);
+
+        ArrayList<Movie> results = controller.searchMovies(query);
+
+        Movie selected = switch (results.size()) {
+            case 0 -> null;
+            case 1 -> results.getFirst();
+            default -> {
+                int minNum = 1;
+                int maxNum = results.size();
+
+                printSearchResults(results);
+
+                int num = prompt("Vælg nummer", (input) -> {
+                    try {
+                        int output = Integer.parseInt(input);
+                        if (output < maxNum || output > maxNum) {
+                            return ParseResult.failure("Tallet skal være mellem " + minNum + " og " + maxNum);
+                        }
+                        return ParseResult.success(output);
+                    } catch (NumberFormatException e) {
+                        return ParseResult.failure("Indtast et heltal mellem " + minNum + " og " + maxNum);
+                    }
+                });
+
+                yield results.get(num - 1);
+            }
+        };
+
+        if (selected == null) {
+            System.out.println("Ingen film med den titel blev fundet");
+            return;
+        }
+
+        controller.markAsWatched(selected);
+
+        LocalDate watchedDate = selected.getLastWatched();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        System.out.println(selected.getTitle() + " er markeret som set " + watchedDate.format(formatter));
+
+    }
+
+    private void showDaysSinceLastWatched() {
+        int minValue = 1;
+
+        Function<String, ParseResult<Integer>> parsePositiveIntFromString = (String input) -> {
+            try {
+                int parsedInt = Integer.parseInt(input);
+                if (parsedInt >= minValue) {
+                    return ParseResult.success(parsedInt);
+                }
+                return ParseResult.failure("Indtast et positivt tal.");
+            } catch (NumberFormatException e) {
+                return ParseResult.failure("Vælg et positivt heltal.");
+            }
+        };
+
+        int days = prompt("Indtast dage", parsePositiveIntFromString);
+
+        System.out.println("Film, du ikke har set i 30 dage eller aldrig har set:");
+
+        ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
+
+        for (Movie movie : movies) {
+            if (movie.hasBeenWatched() && LocalDate.now().isBefore(movie.getLastWatched())) {
+                System.out.println("  " + movie.getTitle() + " - sidst set: " + movie.getDaysSinceWatched(LocalDate.now()));
+            } else {
+                System.out.println("  " + movie.getTitle() + " - sidst set: aldrig");
+            }
         }
     }
 
