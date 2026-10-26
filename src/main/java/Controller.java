@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -28,10 +29,11 @@ public class Controller {
     }
 
     public void markAsWatched(Movie movie) {
-        movieCollection.markAsWatched(movie);
+        movie.markAsWatched(LocalDate.now());
     }
 
     public ArrayList<Movie> getMoviesNotWatchedForDays(int days) {
-        return new ArrayList<>(movieCollection.getMoviesNotWatchedForDays(days));
+        LocalDate sinceDate = LocalDate.now().minusDays(days);
+        return new ArrayList<>(movieCollection.getMoviesNotWatchedSince(sinceDate));
     }
 }
