@@ -55,6 +55,10 @@ public final class UserInterface {
     }
 
     public void startProgram() {
+        System.out.println("""
+                Velkommen til vores filmsamling!
+                """);
+
         printMenuOptions();
 
         boolean running = true;
