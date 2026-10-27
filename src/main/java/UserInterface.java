@@ -15,47 +15,6 @@ public final class UserInterface {
         this.controller = controller;
     }
 
-    private static ParseResult<String> parseNotBlank(String input) {
-        return input.isBlank()
-                ? ParseResult.failure("Feltet må ikke være tomt")
-                : ParseResult.success(input);
-    }
-
-    private static ParseResult<Integer> parseYearCreated(String input) {
-        try {
-            int output = Integer.parseInt(input);
-            if (output < 1888) {
-                return ParseResult.failure(
-                        "Verdens første film blev udgivet i 1888");
-            }
-            return ParseResult.success(output);
-        } catch (NumberFormatException e) {
-            return ParseResult.failure("Indtast et heltal");
-        }
-    }
-
-    private static ParseResult<Boolean> parseBoolean(String input) {
-        if (input.equalsIgnoreCase("ja")) {
-            return ParseResult.success(true);
-        } else if (input.equalsIgnoreCase("nej")) {
-            return ParseResult.success(false);
-        }
-
-        return ParseResult.failure("Svar ja eller nej");
-    }
-
-    private static ParseResult<Integer> parseLengthInMinutes(String input) {
-        try {
-            int output = Integer.parseInt(input);
-            if (output <= 0) {
-                return ParseResult.failure("En film er mindst 1 minut lang");
-            }
-            return ParseResult.success(output);
-        } catch (NumberFormatException e) {
-            return ParseResult.failure("Indtast et heltal");
-        }
-    }
-
     public void startProgram() {
         System.out.println("""
                 Velkommen til vores filmsamling!
@@ -103,12 +62,12 @@ public final class UserInterface {
     }
 
     private void createMovie() {
-        String title = prompt("Titel", UserInterface::parseNotBlank);
-        String director = prompt("Instruktør", UserInterface::parseNotBlank);
-        int yearCreated = this.<Integer>prompt("Årstal", UserInterface::parseYearCreated);
-        boolean inColor = prompt("I farver (ja/nej)", UserInterface::parseBoolean);
-        int lengthInMinutes = prompt("Længde i minutter", UserInterface::parseLengthInMinutes);
-        String genre = prompt("Genre", UserInterface::parseNotBlank);
+        String title = prompt("Titel", Parsing::parseNotBlank);
+        String director = prompt("Instruktør", Parsing::parseNotBlank);
+        int yearCreated = this.<Integer>prompt("Årstal", Parsing::parseYearCreated);
+        boolean inColor = prompt("I farver (ja/nej)", Parsing::parseBoolean);
+        int lengthInMinutes = prompt("Længde i minutter", Parsing::parseLengthInMinutes);
+        String genre = prompt("Genre", Parsing::parseNotBlank);
 
         controller.addMovie(
                 title,
@@ -119,34 +78,6 @@ public final class UserInterface {
                 genre
         );
         // TODO Confirm with movie title (print)
-    }
-
-    private <T> T prompt(String prompt, Function<String, ParseResult<T>> parser) {
-        return promptWithDefault(prompt, parser, null, null);
-    }
-
-    private <T> T promptWithDefault(
-            String prompt, Function<String, ParseResult<T>> parser,
-            T defaultValue, Function<T, String> format) {
-        while (true) {
-            String hint = defaultValue == null ? "" : " [" + format.apply(defaultValue) + "]";
-            System.out.print(prompt + hint + ": ");
-            String input = scanner.nextLine().trim();
-            if (defaultValue != null && input.isEmpty()) return defaultValue;
-            ParseResult<T> result = parser.apply(input);
-            if (result.success) return result.output;
-            System.out.println("Ugyldigt input: " + result.reason);
-        }
-    }
-
-    private record ParseResult<T>(T output, boolean success, String reason) {
-        private static <T> ParseResult<T> success(T value) {
-            return new ParseResult<>(value, true, "Valid");
-        }
-
-        private static <T> ParseResult<T> failure(String reason) {
-            return new ParseResult<>(null, false, reason);
-        }
     }
 
     private void showAllMovies() {
@@ -171,7 +102,7 @@ public final class UserInterface {
     }
 
     private void searchMovies() {
-        String title = prompt("Titel", ParseResult::success);
+        String title = prompt("Titel", Parsing.Result::success);
 
         ArrayList<Movie> foundMovies = controller.searchMovies(title);
 
@@ -207,7 +138,7 @@ public final class UserInterface {
 
 
     private void editMovie() {
-        String query = prompt("Søg efter en titel: ", ParseResult::success);
+        String query = prompt("Søg efter en titel: ", Parsing.Result::success);
 
         Movie selected = searchSingleMovie(query);
         if (selected == null) return;
@@ -215,22 +146,22 @@ public final class UserInterface {
         System.out.println("Tryk Enter for at beholde den nuværende værdi.");
 
         String title = promptWithDefault(
-                "Titel", UserInterface::parseNotBlank,
+                "Titel", Parsing::parseNotBlank,
                 selected.getTitle(), Object::toString);
         String director = promptWithDefault(
-                "Instruktør", UserInterface::parseNotBlank,
+                "Instruktør", Parsing::parseNotBlank,
                 selected.getDirector(), Object::toString);
         int yearCreated = this.<Integer>promptWithDefault(
-                "Årstal", UserInterface::parseYearCreated,
+                "Årstal", Parsing::parseYearCreated,
                 selected.getYearCreated(), Object::toString);
         boolean inColor = promptWithDefault(
-                "I farver (ja/nej)", UserInterface::parseBoolean,
+                "I farver (ja/nej)", Parsing::parseBoolean,
                 selected.isInColor(), (color) -> color ? "ja" : "nej");
         int lengthInMinutes = promptWithDefault(
-                "Længde i minutter", UserInterface::parseLengthInMinutes,
+                "Længde i minutter", Parsing::parseLengthInMinutes,
                 selected.getLengthInMinutes(), Object::toString);
         String genre = promptWithDefault(
-                "Genre", UserInterface::parseNotBlank,
+                "Genre", Parsing::parseNotBlank,
                 selected.getGenre(), Object::toString);
 
         controller.editMovie(selected, title, director, yearCreated, inColor, lengthInMinutes, genre);
@@ -247,7 +178,7 @@ public final class UserInterface {
     }
 
     private void deleteMovie() {
-        String title = prompt("Angiv filmens titel", UserInterface::parseNotBlank);
+        String title = prompt("Angiv filmens titel", Parsing::parseNotBlank);
 
         Movie selected = searchSingleMovie(title);
 
@@ -256,7 +187,7 @@ public final class UserInterface {
             return;
         }
 
-        boolean answer = prompt("Er du sikker på at du vil fjerne filmen fra samlingen?", UserInterface::parseBoolean);
+        boolean answer = prompt("Er du sikker på at du vil fjerne filmen fra samlingen?", Parsing::parseBoolean);
 
         if (answer) {
             controller.deleteMovie(selected);
@@ -267,7 +198,7 @@ public final class UserInterface {
     }
 
     private void markMovieAsWatched() {
-        String query = prompt("Søg efter en titel", ParseResult::success);
+        String query = prompt("Søg efter en titel", Parsing.Result::success);
 
         Movie selected = searchSingleMovie(query);
         if (selected == null) {
@@ -288,22 +219,9 @@ public final class UserInterface {
             case 0 -> null;
             case 1 -> results.getFirst();
             default -> {
-                int minNum = 1;
-                int maxNum = results.size();
-
                 printSearchResults(results);
 
-                int num = prompt("Vælg nummer", (input) -> {
-                    try {
-                        int output = Integer.parseInt(input);
-                        if (output < maxNum || output > maxNum) {
-                            return ParseResult.failure("Tallet skal være mellem " + minNum + " og " + maxNum);
-                        }
-                        return ParseResult.success(output);
-                    } catch (NumberFormatException e) {
-                        return ParseResult.failure("Indtast et heltal mellem " + minNum + " og " + maxNum);
-                    }
-                });
+                int num = prompt("Vælg nummer", Parsing.parseIntWithinRange(1, results.size()));
 
                 yield results.get(num - 1);
             }
@@ -317,21 +235,7 @@ public final class UserInterface {
     }
 
     private void showDaysSinceLastWatched() {
-        int minValue = 1;
-
-        Function<String, ParseResult<Integer>> parsePositiveIntFromString = (String input) -> {
-            try {
-                int parsedInt = Integer.parseInt(input);
-                if (parsedInt >= minValue) {
-                    return ParseResult.success(parsedInt);
-                }
-                return ParseResult.failure("Indtast et positivt tal.");
-            } catch (NumberFormatException e) {
-                return ParseResult.failure("Vælg et positivt heltal.");
-            }
-        };
-
-        int days = prompt("Indtast dage", parsePositiveIntFromString);
+        int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
         System.out.println("Film, du ikke har set i 30 dage eller aldrig har set:");
 
@@ -344,5 +248,23 @@ public final class UserInterface {
 
     private void printGoodbye() {
         System.out.println("Farvel! Vi har IKKE gemt dine ændringer.");
+    }
+
+    private <T> T prompt(String prompt, Function<String, Parsing.Result<T>> parser) {
+        return promptWithDefault(prompt, parser, null, null);
+    }
+
+    private <T> T promptWithDefault(
+            String prompt, Function<String, Parsing.Result<T>> parser,
+            T defaultValue, Function<T, String> format) {
+        while (true) {
+            String hint = defaultValue == null ? "" : " [" + format.apply(defaultValue) + "]";
+            System.out.print(prompt + hint + ": ");
+            String input = scanner.nextLine().trim();
+            if (defaultValue != null && input.isEmpty()) return defaultValue;
+            Parsing.Result<T> result = parser.apply(input);
+            if (result.success()) return result.output();
+            System.out.println("Ugyldigt input: " + result.reason());
+        }
     }
 }
