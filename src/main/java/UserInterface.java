@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public final class UserInterface {
@@ -62,22 +63,77 @@ public final class UserInterface {
     }
 
     private void createMovie() {
-        String title = prompt("Titel", Parsing::parseNotBlank);
-        String director = prompt("Instruktør", Parsing::parseNotBlank);
-        int yearCreated = this.<Integer>prompt("Årstal", Parsing::parseYearCreated);
-        boolean inColor = prompt("I farver (ja/nej)", Parsing::parseBoolean);
-        int lengthInMinutes = prompt("Længde i minutter", Parsing::parseLengthInMinutes);
-        String genre = prompt("Genre", Parsing::parseNotBlank);
+        Movie.Builder builder = new Movie.Builder();
 
-        controller.addMovie(
-                title,
-                director,
-                yearCreated,
-                inColor,
-                lengthInMinutes,
-                genre
-        );
-        // TODO Confirm with movie title (print)
+        promptString("Indtast filmens titel: ", builder::title);
+        promptString("Indtast filmens instruktør: ", builder::director);
+        promptInt("Indtast udgivelsesår: ", builder::yearCreated);
+        promptBoolean("Film i farve (ja/nej): ", builder::inColor);
+        promptInt("Indtast filmens længde: ", builder::lengthInMinutes);
+        promptString("Indtast filmens genre: ", builder::genre);
+
+        Movie movie = builder.build();
+        controller.addMovie(movie);
+        System.out.println();
+        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ") " + "er nu tilføjet til samlingen.");
+    }
+
+    private void promptString(String prompt, Consumer<String> setter) {
+        boolean valid = false;
+        do {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            try {
+                setter.accept(input); // builder.genre(input)
+                valid = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (!valid);
+    }
+
+    private void promptInt(String prompt, Consumer<Integer> setter) {
+        boolean valid = false;
+        do {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            try {
+                int intInput = Integer.parseInt(input);
+                setter.accept(intInput);
+                valid = true;
+            } catch (NumberFormatException e) {
+                if (input.isEmpty()) {
+                    System.out.println("Indtast et helt tal.");
+                } else {
+                    System.out.println(input + " er ikke er helt tal. Prøv igen.");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (!valid);
+    }
+
+    private void promptBoolean(String prompt, Consumer<Boolean> setter) {
+        boolean valid = false;
+        do {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+
+            try {
+                boolean boolInput;
+                if (input.equalsIgnoreCase("ja")) {
+                    boolInput = true;
+                } else if (input.equalsIgnoreCase("nej")) {
+                    boolInput = false;
+                } else {
+                    throw new IllegalArgumentException("Indtast ja eller nej");
+                }
+                setter.accept(boolInput); // builder.genre(input)
+                valid = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (!valid);
     }
 
     private void showAllMovies() {

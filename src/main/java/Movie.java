@@ -1,3 +1,4 @@
+import javax.net.ssl.SSLEngine;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -10,6 +11,101 @@ public class Movie {
     private String genre;
     private LocalDate lastWatched;
 
+    public static class Builder {
+        private String title;
+        private String director;
+        private int yearCreated;
+        private boolean inColor;
+        private int lengthInMinutes;
+        private String genre;
+        private LocalDate lastWatched;
+
+        public Builder title(String title) {
+            validateTitle(title);
+            this.title = title;
+            return this;
+        }
+
+        public Builder yearCreated(int year) {
+            validateYearCreated(year);
+            this.yearCreated = year;
+            return this;
+        }
+
+        public Builder director(String director) {
+            validateDirector(director);
+            this.director = director;
+            return this;
+        }
+
+        public Builder lengthInMinutes(int length) {
+            validateLengthInMinutes(length);
+            this.lengthInMinutes = length;
+            return this;
+        }
+
+        public Builder genre(String genre) {
+            validateGenre(genre);
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder inColor(Boolean inColor) {
+            this.inColor = inColor;
+            return this;
+        }
+
+        public Movie build() {
+            return new Movie(this);
+        }
+    }
+
+    private static void validateTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Filmen skal have en titel");
+        }
+    }
+
+    private static void validateDirector(String director) {
+        if (director == null || director.isBlank()) {
+            throw new IllegalArgumentException("Filmen skal have en instruktør");
+        }
+    }
+
+    private static void validateYearCreated(int year) {
+        if (year < 1888) {
+            throw new IllegalArgumentException("Den første film er fra år 1888");
+        }
+    }
+
+    private static void validateLengthInMinutes(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("En film skal være længere end 0 minutter");
+        }
+    }
+
+    private static void validateGenre(String genre) {
+        if (genre == null || genre.isBlank()) {
+            throw new IllegalArgumentException("Filmen skal have en genre");
+        }
+    }
+
+
+    private Movie(Builder builder) {
+        this.title = builder.title;
+        this.director = builder.director;
+        this.yearCreated = builder.yearCreated;
+        this.inColor = builder.inColor;
+        this.lengthInMinutes = builder.lengthInMinutes;
+        this.genre = builder.genre;
+        validateTitle(title);
+        validateDirector(director);
+        validateYearCreated(yearCreated);
+        validateLengthInMinutes(lengthInMinutes);
+        validateGenre(genre);
+    }
+
+    /*
     public Movie(String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
@@ -18,12 +114,14 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
+     */
 
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
+        validateTitle(title);
         this.title = title;
     }
 
@@ -32,6 +130,7 @@ public class Movie {
     }
 
     public void setDirector(String director) {
+        validateDirector(director);
         this.director = director;
     }
 
@@ -40,6 +139,7 @@ public class Movie {
     }
 
     public void setYearCreated(int yearCreated) {
+        validateYearCreated(yearCreated);
         this.yearCreated = yearCreated;
     }
 
@@ -56,6 +156,7 @@ public class Movie {
     }
 
     public void setLengthInMinutes(int lengthInMinutes) {
+        validateLengthInMinutes(lengthInMinutes);
         this.lengthInMinutes = lengthInMinutes;
     }
 
@@ -64,6 +165,7 @@ public class Movie {
     }
 
     public void setGenre(String genre) {
+        validateGenre(genre);
         this.genre = genre;
     }
 

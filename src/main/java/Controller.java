@@ -8,8 +8,8 @@ public class Controller {
         this.movieCollection = movieCollection;
     }
 
-    public void addMovie(String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
-        movieCollection.addMovie(title, director, yearCreated, inColor, lengthInMinutes, genre);
+    public void addMovie(Movie movie) {
+        movieCollection.addMovie(movie);
     }
 
     public ArrayList<Movie> getMovies() {
