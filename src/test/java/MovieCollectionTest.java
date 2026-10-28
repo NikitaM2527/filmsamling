@@ -12,26 +12,26 @@ public class MovieCollectionTest {
     void setUp() {
         sharedCollection = new MovieCollection();
 
-        sharedCollection.addMovie("Dune",
+        sharedCollection.addMovie(new Movie("Dune",
                 "Albert",
                 2021,
                 true,
                 120,
-                "Sci-Fi");
+                "Sci-Fi"));
 
-        sharedCollection.addMovie("Dune 2",
+        sharedCollection.addMovie(new Movie("Dune 2",
                 "Albert",
                 2023,
                 true,
                 125,
-                "Sci-Fi");
+                "Sci-Fi"));
 
-        sharedCollection.addMovie("IT",
+        sharedCollection.addMovie(new Movie("IT",
                 "Stephen King",
                 1960,
                 false,
                 80,
-                "Thriller");
+                "Thriller"));
     }
 
     // getNumberOfMovies
@@ -56,12 +56,12 @@ public class MovieCollectionTest {
         MovieCollection collection = new MovieCollection();
 
         // Act
-        collection.addMovie("IT",
+        collection.addMovie(new Movie("IT",
                 "Stephen King",
                 1960,
                 false,
                 80,
-                "Thriller");
+                "Thriller"));
         int numberOfMovies = collection.getNumberOfMovies();
 
         // Assert
@@ -74,12 +74,12 @@ public class MovieCollectionTest {
         MovieCollection collection = new MovieCollection();
 
         // Act
-        collection.addMovie("IT",
+        collection.addMovie(new Movie("IT",
                 "Stephen King",
                 1960,
                 false,
                 80,
-                "Thriller");
+                "Thriller"));
         int movieCountPostAdd = collection.getNumberOfMovies();
         String firstTitle = collection.getMovies().getFirst().getTitle();
 
@@ -94,18 +94,18 @@ public class MovieCollectionTest {
         MovieCollection collection = new MovieCollection();
 
         // Act
-        collection.addMovie("IT",
+        collection.addMovie(new Movie("IT",
                 "Stephen King",
                 1960,
                 false,
                 80,
-                "Thriller");
-        collection.addMovie("Dune",
+                "Thriller"));
+        collection.addMovie(new Movie("Dune",
                 "Albert",
                 2021,
                 true,
                 120,
-                "Sci-Fi");
+                "Sci-Fi"));
         int movieCountPostAdd = collection.getNumberOfMovies();
         String firstTitle = collection.getMovies().getFirst().getTitle();
         String lastTitle = collection.getMovies().getLast().getTitle();

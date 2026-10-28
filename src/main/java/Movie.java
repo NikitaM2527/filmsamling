@@ -1,4 +1,3 @@
-import javax.net.ssl.SSLEngine;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -90,19 +89,35 @@ public class Movie {
         }
     }
 
-
-    private Movie(Builder builder) {
-        this.title = builder.title;
-        this.director = builder.director;
-        this.yearCreated = builder.yearCreated;
-        this.inColor = builder.inColor;
-        this.lengthInMinutes = builder.lengthInMinutes;
-        this.genre = builder.genre;
+    public Movie(
+            String title,
+            String director,
+            int yearCreated,
+            boolean inColor,
+            int lengthInMinutes,
+            String genre) {
         validateTitle(title);
         validateDirector(director);
         validateYearCreated(yearCreated);
         validateLengthInMinutes(lengthInMinutes);
         validateGenre(genre);
+
+        this.title = title;
+        this.director = director;
+        this.yearCreated = yearCreated;
+        this.inColor = inColor;
+        this.lengthInMinutes = lengthInMinutes;
+        this.genre = genre;
+    }
+
+    private Movie(Builder builder) {
+        this(
+                builder.title,
+                builder.director,
+                builder.yearCreated,
+                builder.inColor,
+                builder.lengthInMinutes,
+                builder.genre);
     }
 
     public String getTitle() {
