@@ -171,12 +171,7 @@ public final class UserInterface {
             case 0 -> System.out.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
             case 1 -> {
                 Movie movie = foundMovies.getFirst();
-                System.out.println("Titel (år): " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
-                System.out.println("Instruktør: " + movie.getDirector());
-                System.out.println("I farve: " + (movie.isInColor() ? "ja" : "nej"));
-                System.out.println("Varighed: " + movie.getLengthInMinutes());
-                System.out.println("Genre: " + movie.getGenre());
-                System.out.println("Sidst set: " + formatLastWatched(movie));
+                printAllMovieInfo(movie);
             }
             default -> {
                 for (Movie movie : foundMovies) {
@@ -192,9 +187,18 @@ public final class UserInterface {
         //Found multiple matches
     }
 
+    private static void printAllMovieInfo(Movie movie) {
+        System.out.println("Titel (år): " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+        System.out.println("Instruktør: " + movie.getDirector());
+        System.out.println("I farve: " + (movie.isInColor() ? "ja" : "nej"));
+        System.out.println("Varighed: " + movie.getLengthInMinutes());
+        System.out.println("Genre: " + movie.getGenre());
+        System.out.println("Sidst set: " + formatLastWatched(movie));
+    }
+
 
     private void editMovie() {
-        String query = prompt("Søg efter en titel: ", Parsing.Result::success);
+        String query = prompt("Søg efter en titel", Parsing.Result::success);
 
         Movie selected = searchSingleMovie(query);
         if (selected == null) return;
@@ -221,8 +225,8 @@ public final class UserInterface {
                 selected.getGenre(), Object::toString);
 
         controller.editMovie(selected, title, director, yearCreated, inColor, lengthInMinutes, genre);
-
-        // TODO Print all movie info
+        System.out.println();
+        printAllMovieInfo(selected);
     }
 
     private void printSearchResults(ArrayList<Movie> results) {
