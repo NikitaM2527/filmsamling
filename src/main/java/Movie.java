@@ -105,17 +105,6 @@ public class Movie {
         validateGenre(genre);
     }
 
-    /*
-    public Movie(String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
-        this.title = title;
-        this.director = director;
-        this.yearCreated = yearCreated;
-        this.inColor = inColor;
-        this.lengthInMinutes = lengthInMinutes;
-        this.genre = genre;
-    }
-     */
-
     public String getTitle() {
         return title;
     }
