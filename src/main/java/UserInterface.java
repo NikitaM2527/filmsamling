@@ -148,7 +148,7 @@ public final class UserInterface {
 
     static String formatLastWatched(Movie movie, LocalDate now) {
         LocalDate watchedDate = movie.getLastWatched();
-        if (movie.hasBeenWatched() && now.isBefore(watchedDate)) {
+        if (movie.hasBeenWatched() && !watchedDate.isAfter(now)) {
             long days = movie.getDaysSinceWatched(now);
             return watchedDate.format(dateFormatter) + " (for " + days + " dage siden)";
         } else {
