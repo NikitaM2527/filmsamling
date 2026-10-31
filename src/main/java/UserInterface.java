@@ -146,8 +146,7 @@ public final class UserInterface {
         }
     }
 
-    private static String formatLastWatched(Movie movie) {
-        LocalDate now = LocalDate.now();
+    static String formatLastWatched(Movie movie, LocalDate now) {
         LocalDate watchedDate = movie.getLastWatched();
         if (movie.hasBeenWatched() && now.isBefore(watchedDate)) {
             long days = movie.getDaysSinceWatched(now);
@@ -193,7 +192,7 @@ public final class UserInterface {
         System.out.println("I farve: " + (movie.isInColor() ? "ja" : "nej"));
         System.out.println("Varighed: " + movie.getLengthInMinutes());
         System.out.println("Genre: " + movie.getGenre());
-        System.out.println("Sidst set: " + formatLastWatched(movie));
+        System.out.println("Sidst set: " + formatLastWatched(movie, LocalDate.now()));
     }
 
 
@@ -302,7 +301,7 @@ public final class UserInterface {
         ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
 
         for (Movie movie : movies) {
-            System.out.println("  " + movie.getTitle() + " - sidst set: " + formatLastWatched(movie));
+            System.out.println("  " + movie.getTitle() + " - sidst set: " + formatLastWatched(movie, LocalDate.now()));
         }
     }
 
