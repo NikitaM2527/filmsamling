@@ -3,6 +3,7 @@ import org.junit.jupiter.params.provider.FieldSource;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,5 +40,15 @@ class UserInterfaceTest {
     }
 
     private record LastWatchedCase(LocalDate lastWatched, LocalDate now, String expected) {
+        private static final DateTimeFormatter normalFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        private static final DateTimeFormatter shortFormatter = DateTimeFormatter.ofPattern("dd-MM");
+
+        @Override
+        public String toString() {
+            var formatter = lastWatched.getYear() == now.getYear() ? shortFormatter : normalFormatter;
+            var watchedStr = lastWatched.format(formatter);
+            var nowStr = now.format(formatter);
+            return "watched: " + watchedStr + " now: " + nowStr + " -> '" + expected + "'";
+        }
     }
 }
