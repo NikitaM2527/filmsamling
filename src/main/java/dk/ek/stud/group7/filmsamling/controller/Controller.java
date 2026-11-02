@@ -1,3 +1,8 @@
+package dk.ek.stud.group7.filmsamling.controller;
+
+import dk.ek.stud.group7.filmsamling.model.Movie;
+import dk.ek.stud.group7.filmsamling.model.MovieCollection;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 

@@ -1,3 +1,5 @@
+package dk.ek.stud.group7.filmsamling.model;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 

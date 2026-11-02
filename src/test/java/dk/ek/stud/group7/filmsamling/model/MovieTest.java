@@ -1,3 +1,5 @@
+package dk.ek.stud.group7.filmsamling.model;
+
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

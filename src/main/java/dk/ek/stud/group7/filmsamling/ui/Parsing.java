@@ -1,3 +1,5 @@
+package dk.ek.stud.group7.filmsamling.ui;
+
 import java.util.function.Function;
 
 final class Parsing {

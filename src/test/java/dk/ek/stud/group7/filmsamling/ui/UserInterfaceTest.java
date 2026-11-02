@@ -1,3 +1,6 @@
+package dk.ek.stud.group7.filmsamling.ui;
+
+import dk.ek.stud.group7.filmsamling.model.Movie;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.FieldSource;
 
