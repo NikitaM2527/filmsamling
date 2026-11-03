@@ -2,6 +2,9 @@ package dk.ek.stud.group7.filmsamling.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
@@ -62,5 +65,17 @@ public class MovieCollection {
         }
 
         return notWatchedSince;
+    }
+
+    public ArrayList<Movie> getMoviesSortedByTitle() {
+        ArrayList<Movie> sorted = new ArrayList<>();
+        Collections.sort(sorted);
+        return sorted;
+    }
+
+    public ArrayList<Movie> getMoviesSorted(Comparator<Movie> comparator) {
+        ArrayList<Movie> sorted = new ArrayList<>();
+        sorted.sort(comparator);
+        return sorted;
     }
 }
