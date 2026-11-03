@@ -3,6 +3,7 @@ package dk.ek.stud.group7.filmsamling.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.FieldSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -306,23 +307,23 @@ class MovieTest {
         assertEquals(newLastWatched, original.getLastWatched());
     }
 
-    @Test
-    void getDaysSinceWatched_countsAcrossMonths() {
+    @ParameterizedTest
+    @CsvSource(value = {
+            "2026-01-01;2026-01-01;0",    // Watched same day
+            "2026-01-01;2026-01-02;1",    // Watched day after
+            "2026-06-01;2026-01-01;-151", // Watched in the future
+            "2026-02-28;2026-03-01;1"     // Watched across months
+    },
+            delimiter = ';')
+    void getDaysSinceWatched(LocalDate lastWatched, LocalDate now, int expectedDays) {
         // Arrange
-        Movie jaws = new Movie(
-                "Jaws",
-                "Steven Spielberg",
-                1975,
-                true,
-                124,
-                "Thriller",
-                null);
-        jaws.markAsWatched(LocalDate.of(2025, 9, 30));
+        Movie movie = movieToChange;
+        movie.markAsWatched(lastWatched);
 
         // Act
-        long days = jaws.getDaysSinceWatched(LocalDate.of(2025, 10, 26));
+        long days = movie.getDaysSinceWatched(now);
 
         // Assert
-        assertEquals(26, days);
+        assertEquals(expectedDays, days);
     }
 }
