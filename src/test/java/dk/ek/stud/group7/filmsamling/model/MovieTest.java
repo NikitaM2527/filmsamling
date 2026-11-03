@@ -326,4 +326,15 @@ class MovieTest {
         // Assert
         assertEquals(expectedDays, days);
     }
+
+    @Test
+    void getDaySinceWatched_throwsWhenNull() {
+        // Arrange
+        Movie movie = movieToChange;
+        movie.markAsWatched(null);
+
+        // Act + Assert
+        assertThrows(NullPointerException.class, () ->
+                movie.getDaysSinceWatched(LocalDate.of(2026, Month.NOVEMBER, 3)));
+    }
 }
