@@ -27,16 +27,15 @@ public final class UserInterface {
                 Velkommen til vores filmsamling!
                 """);
 
-        printMenuOptions();
-
         boolean running = true;
         while (running) {
+            printMenuOptions();
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
             System.out.println();
             switch (choice) {
                 case "1" -> createMovie();
-                case "2" -> showAllMovies();
+                case "2" -> showAllMovies(controller.getMoviesSortedByTitle());
                 case "3" -> searchMovies();
                 case "4" -> editMovie();
                 case "5" -> deleteMovie();
@@ -79,7 +78,6 @@ public final class UserInterface {
                 4. Længde
                 5. Genre
                 0. Gå tilbage
-                Vælg:
                 """);
     }
 
@@ -157,13 +155,14 @@ public final class UserInterface {
         } while (!valid);
     }
 
-    private void showAllMovies() {
-        ArrayList<Movie> movies = controller.getMoviesSortedByTitle();
-
-        // TODO Print message if empty
-
-        for (Movie movie : movies) {
-            System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+    private void showAllMovies(ArrayList<Movie> sorted) {
+        if (sorted.isEmpty()) {
+            System.out.println("Filmlisten er tom!");
+        //} else if () {
+        } else {
+            for (Movie movie : sorted) {
+                System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+            }
         }
     }
 
@@ -354,6 +353,7 @@ public final class UserInterface {
 
         boolean running = true;
         while (running) {
+            System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
@@ -386,6 +386,6 @@ public final class UserInterface {
             }
         }
         ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
-        //showAllMovies(sorted);
+        showAllMovies(sorted);
     }
 }
