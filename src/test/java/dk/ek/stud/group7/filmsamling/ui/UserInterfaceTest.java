@@ -31,7 +31,7 @@ class UserInterfaceTest {
     @FieldSource("lastWatchedCases")
     void formatLastWatched(LastWatchedCase testCase) {
         // Arrange
-        Movie movie = new Movie("_", "_", 1888, false, 1, "_");
+        Movie movie = new Movie("_", "_", 1888, false, 1, "_", null);
         if (testCase.lastWatched != null)
             movie.markAsWatched(testCase.lastWatched);
 

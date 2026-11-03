@@ -19,7 +19,8 @@ public class Movie {
                 builder.yearCreated,
                 builder.inColor,
                 builder.lengthInMinutes,
-                builder.genre);
+                builder.genre,
+                builder.lastWatched);
     }
 
     public Movie(
@@ -28,7 +29,8 @@ public class Movie {
             int yearCreated,
             boolean inColor,
             int lengthInMinutes,
-            String genre) {
+            String genre,
+            LocalDate lastWatched) {
         validateTitle(title);
         validateDirector(director);
         validateYearCreated(yearCreated);
@@ -41,6 +43,7 @@ public class Movie {
         this.inColor = inColor;
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
+        this.lastWatched = lastWatched;
     }
 
     public String getTitle() {

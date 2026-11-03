@@ -19,21 +19,24 @@ public class MovieCollectionTest {
                 2021,
                 true,
                 120,
-                "Sci-Fi"));
+                "Sci-Fi",
+                null));
 
         sharedCollection.addMovie(new Movie("Dune 2",
                 "Albert",
                 2023,
                 true,
                 125,
-                "Sci-Fi"));
+                "Sci-Fi",
+                null));
 
         sharedCollection.addMovie(new Movie("IT",
                 "Stephen King",
                 1960,
                 false,
                 80,
-                "Thriller"));
+                "Thriller",
+                null));
     }
 
     // getNumberOfMovies
@@ -63,7 +66,8 @@ public class MovieCollectionTest {
                 1960,
                 false,
                 80,
-                "Thriller"));
+                "Thriller",
+                null));
         int numberOfMovies = collection.getNumberOfMovies();
 
         // Assert
@@ -81,7 +85,8 @@ public class MovieCollectionTest {
                 1960,
                 false,
                 80,
-                "Thriller"));
+                "Thriller",
+                null));
         int movieCountPostAdd = collection.getNumberOfMovies();
         String firstTitle = collection.getMovies().getFirst().getTitle();
 
@@ -101,13 +106,15 @@ public class MovieCollectionTest {
                 1960,
                 false,
                 80,
-                "Thriller"));
+                "Thriller",
+                null));
         collection.addMovie(new Movie("Dune",
                 "Albert",
                 2021,
                 true,
                 120,
-                "Sci-Fi"));
+                "Sci-Fi",
+                null));
         int movieCountPostAdd = collection.getNumberOfMovies();
         String firstTitle = collection.getMovies().getFirst().getTitle();
         String lastTitle = collection.getMovies().getLast().getTitle();
@@ -234,7 +241,8 @@ public class MovieCollectionTest {
                 yearCreated,
                 inColor,
                 lengthInMinutes,
-                genre);
+                genre,
+                null);
 
         // Act
         boolean success = sharedCollection.editMovie(nonExistentMovie,
@@ -288,7 +296,8 @@ public class MovieCollectionTest {
                 yearCreated,
                 inColor,
                 lengthInMinutes,
-                genre);
+                genre,
+                null);
 
         // Act
         boolean success = sharedCollection.deleteMovie(nonExistentMovie);

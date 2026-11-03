@@ -17,7 +17,8 @@ class MovieTest {
                 2021,
                 true,
                 120,
-                "Sci-Fi"
+                "Sci-Fi",
+                null
         );
         String newTitle = "Dune 2";
 
@@ -37,7 +38,8 @@ class MovieTest {
                 1975,
                 true,
                 124,
-                "Thriller");
+                "Thriller",
+                null);
         jaws.markAsWatched(LocalDate.of(2025, 9, 30));
 
         // Act
