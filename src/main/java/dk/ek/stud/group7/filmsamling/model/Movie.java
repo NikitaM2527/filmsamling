@@ -189,8 +189,8 @@ public class Movie {
             return this;
         }
 
-        public Builder inColor(boolean inColor) {
-            this.inColor = inColor;
+        public Builder lastWatched(LocalDate date) {
+            this.lastWatched = date;
             return this;
         }
 
