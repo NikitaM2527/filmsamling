@@ -1,6 +1,7 @@
 package dk.ek.stud.group7.filmsamling.ui;
 
 import dk.ek.stud.group7.filmsamling.controller.Controller;
+import dk.ek.stud.group7.filmsamling.controller.SortField;
 import dk.ek.stud.group7.filmsamling.model.Movie;
 
 import java.time.LocalDate;
@@ -41,6 +42,7 @@ public final class UserInterface {
                 case "5" -> deleteMovie();
                 case "6" -> markMovieAsWatched();
                 case "7" -> showDaysSinceLastWatched();
+                case "8" -> sortByOptions();
                 case "0" -> running = false;
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
@@ -63,7 +65,21 @@ public final class UserInterface {
                 5. Slet en film
                 6. Marker en film som set
                 7. Vis film du ikke har set længe
+                8. Sortér filmlisten
                 0. Afslut
+                """);
+    }
+
+    private void printSortOptions() {
+        System.out.println("""
+                Sortér efter:
+                1. Titel
+                2. Instruktør
+                3. Årstal
+                4. Længde
+                5. Genre
+                0. Gå tilbage
+                Vælg:
                 """);
     }
 
@@ -142,7 +158,7 @@ public final class UserInterface {
     }
 
     private void showAllMovies() {
-        ArrayList<Movie> movies = controller.getMovies();
+        ArrayList<Movie> movies = controller.getMoviesSortedByTitle();
 
         // TODO Print message if empty
 
@@ -330,5 +346,46 @@ public final class UserInterface {
             if (result.success()) return result.output();
             System.out.println("Ugyldigt input: " + result.reason());
         }
+    }
+
+    private void sortByOptions () {
+        printSortOptions();
+        SortField field = null;
+
+        boolean running = true;
+        while (running) {
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            switch (choice) {
+                case "1", "titel"     -> {
+                    field = SortField.TITLE;
+                    running = false;
+                }
+                case "2", "instruktør" -> {
+                    field = SortField.DIRECTOR;
+                    running = false;
+                }
+                case "3", "årstal"    -> {
+                    field = SortField.YEAR;
+                    running = false;
+                }
+                case "4", "længde"    -> {
+                    field = SortField.LENGTH;
+                    running = false;
+                }
+                case "5", "genre"     -> {
+                    field = SortField.GENRE;
+                    running = false;
+                }
+                case "0" -> startProgram();
+                default -> {
+                    System.out.println("Ukendt valg: " + choice);
+                    System.out.println();
+                    printSortOptions();
+                }
+            }
+        }
+        ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
+        //showAllMovies(sorted);
     }
 }
