@@ -395,6 +395,11 @@ public final class UserInterface {
                     printSortOptions();
                 }
             }
+            if (running) {
+                waitForEnter();
+                System.out.println();
+                printMenuOptions();
+            }
         }
         ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
         showAllMovies(sorted);
