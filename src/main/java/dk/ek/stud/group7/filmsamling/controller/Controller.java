@@ -1,10 +1,10 @@
 package dk.ek.stud.group7.filmsamling.controller;
 
-import dk.ek.stud.group7.filmsamling.model.Movie;
-import dk.ek.stud.group7.filmsamling.model.MovieCollection;
+import dk.ek.stud.group7.filmsamling.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Controller {
     private final MovieCollection movieCollection;
@@ -40,5 +40,23 @@ public class Controller {
     public ArrayList<Movie> getMoviesNotWatchedForDays(int days) {
         LocalDate sinceDate = LocalDate.now().minusDays(days);
         return new ArrayList<>(movieCollection.getMoviesNotWatchedSince(sinceDate));
+    }
+
+    public ArrayList<Movie> getMoviesSortedByTitle() {
+        return movieCollection.getMoviesSortedByTitle();
+    }
+
+    public ArrayList<Movie> getMoviesSortedBy(SortField sortField) {
+        return movieCollection.getMoviesSorted(comparatorFor(sortField));
+    }
+
+    private Comparator<Movie> comparatorFor(SortField field) {
+        return switch (field) {
+            case TITLE -> new TitleComparator();
+            case DIRECTOR -> new DirectorComparator();
+            case YEAR -> new YearComparator();
+            case LENGTH -> new LengthComparator();
+            case GENRE -> new GenreComparator();
+        };
     }
 }
