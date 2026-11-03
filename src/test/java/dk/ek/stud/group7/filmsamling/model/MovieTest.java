@@ -3,6 +3,7 @@ package dk.ek.stud.group7.filmsamling.model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.FieldSource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
@@ -49,6 +50,7 @@ class MovieTest {
     }
 
     @ParameterizedTest
+    @NullSource
     @FieldSource("blankStrings")
     @ValueSource(strings = {
             // BUG: Breaks FileHandler because it is seen as a valid title
@@ -79,6 +81,7 @@ class MovieTest {
     }
 
     @ParameterizedTest
+    @NullSource
     @FieldSource("blankStrings")
     void builder_invalidDirector(String director) {
         assertThrows(IllegalArgumentException.class, () ->
@@ -125,6 +128,7 @@ class MovieTest {
     }
 
     @ParameterizedTest
+    @NullSource
     @FieldSource("blankStrings")
     void builder_invalidGenre(String genre) {
         assertThrows(IllegalArgumentException.class, () ->
