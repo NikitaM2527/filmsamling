@@ -1,9 +1,11 @@
 package dk.ek.stud.group7.filmsamling.model;
 
+import dk.ek.stud.group7.filmsamling.ui.UserInterface;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
     private String title;
     private String director;
     private int yearCreated;
@@ -143,6 +145,11 @@ public class Movie {
 
     public long getDaysSinceWatched(LocalDate now) {
         return ChronoUnit.DAYS.between(lastWatched, now);
+    }
+
+    @Override
+    public int compareTo(Movie other) {
+        return this.title.compareTo(other.title);
     }
 
     public static class Builder {
