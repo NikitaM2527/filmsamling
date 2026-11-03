@@ -2,14 +2,24 @@ package dk.ek.stud.group7.filmsamling.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.FieldSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MovieTest {
     // Validation
+    private static final List<String> blankStrings = List.of(
+            "",    // Empty
+            " ",   // Blank
+            "   ", // Multiple spaces
+            "\t",  // Tabs
+            "\n"   // Newlines
+    );
+
     @ParameterizedTest
     @ValueSource(strings = {
             "Jaws", // Normal
@@ -39,12 +49,8 @@ class MovieTest {
     }
 
     @ParameterizedTest
+    @FieldSource("blankStrings")
     @ValueSource(strings = {
-            "",    // Empty
-            " ",   // Blank
-            "   ", // Multiple spaces
-            "\t",  // Tabs
-            "\n",  // Newlines
             // BUG: Breaks FileHandler because it is seen as a valid title
             "Steins;Gate: The Movie - Load Region of Déjà Vu", // Semi-colons
     })
@@ -73,13 +79,7 @@ class MovieTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "",    // Empty
-            " ",   // Blank
-            "   ", // Multiple spaces
-            "\t",  // Tabs
-            "\n",  // Newlines
-    })
+    @FieldSource("blankStrings")
     void builder_invalidDirector(String director) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().director(director));
@@ -125,13 +125,7 @@ class MovieTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "",    // Empty
-            " ",   // Blank
-            "   ", // Multiple spaces
-            "\t",  // Tabs
-            "\n",  // Newlines
-    })
+    @FieldSource("blankStrings")
     void builder_invalidGenre(String genre) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().genre(genre));
