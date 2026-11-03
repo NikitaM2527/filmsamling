@@ -160,15 +160,20 @@ public class Movie {
             return this;
         }
 
+        public Builder director(String director) {
+            validateDirector(director);
+            this.director = director;
+            return this;
+        }
+
         public Builder yearCreated(int year) {
             validateYearCreated(year);
             this.yearCreated = year;
             return this;
         }
 
-        public Builder director(String director) {
-            validateDirector(director);
-            this.director = director;
+        public Builder inColor(boolean inColor) {
+            this.inColor = inColor;
             return this;
         }
 
