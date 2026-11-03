@@ -92,6 +92,36 @@ class MovieTest {
 
     @ParameterizedTest
     @ValueSource(ints = {
+            1888,
+            Integer.MAX_VALUE
+    })
+    void builder_validYearCreated(int yearCreated) {
+        assertDoesNotThrow(() ->
+                new Movie.Builder().yearCreated(yearCreated));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {
+            Integer.MIN_VALUE,
+            -1,
+            0,
+            1,
+            1887
+    })
+    void builder_invalidYearCreated(int yearCreated) {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Movie.Builder().yearCreated(yearCreated));
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void builder_validInColor(boolean inColor) {
+        assertDoesNotThrow(() ->
+                new Movie.Builder().inColor(inColor));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {
             1,
             Integer.MAX_VALUE
     })
@@ -135,6 +165,38 @@ class MovieTest {
     void builder_invalidGenre(String genre) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().genre(genre));
+    }
+
+    private static final List<LocalDate> validLastWatchedCases = List.of(
+            LocalDate.of(-1, Month.JANUARY, 1),
+            LocalDate.of(0, Month.JANUARY, 1),
+            LocalDate.of(1887, Month.DECEMBER, 30),
+            LocalDate.of(1888, Month.JANUARY, 1),
+            LocalDate.of(2026, Month.NOVEMBER, 3)
+    );
+
+    @ParameterizedTest
+    @NullSource
+    @FieldSource("validLastWatchedCases")
+    void builder_validLastWatched(LocalDate lastWatched) {
+        assertDoesNotThrow(() ->
+                new Movie.Builder().lastWatched(lastWatched));
+    }
+
+    @Test
+    void builder_buildValidMovie() {
+        // Arrange
+        Movie.Builder builder = new Movie.Builder()
+                .title("Jaws")
+                .director("Steven Spielberg")
+                .yearCreated(1975)
+                .inColor(true)
+                .lengthInMinutes(2 * 60 + 4)
+                .genre("Monster Horror")
+                .lastWatched(LocalDate.of(2026, Month.NOVEMBER, 3));
+
+        // Act + Assert
+        assertDoesNotThrow(builder::build);
     }
 
     // Mutation
