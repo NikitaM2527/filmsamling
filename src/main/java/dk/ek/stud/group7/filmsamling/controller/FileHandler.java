@@ -2,11 +2,14 @@ package dk.ek.stud.group7.filmsamling.controller;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FileHandler {
     private String fileName;
@@ -21,12 +24,27 @@ public class FileHandler {
         throw new UnsupportedOperationException();
     }
 
-    public ArrayList<Movie> loadMovies() {
-        throw new UnsupportedOperationException();
+    public ArrayList<Movie> loadMovies() throws FileNotFoundException {
+        ArrayList<Movie> collection = new ArrayList<>();
+        Scanner scanner = new Scanner(new File(fileName));
+        skippedLineCount = 0;
+
+        scanner.nextLine();
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            Movie movie = parseMovie(line);
+            if (movie != null) {
+                collection.add(movie);
+            } else {
+                skippedLineCount++;
+            }
+        }
+        return collection;
     }
 
     public int getSkippedLineCount() {
-        throw new UnsupportedOperationException();
+        return skippedLineCount;
     }
 
     private String toCsvLine(Movie movie) {
