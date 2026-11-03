@@ -1,11 +1,14 @@
 package dk.ek.stud.group7.filmsamling.controller;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FileHandlerTest {
 
@@ -36,4 +39,19 @@ public class FileHandlerTest {
         // Assert
         assertNull(movie);
     }
+
+    @Test
+    void loadMovies_skipsInvalidLines() throws FileNotFoundException {
+        // Arrange
+        // movie.csv indeholder to gyldige film og to ugyldig film (Steins;Gate... indeholder 8 felter og returnerer null + Test... som er fra 1880)
+        FileHandler fileHandler = new FileHandler("docs/movie.csv");
+
+        // Act
+        ArrayList<Movie> movies = fileHandler.loadMovies();
+
+        // Assert
+        assertEquals(2, movies.size());
+        assertEquals(2, fileHandler.getSkippedLineCount());
+    }
+
 }
