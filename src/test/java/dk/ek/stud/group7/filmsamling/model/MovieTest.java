@@ -1,5 +1,6 @@
 package dk.ek.stud.group7.filmsamling.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.FieldSource;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -135,25 +137,111 @@ class MovieTest {
                 new Movie.Builder().genre(genre));
     }
 
-    @Test
-    void setTitle() {
-        // Arrange
-        Movie movie = new Movie(
-                "Dune",
-                "Albert",
-                2021,
+    // Mutation
+    private Movie movieToChange;
+
+    @BeforeEach
+    void createNewMovieToChange() {
+        movieToChange = new Movie(
+                "Jaws",
+                "Steven Spielberg",
+                1975,
                 true,
-                120,
-                "Sci-Fi",
-                null
+                2 * 60 + 4,
+                "Monster Horror",
+                LocalDate.of(2026, Month.NOVEMBER, 3)
         );
-        String newTitle = "Dune 2";
+    }
+
+    @Test
+    void title_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        String newTitle = "Citizen Kane";
 
         // Act
-        movie.setTitle(newTitle);
+        original.setTitle(newTitle);
 
         // Assert
-        assertEquals(newTitle, movie.getTitle());
+        assertEquals(newTitle, original.getTitle());
+    }
+
+    @Test
+    void director_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        String newDirector = "Orson Welles";
+
+        // Act
+        original.setDirector(newDirector);
+
+        // Assert
+        assertEquals(newDirector, original.getDirector());
+    }
+
+    @Test
+    void yearCreated_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        int newYearCreated = 1941;
+
+        // Act
+        original.setYearCreated(newYearCreated);
+
+        // Assert
+        assertEquals(newYearCreated, original.getYearCreated());
+    }
+
+    @Test
+    void inColor_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        boolean newInColor = false;
+
+        // Act
+        original.setInColor(newInColor);
+
+        // Assert
+        assertEquals(newInColor, original.isInColor());
+    }
+
+    @Test
+    void lengthInMinutes_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        int newLengthInMinutes = 60 + 59;
+
+        // Act
+        original.setLengthInMinutes(newLengthInMinutes);
+
+        // Assert
+        assertEquals(newLengthInMinutes, original.getLengthInMinutes());
+    }
+
+    @Test
+    void genre_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        String newGenre = "Epic";
+
+        // Act
+        original.setGenre(newGenre);
+
+        // Assert
+        assertEquals(newGenre, original.getGenre());
+    }
+
+    @Test
+    void lastWatched_changePersists() {
+        // Arrange
+        Movie original = movieToChange;
+        LocalDate newLastWatched = null;
+
+        // Act
+        original.markAsWatched(newLastWatched);
+
+        // Assert
+        assertEquals(newLastWatched, original.getLastWatched());
     }
 
     @Test
