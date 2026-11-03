@@ -26,10 +26,10 @@ public final class UserInterface {
         System.out.println("""
                 Velkommen til vores filmsamling!
                 """);
+        printMenuOptions();
 
         boolean running = true;
         while (running) {
-            printMenuOptions();
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
             System.out.println();
@@ -41,7 +41,7 @@ public final class UserInterface {
                 case "5" -> deleteMovie();
                 case "6" -> markMovieAsWatched();
                 case "7" -> showDaysSinceLastWatched();
-                case "8" -> sortByOptions();
+                case "8" -> sortByOptionsMenu();
                 case "0" -> running = false;
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
@@ -49,9 +49,13 @@ public final class UserInterface {
                     printMenuOptions();
                 }
             }
+            if (running) {
+                waitForEnter();
+                System.out.println();
+                printMenuOptions();
+            }
             System.out.println();
         }
-
         printGoodbye();
     }
 
@@ -81,6 +85,12 @@ public final class UserInterface {
                 """);
     }
 
+    private void waitForEnter() {
+        System.out.println();
+        System.out.print("Tryk 'Enter' for at gå tilbage til menuen...");
+        scanner.nextLine();
+    }
+
     private void createMovie() {
         Movie.Builder builder = new Movie.Builder();
 
@@ -95,6 +105,7 @@ public final class UserInterface {
         controller.addMovie(movie);
         System.out.println();
         System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ") " + "er nu tilføjet til samlingen.");
+        System.out.println();
     }
 
     private void promptString(String prompt, Consumer<String> setter) {
@@ -347,7 +358,7 @@ public final class UserInterface {
         }
     }
 
-    private void sortByOptions () {
+    private void sortByOptionsMenu () {
         printSortOptions();
         SortField field = null;
 
