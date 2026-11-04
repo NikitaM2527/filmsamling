@@ -13,6 +13,12 @@ public class MovieCollection {
         movies = new ArrayList<>();
     }
 
+    public void initialLoad(ArrayList<Movie> loadedMovies) {
+        for (Movie movie : loadedMovies) {
+            addMovie(movie);
+        }
+    }
+
     public void addMovie(Movie movie) {
         movies.add(movie);
     }
