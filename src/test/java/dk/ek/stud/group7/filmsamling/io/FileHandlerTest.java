@@ -44,15 +44,14 @@ public class FileHandlerTest {
     @Test
     void loadMovies_skipsInvalidLines() throws FileNotFoundException {
         // Arrange
-        // movie.csv indeholder to gyldige film og to ugyldig film (Steins;Gate... indeholder 8 felter og returnerer null + Test... som er fra 1880)
-        FileHandler fileHandler = new FileHandler("docs/movie.csv");
+        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
 
         // Act
         ArrayList<Movie> movies = fileHandler.loadMovies();
 
         // Assert
         assertEquals(2, movies.size());
-        assertEquals(2, fileHandler.getSkippedLineCount());
+        assertEquals(1, fileHandler.getSkippedLineCount());
     }
 
     @Test
