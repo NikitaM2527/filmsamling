@@ -3,7 +3,6 @@ package dk.ek.stud.group7.filmsamling.model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
 import java.time.Month;
