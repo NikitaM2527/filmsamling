@@ -2,6 +2,7 @@ package dk.ek.stud.group7.filmsamling.controller;
 
 import dk.ek.stud.group7.filmsamling.model.*;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,6 +19,7 @@ public class Controller {
 
     public void addMovie(Movie movie) {
         movieCollection.addMovie(movie);
+        changed = true;
     }
 
     public ArrayList<Movie> getMovies() {
@@ -29,15 +31,26 @@ public class Controller {
     }
 
     public boolean editMovie(Movie movie, String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
-        return movieCollection.editMovie(movie, title, director, yearCreated, inColor, lengthInMinutes, genre);
+        boolean edited = movieCollection.editMovie(movie, title, director, yearCreated, inColor, lengthInMinutes, genre);
+
+        if (edited) {
+            changed = true;
+        }
+        return edited;
     }
 
     public boolean deleteMovie(Movie movie) {
-        return movieCollection.deleteMovie(movie);
+        boolean deleted = movieCollection.deleteMovie(movie);
+
+        if (deleted) {
+            changed = true;
+        }
+        return deleted;
     }
 
     public void markAsWatched(Movie movie) {
         movie.markAsWatched(LocalDate.now());
+        changed = true;
     }
 
     public ArrayList<Movie> getMoviesNotWatchedForDays(int days) {
@@ -61,5 +74,23 @@ public class Controller {
             case LENGTH -> new LengthComparator();
             case GENRE -> new GenreComparator();
         };
+    }
+
+    public boolean saveMoviesIfChanged() throws FileNotFoundException {
+        if (!changed) {
+            return false;
+        }
+        fileHandler.saveMovies(movieCollection.getMovies());
+        changed = false;
+        return true;
+    }
+
+    public int loadMovies() throws FileNotFoundException {
+        movieCollection.initialLoad(fileHandler.loadMovies());
+        return movieCollection.getNumberOfMovies();
+    }
+
+    public int getSkippedLineCount() {
+        return fileHandler.getSkippedLineCount();
     }
 }
