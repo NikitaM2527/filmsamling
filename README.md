@@ -31,6 +31,9 @@ Filmsamlingen gemmes i en CSV-fil (`movies.csv`), så filmene kan indlæses igen
 Programmet benytter `FileHandler` til at håndtere indlæsning og lagring af film. 
 Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af de øvrige film.
 
+"CSV-fil" er her ment uformelt, siden `|` bruges som separator frem for `,`.
+`;` er ofte brugt grundet danske decimaltal, men der er film med `;` i titlen.
+
 ## User stories
 ### Implementerede user stories
 
