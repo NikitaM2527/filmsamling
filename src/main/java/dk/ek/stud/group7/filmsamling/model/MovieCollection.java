@@ -8,12 +8,6 @@ import java.util.Comparator;
 public class MovieCollection {
     private final ArrayList<Movie> movies = new ArrayList<>();
 
-    public void initialLoad(ArrayList<Movie> loadedMovies) {
-        for (Movie movie : loadedMovies) {
-            addMovie(movie);
-        }
-    }
-
     public void addMovie(Movie movie) {
         movies.add(movie);
     }

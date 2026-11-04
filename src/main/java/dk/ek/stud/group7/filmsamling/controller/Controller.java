@@ -87,7 +87,10 @@ public class Controller {
     }
 
     public int loadMovies() throws FileNotFoundException {
-        movieCollection.initialLoad(fileHandler.loadMovies());
+        for (Movie movie : fileHandler.loadMovies()) {
+            movieCollection.addMovie(movie);
+        }
+
         return movieCollection.getNumberOfMovies();
     }
 
