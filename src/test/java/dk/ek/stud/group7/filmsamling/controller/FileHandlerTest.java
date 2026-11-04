@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,6 +53,57 @@ public class FileHandlerTest {
         // Assert
         assertEquals(2, movies.size());
         assertEquals(2, fileHandler.getSkippedLineCount());
+    }
+
+    @Test
+    void saveMovies_saveToFileAndThenLoadFile() throws FileNotFoundException {
+        // Arrange
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        Movie movie1 = new Movie.Builder()
+                .title("Dune: Part One")
+                .director("Denis Villeneuve")
+                .yearCreated(2021)
+                .inColor(true)
+                .lengthInMinutes(155)
+                .genre("Sci-Fi")
+                .lastWatched(LocalDate.of(2022, 11, 3))
+                .build();
+
+        Movie movie2 = new Movie.Builder()
+                .title("Inception")
+                .director("Christopher Nolan")
+                .yearCreated(2010)
+                .inColor(true)
+                .lengthInMinutes(148)
+                .genre("Sci-Fi")
+                .lastWatched(LocalDate.of(2016, 10, 20))
+                .build();
+
+        Movie movie3 = new Movie.Builder()
+                .title("Jaws")
+                .director("Steven Spielberg")
+                .yearCreated(1975)
+                .inColor(true)
+                .lengthInMinutes(124)
+                .genre("Horror")
+                // No lastWatched on purpose
+                .build();
+
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+
+        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+
+        // Act
+        fileHandler.saveMovies(movies);
+        ArrayList<Movie> loadedMovies = fileHandler.loadMovies();
+
+        // Assert
+        assertEquals(3, loadedMovies.size());
+        assertEquals("Dune: Part One", loadedMovies.getFirst().getTitle());
+        assertNull(loadedMovies.get(2).getLastWatched());
     }
 
 }
