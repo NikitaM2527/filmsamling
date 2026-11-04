@@ -42,7 +42,9 @@ public final class UserInterface {
                 case "6" -> markMovieAsWatched();
                 case "7" -> showDaysSinceLastWatched();
                 case "8" -> sortByOptionsMenu();
-                case "0" -> running = false;
+                case "0" -> {
+                    running = false;
+                }
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
                     System.out.println();
@@ -388,7 +390,10 @@ public final class UserInterface {
                     field = SortField.GENRE;
                     running = false;
                 }
-                case "0" -> startProgram();
+                case "0" -> {
+                    running = false;
+                    break;
+                }
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
                     System.out.println();
@@ -401,7 +406,9 @@ public final class UserInterface {
                 printMenuOptions();
             }
         }
-        ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
-        showAllMovies(sorted);
+        if (field != null) {
+            ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
+            showAllMovies(sorted);
+        }
     }
 }
