@@ -34,6 +34,26 @@ Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af
 ## User stories
 ### Implementerede user stories
 
+| ID   | Titel                         | Type         | Del                                     | Status  |
+|------|-------------------------------|--------------|-----------------------------------------|---------|
+| US1  | Opret en film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US2  | Menu                          | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US3  | Vis alle film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US4  | Søg efter film                | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US5  | Redigér en film               | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US6  | Slet en film                  | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US7  | Automatiske tests             | Technical    | [Del 5](#del-5-test)                    | Ja      |
+| US8  | Markér en film som set        | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
+| US9  | Film, jeg ikke har set længe  | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
+| US10 | Robust input                  | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
+| US11 | Kun gyldige film              | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
+| US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
+| US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
+| US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
+| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Ja      |
+| US16 | Alfabetisk visning            | Funktionel   | [Del 9](#del-9-sortering)               | Delvist |
+| US17 | Vælg, hvad der sorteres efter | Funktionel   | [Del 9](#del-9-sortering)               | Ja      |
+
 ### User stories, vi ikke nåede
 
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
