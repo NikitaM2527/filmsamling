@@ -79,7 +79,7 @@ final class Parsing {
                     ? Result.failure("Du kan ikke have set filmen i fremtiden.")
                     : Result.success(parsedDate);
         } catch (DateTimeParseException e) {
-            return Result.failure("Datoer skal være i formatet " + UserInterface.dateFormat + ".");
+            return Result.failure("Datoer skal være i formatet " + UserInterface.dateFormatDK() + ".");
         }
     }
 

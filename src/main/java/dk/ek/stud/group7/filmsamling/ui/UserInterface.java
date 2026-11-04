@@ -13,11 +13,18 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public final class UserInterface {
-    static final String dateFormat = "dd-MM-yyyy";
-    static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dateFormat);
+    private static final String dateFormat = "dd-MM-yyyy";
 
     private final Scanner scanner;
     private final Controller controller;
+
+    static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dateFormat);
+
+    static String dateFormatDK() {
+        return dateFormat
+                .replace('M', 'm')
+                .replace('y', 'å');
+    }
 
     public UserInterface(Controller controller) {
         this.scanner = new Scanner(System.in);
@@ -299,7 +306,7 @@ public final class UserInterface {
             return;
         }
 
-        LocalDate date = promptWithDefault("Indtast datoen (" + dateFormat + ")", Parsing::parsePastDate, LocalDate.now(), dateFormatter::format);
+        LocalDate date = promptWithDefault("Indtast datoen (" + dateFormatDK() + ")", Parsing::parsePastDate, LocalDate.now(), dateFormatter::format);
 
         controller.markAsWatched(selected, date);
 
