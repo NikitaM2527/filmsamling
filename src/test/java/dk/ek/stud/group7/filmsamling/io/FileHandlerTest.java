@@ -1,22 +1,47 @@
 package dk.ek.stud.group7.filmsamling.io;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FileHandlerTest {
+    @TempDir
+    private Path tempDir;
+
+    @BeforeEach
+    void setUpTestFiles() throws IOException {
+        Files.writeString(tempDir.resolve(TestFile.TWO_GOOD_ONE_BAD.fileName), """
+                title|director|yearCreated|inColor|lengthInMinutes|genre|lastWatched
+                Dune: Part One|Denis Villeneuve|2021|true|155|Sci-Fi|2022-11-03
+                Jaws|Steven Spielberg|1975|true|124|Horror|
+                Invalid Movie|Christopher Nolan|1800|true|120|Drama|""");
+    }
+
+    private String getTestFileName(@SuppressWarnings("SameParameterValue") TestFile testFile) {
+        return tempDir.resolve(testFile.fileName).toString();
+    }
+
+    private String getTempFileName(String fileName) {
+        return tempDir.resolve(fileName).toString();
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "Dune: Part One;Denis Villeneuve;2021;true;155;Sci-Fi;2022-11-03",
-            "Jaws;Steven Spielberg;1975;true;124;Horror;",
+            "Dune: Part One|Denis Villeneuve|2021|true|155|Sci-Fi|2022-11-03",
+            "Jaws|Steven Spielberg|1975|true|124|Horror|",
+            "Gekijouban Steins;Gate: Fuka ryouiki no dejavu|Hiroshi Hamasaki|2013|true|90|Anime|2016-02-18",
     })
     void parseMovie_validMovies(String line) {
         // Act
@@ -28,10 +53,10 @@ public class FileHandlerTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "Gekijouban Steins;Gate: Fuka ryouiki no dejavu;Hiroshi Hamasaki; 2013;true;90;Anime;2016-02-18",
-            "Dune: Part One;Denis Villeneuve;2021;true;155;Sci-Fi;2022-11-03;",
-            "Jaws;Steven Spielberg;1975;true;124;Horror",
-            "Test;Albert;1880;false;60;Drama;2026-11-03"
+            "Dune: Part One;Denis Villeneuve;2021;true;155;Sci-Fi;2022-11-03",
+            "Dune: Part One|Denis Villeneuve|2021|true|155|Sci-Fi|2022-11-03|",
+            "Jaws|Steven Spielberg|1975|true|124|Horror",
+            "Test|Albert|1880|false|60|Drama|2026-11-03"
     })
     void parseMovie_invalidMovie(String line) {
         // Act
@@ -44,7 +69,7 @@ public class FileHandlerTest {
     @Test
     void loadMovies_skipsInvalidLines() throws FileNotFoundException {
         // Arrange
-        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+        FileHandler fileHandler = new FileHandler(getTestFileName(TestFile.TWO_GOOD_ONE_BAD));
 
         // Act
         ArrayList<Movie> movies = fileHandler.loadMovies();
@@ -93,7 +118,7 @@ public class FileHandlerTest {
         movies.add(movie2);
         movies.add(movie3);
 
-        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+        FileHandler fileHandler = new FileHandler(getTempFileName("saveToFileAndThenLoadFile"));
 
         // Act
         fileHandler.saveMovies(movies);
@@ -109,7 +134,7 @@ public class FileHandlerTest {
     void saveMovies_handlesEmptyList() throws FileNotFoundException {
         // Arrange
         ArrayList<Movie> movies = new ArrayList<>();
-        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+        FileHandler fileHandler = new FileHandler(getTempFileName("handlesEmptyList"));
 
         // Act
         fileHandler.saveMovies(movies);
@@ -122,7 +147,7 @@ public class FileHandlerTest {
     @Test
     void saveMovies_overwriteExistingFile() throws FileNotFoundException {
         // Arrange
-        FileHandler fileHandler = new FileHandler("docs/test-overwrite-movies.csv");
+        FileHandler fileHandler = new FileHandler(getTempFileName("overwriteExistingFile"));
 
         ArrayList<Movie> firstMovies = new ArrayList<>();
         Movie movie1 = new Movie.Builder()
@@ -187,7 +212,7 @@ public class FileHandlerTest {
         movies.add(movie1);
         movies.add(movie2);
 
-        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+        FileHandler fileHandler = new FileHandler(getTempFileName("handlesIfLastWatchedIsNull"));
 
         // Act
         fileHandler.saveMovies(movies);
@@ -197,5 +222,15 @@ public class FileHandlerTest {
         assertEquals(2, loadedMovies.size());
         assertEquals("Dune: Part One", loadedMovies.getFirst().getTitle());
         assertNull(loadedMovies.get(1).getLastWatched());
+    }
+
+    enum TestFile {
+        TWO_GOOD_ONE_BAD("2good1bad");
+
+        public final String fileName;
+
+        TestFile(String fileName) {
+            this.fileName = fileName;
+        }
     }
 }

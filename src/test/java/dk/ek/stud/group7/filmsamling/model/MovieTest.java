@@ -45,7 +45,8 @@ class MovieTest {
             "映画ドラえもん",
             "三体",
             "La vita è bella",
-            "Tři oříšky pro Popelku"
+            "Tři oříšky pro Popelku",
+            "Steins;Gate: The Movie - Load Region of Déjà Vu", // Semi-colons
     })
     void builder_validTitles(String title) {
         assertDoesNotThrow(() ->
@@ -55,10 +56,6 @@ class MovieTest {
     @ParameterizedTest
     @NullSource
     @FieldSource("blankStrings")
-    @ValueSource(strings = {
-            // BUG: Breaks FileHandler because it is seen as a valid title
-            "Steins;Gate: The Movie - Load Region of Déjà Vu", // Semi-colons
-    })
     void builder_invalidTitles(String title) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().title(title));

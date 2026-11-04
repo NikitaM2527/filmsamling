@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    private static final String HEADER = "title|director|yearCreated|inColor|lengthInMinutes|genre|lastWatched";
+
     private final String fileName;
     private int skippedLineCount;
-    private static final String HEADER = "title;director;yearCreated;inColor;lengthInMinutes;genre;lastWatched";
 
     public FileHandler(String fileName) {
         this.fileName = fileName;
@@ -66,16 +67,13 @@ public class FileHandler {
         String isInColor = String.valueOf(movie.isInColor());
         String lengthInMinutes = String.valueOf(movie.getLengthInMinutes());
         String genre = movie.getGenre();
-        String lastWatched = "";
-        if (movie.hasBeenWatched()) {
-            lastWatched = movie.getLastWatched().toString();
-        }
+        String lastWatched = movie.hasBeenWatched() ? movie.getLastWatched().toString() : "";
 
-        return String.join(";", title, director, yearCreated, isInColor, lengthInMinutes, genre, lastWatched);
+        return String.join("|", title, director, yearCreated, isInColor, lengthInMinutes, genre, lastWatched);
     }
 
     static Movie parseMovie(String line) {
-        String[] cells = line.split(";", -1);
+        String[] cells = line.split("\\|", -1);
 
         if (cells.length != 7) {
             return null;
@@ -90,8 +88,7 @@ public class FileHandler {
             String genre = cells[5];
             LocalDate lastWatched = cells[6].isEmpty() ? null : LocalDate.parse(cells[6]);
 
-            Movie movie = new Movie(title, director, yearCreated, inColor, lengthInMinutes, genre, lastWatched);
-            return movie;
+            return new Movie(title, director, yearCreated, inColor, lengthInMinutes, genre, lastWatched);
 
         } catch (DateTimeParseException | IllegalArgumentException e) {
             return null;
