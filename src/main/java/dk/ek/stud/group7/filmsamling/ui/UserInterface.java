@@ -39,11 +39,14 @@ public final class UserInterface {
         while (running) {
             try {
                 if (controller.saveMoviesIfChanged()) {
+                    System.out.println();
                     System.out.println("Din filmsamling er blevet gemt");
                 }
             } catch (FileNotFoundException e) {
+                System.out.println();
                 System.out.println("Fejl: Filmsamlingen kunne ikke gemmes");
             }
+            System.out.println();
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
             System.out.println();
@@ -68,13 +71,12 @@ public final class UserInterface {
                 System.out.println();
                 printMenuOptions();
             }
-            System.out.println();
         }
         printGoodbye();
     }
 
     private void printMenuOptions() {
-        System.out.println("""
+        System.out.print("""
                 1. Opret en film
                 2. Vis alle film
                 3. Søg efter film
@@ -185,11 +187,7 @@ public final class UserInterface {
             System.out.println("Filmlisten er tom!");
         } else {
             for (Movie movie : sorted) {
-                System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
-                System.out.println("  Instruktør: " + movie.getDirector());
-                System.out.println("  Genre: " + movie.getGenre());
-                System.out.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
-                System.out.println("  Sidst set: " + formatLastWatched(movie, LocalDate.now()));
+                printAllMovieInfo(movie);
             }
         }
     }
@@ -214,27 +212,21 @@ public final class UserInterface {
             return;
         }
 
-        switch (foundMovies.size()) {
-            case 0 -> System.out.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
-            case 1 -> {
-                Movie movie = foundMovies.getFirst();
+        if (foundMovies.isEmpty()) {
+            System.out.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
+        } else {
+            for (Movie movie : foundMovies) {
                 printAllMovieInfo(movie);
-            }
-            default -> {
-                for (Movie movie : foundMovies) {
-                    System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
-                }
             }
         }
     }
 
     private static void printAllMovieInfo(Movie movie) {
-        System.out.println("Titel (år): " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
-        System.out.println("Instruktør: " + movie.getDirector());
-        System.out.println("I farve: " + (movie.isInColor() ? "ja" : "nej"));
-        System.out.println("Varighed: " + movie.getLengthInMinutes());
-        System.out.println("Genre: " + movie.getGenre());
-        System.out.println("Sidst set: " + formatLastWatched(movie, LocalDate.now()));
+        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
+        System.out.println("  Instruktør: " + movie.getDirector());
+        System.out.println("  Genre: " + movie.getGenre());
+        System.out.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
+        System.out.println("  Sidst set: " + formatLastWatched(movie, LocalDate.now()));
     }
 
     private void editMovie() {
@@ -337,12 +329,14 @@ public final class UserInterface {
     private void showDaysSinceLastWatched() {
         int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
-        System.out.println("Film, du ikke har set i " + days  + " dage eller aldrig har set:");
+        System.out.println("Film, du ikke har set i "
+                + days  + " " + (days == 1 ? "dag" : "dage")
+                + " eller aldrig har set:");
 
         ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
 
         for (Movie movie : movies) {
-            System.out.println("  " + movie.getTitle() + " - sidst set: " + formatLastWatched(movie, LocalDate.now()));
+            printAllMovieInfo(movie);
         }
     }
 
