@@ -299,7 +299,7 @@ public final class UserInterface {
             return;
         }
 
-        LocalDate date = prompt("Indtast datoen (" + dateFormat + ")", Parsing::parseLocalDate);
+        LocalDate date = promptWithDefault("Indtast datoen (" + dateFormat + ")", Parsing::parseLocalDate, LocalDate.now(), dateFormatter::format);
 
         controller.markAsWatched(selected, date);
 
