@@ -2,16 +2,11 @@ package dk.ek.stud.group7.filmsamling.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class MovieCollection {
-    private ArrayList<Movie> movies;
-
-    public MovieCollection() {
-        movies = new ArrayList<>();
-    }
+    private final ArrayList<Movie> movies = new ArrayList<>();
 
     public void initialLoad(ArrayList<Movie> loadedMovies) {
         for (Movie movie : loadedMovies) {
@@ -29,6 +24,30 @@ public class MovieCollection {
 
     public int getNumberOfMovies() {
         return movies.size();
+    }
+
+    public ArrayList<Movie> getMoviesSortedByTitle() {
+        ArrayList<Movie> sorted = new ArrayList<>(movies);
+        Collections.sort(sorted);
+        return sorted;
+    }
+
+    public ArrayList<Movie> getMoviesSorted(Comparator<Movie> comparator) {
+        ArrayList<Movie> sorted = new ArrayList<>(movies);
+        sorted.sort(comparator);
+        return sorted;
+    }
+
+    public ArrayList<Movie> getMoviesNotWatchedSince(LocalDate date) {
+        // US 8
+        ArrayList<Movie> notWatchedSince = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (!movie.hasBeenWatched() || movie.getLastWatched().isBefore(date)) {
+                notWatchedSince.add(movie);
+            }
+        }
+
+        return notWatchedSince;
     }
 
     public ArrayList<Movie> searchMovies(String searchText) {
@@ -59,29 +78,5 @@ public class MovieCollection {
 
     public boolean deleteMovie(Movie movie) {
         return movies.remove(movie);
-    }
-
-    public ArrayList<Movie> getMoviesNotWatchedSince(LocalDate date) {
-        // US 8
-        ArrayList<Movie> notWatchedSince = new ArrayList<>();
-        for (Movie movie : movies) {
-            if (!movie.hasBeenWatched() || movie.getLastWatched().isBefore(date)) {
-                notWatchedSince.add(movie);
-            }
-        }
-
-        return notWatchedSince;
-    }
-
-    public ArrayList<Movie> getMoviesSortedByTitle() {
-        ArrayList<Movie> sorted = new ArrayList<>(movies);
-        Collections.sort(sorted);
-        return sorted;
-    }
-
-    public ArrayList<Movie> getMoviesSorted(Comparator<Movie> comparator) {
-        ArrayList<Movie> sorted = new ArrayList<>(movies);
-        sorted.sort(comparator);
-        return sorted;
     }
 }
