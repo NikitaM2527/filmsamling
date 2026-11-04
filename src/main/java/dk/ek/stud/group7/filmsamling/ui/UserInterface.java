@@ -25,8 +25,12 @@ public final class UserInterface {
 
     public void startProgram() {
         System.out.println("""
-                Velkommen til vores filmsamling!
-                """);
+        ====================================
+
+           Velkommen til din filmsamling!
+
+        ====================================
+        """);
         loadMovies();
         System.out.println();
         printMenuOptions();
