@@ -62,7 +62,7 @@ Projektet er udviklet i Java og anvender blandt andet:
 - Filhåndtering med `Scanner` og `PrintStream`
 
 
-### Class diagram
+### Klasse diagram
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/class-diagram-dark.svg">
