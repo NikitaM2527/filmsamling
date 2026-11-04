@@ -9,7 +9,7 @@ acceptkriterier, og hver del linker til kilden.
 |------|-------------------------------|--------------|-----------------------------------------|---------|
 | US1  | Opret en film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US2  | Menu                          | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
-| US3  | Vis alle film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Delvist |
+| US3  | Vis alle film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US4  | Søg efter film                | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US5  | Redigér en film               | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US6  | Slet en film                  | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
@@ -28,7 +28,6 @@ acceptkriterier, og hver del linker til kilden.
 
 **Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
 
-- **US3:** "Vis alle film" viser kun titel og årstal – ikke alle oplysninger.
 - **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler (semikolon i titel).
 - **US9:** Virker, men overskriften siger altid "30 dage", uanset hvad brugeren skriver.
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
