@@ -4,6 +4,7 @@ import dk.ek.stud.group7.filmsamling.model.Movie;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -14,18 +15,26 @@ import java.util.Scanner;
 public class FileHandler {
     private String fileName;
     private int skippedLineCount;
+    private static final String HEADER = "title;director;yearCreated;inColor;lengthInMinutes;genre;lastWatched";
 
     public FileHandler(String fileName) {
         this.fileName = fileName;
         this.skippedLineCount = 0;
     }
 
-    public void saveMovies(ArrayList<Movie> movies) {
-        throw new UnsupportedOperationException();
+    public void saveMovies(ArrayList<Movie> movies) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File(fileName));
+        output.println(HEADER);
+
+        for (Movie movie : movies) {
+            output.println(toCsvLine(movie));
+        }
+
+        output.close();
     }
 
     public ArrayList<Movie> loadMovies() throws FileNotFoundException {
-        ArrayList<Movie> collection = new ArrayList<>();
+        ArrayList<Movie> movies = new ArrayList<>();
         Scanner scanner = new Scanner(new File(fileName));
         skippedLineCount = 0;
 
@@ -35,12 +44,12 @@ public class FileHandler {
             String line = scanner.nextLine();
             Movie movie = parseMovie(line);
             if (movie != null) {
-                collection.add(movie);
+                movies.add(movie);
             } else {
                 skippedLineCount++;
             }
         }
-        return collection;
+        return movies;
     }
 
     public int getSkippedLineCount() {
