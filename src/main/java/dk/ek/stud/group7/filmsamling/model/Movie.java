@@ -54,6 +54,9 @@ public class Movie implements Comparable<Movie> {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Filmen skal have en titel");
         }
+        if (title.contains("|")) {
+            throw new IllegalArgumentException("Filmens titel må ikke indeholde tegnet '|'");
+        }
     }
 
     public void setTitle(String title) {

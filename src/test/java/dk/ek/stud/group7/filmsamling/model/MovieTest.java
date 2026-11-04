@@ -56,6 +56,7 @@ class MovieTest {
     @ParameterizedTest
     @NullSource
     @FieldSource("blankStrings")
+    @ValueSource(strings = "|") // Pipes break the CSV file
     void builder_invalidTitles(String title) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().title(title));
