@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -106,4 +107,97 @@ public class FileHandlerTest {
         assertNull(loadedMovies.get(2).getLastWatched());
     }
 
+    @Test
+    void saveMovies_handlesEmptyList() throws FileNotFoundException {
+        // Arrange
+        ArrayList<Movie> movies = new ArrayList<>();
+        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+
+        // Act
+        fileHandler.saveMovies(movies);
+        ArrayList<Movie> loadedMovies = fileHandler.loadMovies();
+
+        // Assert
+        assertTrue(loadedMovies.isEmpty());
+    }
+
+    @Test
+    void saveMovies_overwriteExistingFile() throws FileNotFoundException {
+        // Arrange
+        FileHandler fileHandler = new FileHandler("docs/test-overwrite-movies.csv");
+
+        ArrayList<Movie> firstMovies = new ArrayList<>();
+        Movie movie1 = new Movie.Builder()
+                .title("Dune: Part One")
+                .director("Denis Villeneuve")
+                .yearCreated(2021)
+                .inColor(true)
+                .lengthInMinutes(155)
+                .genre("Sci-Fi")
+                .build();
+
+        firstMovies.add(movie1);
+
+        ArrayList<Movie> secondMovies = new ArrayList<>();
+        Movie movie2 = new Movie.Builder()
+                .title("Jaws")
+                .director("Steven Spielberg")
+                .yearCreated(1975)
+                .inColor(true)
+                .lengthInMinutes(124)
+                .genre("Horror")
+                .build();
+
+        secondMovies.add(movie2);
+
+        // Act
+        fileHandler.saveMovies(firstMovies);
+        fileHandler.saveMovies(secondMovies);
+
+        ArrayList<Movie> loadedMovies = fileHandler.loadMovies();
+
+        // Assert
+        assertEquals(1, loadedMovies.size());
+        assertEquals("Jaws", loadedMovies.getFirst().getTitle());
+    }
+
+    @Test
+    void saveMovies_handlesIfLastWatchedIsNull() throws FileNotFoundException {
+        // Arrange
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        Movie movie1 = new Movie.Builder()
+                .title("Dune: Part One")
+                .director("Denis Villeneuve")
+                .yearCreated(2021)
+                .inColor(true)
+                .lengthInMinutes(155)
+                .genre("Sci-Fi")
+                .lastWatched(LocalDate.of(2022, 11, 3))
+                .build();
+
+        Movie movie2 = new Movie.Builder()
+                .title("Jaws")
+                .director("Steven Spielberg")
+                .yearCreated(1975)
+                .inColor(true)
+                .lengthInMinutes(124)
+                .genre("Horror")
+                // No lastWatched on purpose
+                .build();
+
+        movies.add(movie1);
+        movies.add(movie2);
+
+        FileHandler fileHandler = new FileHandler("docs/test-movies.csv");
+
+        // Act
+        fileHandler.saveMovies(movies);
+        ArrayList<Movie> loadedMovies = fileHandler.loadMovies();
+
+        // Assert
+        assertEquals(2, loadedMovies.size());
+        assertEquals("Dune: Part One", loadedMovies.getFirst().getTitle());
+        assertNull(loadedMovies.get(1).getLastWatched());
+    }
 }
