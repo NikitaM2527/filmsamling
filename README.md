@@ -65,15 +65,29 @@ Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af
 - **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
 
 ## Sådan køres programmet
-Projektet er udviklet i Java og kræver **JDK 21 (LTS)**.
+
+Projektet kræver Java 21 eller nyere.
+
+- Kørsel af den færdige JAR kræver kun en Java 21-runtime.
+- At bygge fra kildekoden (Maven, IntelliJ) kræver JDK 21.
+
 Programmet startes fra klassens `Main.java`:
 `dk.ek.stud.group7.filmsamling.Main`
 
-I IntelliJ:
+### Fra IntelliJ
+
 1. Åbn projektet i IntelliJ. 
 2. Kontrollér, at projektets JDK er sat til JDK 21. 
 3. Åbn `Main.java`.
 4. Kør programmets `main()`-metode ved at trykke på den grønne Run-knap. 
+
+### Fra en JAR-fil
+
+En færdig JAR kan hentes under [Releases](https://github.com/NikitaM2527/filmsamling/releases).
+
+```bash
+java -jar group7-filmsamling.jar
+```
 
 Programmet afvikles i terminalen. 
 
