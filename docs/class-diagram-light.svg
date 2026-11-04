@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1182 1530" width="1182" height="1530" role="img" aria-label="Filmsamling class diagram" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjOTRlNTM3MS01N2Y3LTQ3NWMtOTI3My00YjIzZmI4NDUwMWUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaJx/45QLuhxBFg20wgqhcNIAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDozMWNhNjA1Ny1lZmVmLTQzMDMtOTRjNy1iMWUwODE0N2Q2NThscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoG5EOoeHhHyMDpBJshfPO6wAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggdMaddgdFC1QjM5F6PiHv0SpCeIKz8nkv80J4KIeckoekZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaKc1sLwzCb89Tp187NRIgwsAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCCQIuQ6mqTwuLAZPojGXpMo8EHUtu9ogKMRyRz6AGmN+GRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBjMZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmM5NGU1MzcxLTU3ZjctNDc1Yy05MjczLTRiMjNmYjg0NTAxZS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjk5MTRiMjUzLTk5MDYtNGRjMi1iZDU2LTZmODZkOGQ3MDZjYXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCB0xp12B0ULVCMzkXo+Ie/RKkJ4grPyeS/zQngoh5ySh6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggKZRWLQiPxN8e6nLyrdaklwhydvfUnXcaEZws+DMR4NWiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggBNvSPJkLopouNrFuB2FbpBQsh/uWg2pvreDMO6lvwHx0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQP/ljc72F84GnnnAEOKaMCS6g9XCxil4mv+3te53Jgm1yUcTXF7y2plGX8jnOVlyqaOL59aje+HP0nX4pNAOlG4=</c2pa:manifest></metadata>
+<defs>
+<marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#57606a" stroke-width="1.4"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1,1 L11,6 L1,11 Z" fill="#ffffff" stroke="#57606a" stroke-width="1.4"/></marker>
+<marker id="dia" viewBox="0 0 16 10" refX="1" refY="5" markerWidth="16" markerHeight="10" orient="auto"><path d="M1,5 L8,1 L15,5 L8,9 Z" fill="#ffffff" stroke="#57606a" stroke-width="1.4"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="22" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#1f2328">Filmsamling – klassediagram</text>
+<rect x="40" y="169" width="900" height="311" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<text x="926" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#57606a">package dk.ek.stud.group7.filmsamling.ui</text>
+<rect x="40" y="550" width="890" height="280" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<text x="916" y="570" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#57606a">package dk.ek.stud.group7.filmsamling.controller</text>
+<rect x="40" y="900" width="1102" height="450" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<text x="1128" y="920" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#57606a">package dk.ek.stud.group7.filmsamling.model</text>
+<path d="M183.6,89.0 L183.6,169.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="193.6" y="127.0" text-anchor="start" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">«create» UserInterface, Controller, MovieCollection</text>
+<path d="M301.2,215.0 L371.2,215.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="336.2" y="209.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">uses</text>
+<path d="M635.6,215.0 L678.6,215.0" fill="none" stroke="#57606a" stroke-width="1.4"/>
+<circle cx="635.6" cy="215.0" r="7" fill="#ffffff" stroke="#57606a" stroke-width="1.4"/>
+<path d="M631.6,215.0 H639.6 M635.6,211.0 V219.0" stroke="#57606a" stroke-width="1.4"/>
+<path d="M136.0,454.0 L136.0,580.0" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="144.0" y="520.0" text-anchor="start" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">controller</text>
+<path d="M375.2,596.0 L445.2,596.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="410.2" y="590.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">uses</text>
+<path d="M136.0,804.0 L136.0,930.0" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="144.0" y="870.0" text-anchor="start" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">movieCollection</text>
+<path d="M335.2,804.0 L335.2,852.0 L1124.0,852.0 L1124.0,1249.0 L591.0,1249.0 L591.0,1265.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="345.2" y="846.0" text-anchor="start" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">«create» *Comparator</text>
+<path d="M771.8,719.0 L771.8,882.0 L617.6,882.0 L617.6,930.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="779.8" y="876.0" text-anchor="start" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">saves / loads</text>
+<path d="M375.2,946.0 L445.2,946.0" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#open)" marker-start="url(#dia)"/>
+<text x="412.2" y="939.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">0..*</text>
+<path d="M717.0,946.0 L820.0,946.0" fill="none" stroke="#57606a" stroke-width="1.4"/>
+<circle cx="717.0" cy="946.0" r="7" fill="#ffffff" stroke="#57606a" stroke-width="1.4"/>
+<path d="M713.0,946.0 H721.0 M717.0,942.0 V950.0" stroke="#57606a" stroke-width="1.4"/>
+<path d="M820.0,986.0 L710.0,986.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="765.0" y="980.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">«create»</text>
+<path d="M577.6,1205.0 L577.6,1225.0 L52.0,1225.0 L52.0,1386.0 L142.9,1386.0 L142.9,1410.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#tri)"/>
+<path d="M161.4,1324.0 L161.4,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M376.2,1324.0 L376.2,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M591.0,1324.0 L591.0,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M805.8,1324.0 L805.8,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M1020.6,1324.0 L1020.6,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M161.4,1346.0 L1020.6,1346.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M711.0,1346.0 L711.0,1410.0" fill="none" stroke="#57606a" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#tri)"/>
+<text x="40" y="1506" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#57606a">UserInterface, Controller and FileHandler all also depend on Movie (arrows omitted for readability). FileHandler is not yet wired into Controller/UserInterface.</text>
+<rect x="88.2" y="30.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M88.2,60.0 V36.0 Q88.2,30.0 94.2,30.0 H273.0 Q279.0,30.0 279.0,36.0 V60.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="183.6" y="50.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Main</text>
+<text x="100.2" y="76.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ main(args: String[])</text>
+<rect x="66.0" y="199.0" width="235.2" height="255.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M66.0,243.0 V205.0 Q66.0,199.0 72.0,199.0 H295.2 Q301.2,199.0 301.2,205.0 V243.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="183.6" y="215.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«final»</text>
+<text x="183.6" y="233.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">UserInterface</text>
+<text x="78.0" y="259.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- controller: Controller</text>
+<text x="78.0" y="276.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- scanner: Scanner</text>
+<path d="M66.0,289.0 H301.2" stroke="#8c959f" stroke-width="1.4"/>
+<text x="78.0" y="305.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ startProgram()</text>
+<text x="78.0" y="322.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- createMovie()</text>
+<text x="78.0" y="339.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- showAllMovies(movies)</text>
+<text x="78.0" y="356.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- searchMovies()</text>
+<text x="78.0" y="373.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- editMovie()</text>
+<text x="78.0" y="390.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- deleteMovie()</text>
+<text x="78.0" y="407.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- markMovieAsWatched()</text>
+<text x="78.0" y="424.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- showDaysSinceLastWatched()</text>
+<text x="78.0" y="441.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- sortByOptionsMenu()</text>
+<rect x="371.2" y="199.0" width="257.4" height="158.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M371.2,243.0 V205.0 Q371.2,199.0 377.2,199.0 H622.6 Q628.6,199.0 628.6,205.0 V243.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="499.9" y="215.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«final»</text>
+<text x="499.9" y="233.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Parsing</text>
+<text x="383.2" y="259.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parseNotBlank(input)</text>
+<text x="383.2" y="276.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parseYearCreated(input)</text>
+<text x="383.2" y="293.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parseBoolean(input)</text>
+<text x="383.2" y="310.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parseLengthInMinutes(input)</text>
+<text x="383.2" y="327.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parseIntWithinRange(min, max)</text>
+<text x="383.2" y="344.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ parsePositiveInt(input)</text>
+<rect x="678.6" y="199.0" width="235.2" height="153.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M678.6,243.0 V205.0 Q678.6,199.0 684.6,199.0 H907.8 Q913.8,199.0 913.8,205.0 V243.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="796.2" y="215.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«record»</text>
+<text x="796.2" y="233.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Parsing.Result&lt;T&gt;</text>
+<text x="690.6" y="259.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ output: T</text>
+<text x="690.6" y="276.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ success: boolean</text>
+<text x="690.6" y="293.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ reason: String</text>
+<path d="M678.6,306.0 H913.8" stroke="#8c959f" stroke-width="1.4"/>
+<text x="690.6" y="322.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ success(value): Result&lt;T&gt;</text>
+<text x="690.6" y="339.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">~ failure(reason): Result&lt;T&gt;</text>
+<rect x="66.0" y="580.0" width="309.2" height="224.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M66.0,610.0 V586.0 Q66.0,580.0 72.0,580.0 H369.2 Q375.2,580.0 375.2,586.0 V610.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="220.6" y="600.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Controller</text>
+<text x="78.0" y="626.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- movieCollection: MovieCollection</text>
+<path d="M66.0,639.0 H375.2" stroke="#8c959f" stroke-width="1.4"/>
+<text x="78.0" y="655.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ addMovie(movie)</text>
+<text x="78.0" y="672.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMovies()</text>
+<text x="78.0" y="689.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ searchMovies(text)</text>
+<text x="78.0" y="706.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ editMovie(movie, title, director, …)</text>
+<text x="78.0" y="723.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ deleteMovie(movie)</text>
+<text x="78.0" y="740.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ markAsWatched(movie)</text>
+<text x="78.0" y="757.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesNotWatchedForDays(days)</text>
+<text x="78.0" y="774.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesSortedByTitle()</text>
+<text x="78.0" y="791.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesSortedBy(field: SortField)</text>
+<rect x="639.4" y="580.0" width="264.8" height="139.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M639.4,610.0 V586.0 Q639.4,580.0 645.4,580.0 H898.2 Q904.2,580.0 904.2,586.0 V610.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="771.8" y="600.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">FileHandler</text>
+<text x="651.4" y="626.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- fileName: String</text>
+<text x="651.4" y="643.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- skippedLineCount: int</text>
+<path d="M639.4,656.0 H904.2" stroke="#8c959f" stroke-width="1.4"/>
+<text x="651.4" y="672.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ saveMovies(movies)</text>
+<text x="651.4" y="689.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ loadMovies(): ArrayList&lt;Movie&gt;</text>
+<text x="651.4" y="706.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getSkippedLineCount(): int</text>
+<rect x="445.2" y="580.0" width="124.2" height="141.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M445.2,624.0 V586.0 Q445.2,580.0 451.2,580.0 H563.4 Q569.4,580.0 569.4,586.0 V624.0 Z" fill="#fff8c5" stroke="#8c959f" stroke-width="1.4"/>
+<text x="507.3" y="596.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«enumeration»</text>
+<text x="507.3" y="614.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">SortField</text>
+<text x="457.2" y="640.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">TITLE</text>
+<text x="457.2" y="657.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">DIRECTOR</text>
+<text x="457.2" y="674.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">YEAR</text>
+<text x="457.2" y="691.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">LENGTH</text>
+<text x="457.2" y="708.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">GENRE</text>
+<rect x="66.0" y="930.0" width="309.2" height="224.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M66.0,960.0 V936.0 Q66.0,930.0 72.0,930.0 H369.2 Q375.2,930.0 375.2,936.0 V960.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="220.6" y="950.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">MovieCollection</text>
+<text x="78.0" y="976.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- movies: ArrayList&lt;Movie&gt;</text>
+<path d="M66.0,989.0 H375.2" stroke="#8c959f" stroke-width="1.4"/>
+<text x="78.0" y="1005.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ addMovie(movie)</text>
+<text x="78.0" y="1022.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMovies()</text>
+<text x="78.0" y="1039.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getNumberOfMovies(): int</text>
+<text x="78.0" y="1056.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ searchMovies(text)</text>
+<text x="78.0" y="1073.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ editMovie(movie, title, director, …)</text>
+<text x="78.0" y="1090.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ deleteMovie(movie)</text>
+<text x="78.0" y="1107.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesNotWatchedSince(date)</text>
+<text x="78.0" y="1124.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesSortedByTitle()</text>
+<text x="78.0" y="1141.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getMoviesSorted(comparator)</text>
+<rect x="445.2" y="930.0" width="264.8" height="275.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M445.2,960.0 V936.0 Q445.2,930.0 451.2,930.0 H704.0 Q710.0,930.0 710.0,936.0 V960.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="577.6" y="950.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Movie</text>
+<text x="457.2" y="976.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- title: String</text>
+<text x="457.2" y="993.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- director: String</text>
+<text x="457.2" y="1010.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- yearCreated: int</text>
+<text x="457.2" y="1027.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- inColor: boolean</text>
+<text x="457.2" y="1044.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- lengthInMinutes: int</text>
+<text x="457.2" y="1061.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- genre: String</text>
+<text x="457.2" y="1078.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">- lastWatched: LocalDate</text>
+<path d="M445.2,1091.0 H710.0" stroke="#8c959f" stroke-width="1.4"/>
+<text x="457.2" y="1107.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getTitle() … getLastWatched()</text>
+<text x="457.2" y="1124.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ setTitle() … setGenre()</text>
+<text x="457.2" y="1141.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ hasBeenWatched(): boolean</text>
+<text x="457.2" y="1158.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ markAsWatched(date)</text>
+<text x="457.2" y="1175.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ getDaysSinceWatched(now): long</text>
+<text x="457.2" y="1192.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compareTo(other): int</text>
+<rect x="820.0" y="930.0" width="272.2" height="192.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M820.0,974.0 V936.0 Q820.0,930.0 826.0,930.0 H1086.2 Q1092.2,930.0 1092.2,936.0 V974.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="956.1" y="946.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«static»</text>
+<text x="956.1" y="964.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Movie.Builder</text>
+<text x="832.0" y="990.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ title(String): Builder</text>
+<text x="832.0" y="1007.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ director(String): Builder</text>
+<text x="832.0" y="1024.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ yearCreated(int): Builder</text>
+<text x="832.0" y="1041.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ inColor(boolean): Builder</text>
+<text x="832.0" y="1058.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ lengthInMinutes(int): Builder</text>
+<text x="832.0" y="1075.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ genre(String): Builder</text>
+<text x="832.0" y="1092.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ lastWatched(LocalDate): Builder</text>
+<text x="832.0" y="1109.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ build(): Movie</text>
+<rect x="66.0" y="1265.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M66.0,1295.0 V1271.0 Q66.0,1265.0 72.0,1265.0 H250.8 Q256.8,1265.0 256.8,1271.0 V1295.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="161.4" y="1285.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">TitleComparator</text>
+<text x="78.0" y="1311.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compare(m1, m2): int</text>
+<rect x="280.8" y="1265.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M280.8,1295.0 V1271.0 Q280.8,1265.0 286.8,1265.0 H465.6 Q471.6,1265.0 471.6,1271.0 V1295.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="376.2" y="1285.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">DirectorComparator</text>
+<text x="292.8" y="1311.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compare(m1, m2): int</text>
+<rect x="495.6" y="1265.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M495.6,1295.0 V1271.0 Q495.6,1265.0 501.6,1265.0 H680.4 Q686.4,1265.0 686.4,1271.0 V1295.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="591.0" y="1285.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">YearComparator</text>
+<text x="507.6" y="1311.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compare(m1, m2): int</text>
+<rect x="710.4" y="1265.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M710.4,1295.0 V1271.0 Q710.4,1265.0 716.4,1265.0 H895.2 Q901.2,1265.0 901.2,1271.0 V1295.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="805.8" y="1285.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">LengthComparator</text>
+<text x="722.4" y="1311.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compare(m1, m2): int</text>
+<rect x="925.2" y="1265.0" width="190.8" height="59.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M925.2,1295.0 V1271.0 Q925.2,1265.0 931.2,1265.0 H1110.0 Q1116.0,1265.0 1116.0,1271.0 V1295.0 Z" fill="#ddf4ff" stroke="#8c959f" stroke-width="1.4"/>
+<text x="1020.6" y="1285.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">GenreComparator</text>
+<text x="937.2" y="1311.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#1f2328">+ compare(m1, m2): int</text>
+<rect x="66.0" y="1410.0" width="153.8" height="50.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M66.0,1454.0 V1416.0 Q66.0,1410.0 72.0,1410.0 H213.8 Q219.8,1410.0 219.8,1416.0 V1454.0 Z" fill="#dafbe1" stroke="#8c959f" stroke-width="1.4"/>
+<text x="142.9" y="1426.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«interface»</text>
+<text x="142.9" y="1444.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Comparable&lt;Movie&gt;</text>
+<rect x="634.1" y="1410.0" width="153.8" height="50.0" rx="6" fill="#ffffff" stroke="#8c959f" stroke-width="1.4"/>
+<path d="M634.1,1454.0 V1416.0 Q634.1,1410.0 640.1,1410.0 H781.9 Q787.9,1410.0 787.9,1416.0 V1454.0 Z" fill="#dafbe1" stroke="#8c959f" stroke-width="1.4"/>
+<text x="711.0" y="1426.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#57606a">«interface»</text>
+<text x="711.0" y="1444.0" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328">Comparator&lt;Movie&gt;</text>
+</svg>

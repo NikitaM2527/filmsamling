@@ -13,3 +13,11 @@ Projektet udvikles som et terminalprogram i Java med fokus på objektorienteret 
 | Nikita  | [NikitaM2527](https://github.com/NikitaM2527) |
 | Mathias | [mwnDK1402](https://github.com/mwnDK1402)     |
 | Nikolas | [NikolasCCT](https://github.com/NikolasCCT)   |
+
+
+### Class diagram
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/class-diagram-dark.svg">
+  <img alt="Class diagram" src="docs/class-diagram-light.svg">
+</picture>
