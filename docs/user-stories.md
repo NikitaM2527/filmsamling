@@ -18,7 +18,7 @@ acceptkriterier, og hver del linker til kilden.
 | US9  | Film, jeg ikke har set længe  | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
 | US10 | Robust input                  | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
 | US11 | Kun gyldige film              | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
-| US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Nej     |
+| US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
 | US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
 | US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
 | US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Delvist |
@@ -33,7 +33,6 @@ acceptkriterier, og hver del linker til kilden.
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
 - **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
   "alt eller intet" ved redigering mangler.
-- **US12:** Programmet spørger ikke om datoen og bruger altid dagens dato.
 - **US15:** Koden er delt i lag, men pakkerne hedder `ui`, `controller` og `model` i stedet for
   `ui`, `domainmodel` og `datasource`.
 - **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
