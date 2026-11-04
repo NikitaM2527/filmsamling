@@ -9,7 +9,7 @@ import dk.ek.stud.group7.filmsamling.ui.UserInterface;
 public class Main {
     public static void main(String[] args) {
         MovieCollection movieCollection = new MovieCollection();
-        FileHandler fileHandler = new FileHandler("docs/movies.csv");
+        FileHandler fileHandler = new FileHandler("docs/movie.csv");
 
         Controller controller = new Controller(movieCollection, fileHandler);
 
