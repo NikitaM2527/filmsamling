@@ -1,5 +1,7 @@
 package dk.ek.stud.group7.filmsamling.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.function.Function;
 
 final class Parsing {
@@ -49,11 +51,11 @@ final class Parsing {
             try {
                 int output = Integer.parseInt(input);
                 if (output >= minNum && output <= maxNum) {
-                    return Parsing.Result.success(output);
+                    return Result.success(output);
                 }
-                return Parsing.Result.failure("Tallet skal være mellem " + minNum + " og " + maxNum);
+                return Result.failure("Tallet skal være mellem " + minNum + " og " + maxNum);
             } catch (NumberFormatException e) {
-                return Parsing.Result.failure("Indtast et heltal mellem " + minNum + " og " + maxNum);
+                return Result.failure("Indtast et heltal mellem " + minNum + " og " + maxNum);
             }
         };
     }
@@ -62,11 +64,20 @@ final class Parsing {
         try {
             int parsedInt = Integer.parseInt(input);
             if (parsedInt > 0) {
-                return Parsing.Result.success(parsedInt);
+                return Result.success(parsedInt);
             }
-            return Parsing.Result.failure("Indtast et positivt tal.");
+            return Result.failure("Indtast et positivt tal.");
         } catch (NumberFormatException e) {
-            return Parsing.Result.failure("Vælg et positivt heltal.");
+            return Result.failure("Vælg et positivt heltal.");
+        }
+    }
+
+    static Result<LocalDate> parseLocalDate(String input) {
+        try {
+            LocalDate parsedDate = LocalDate.parse(input, UserInterface.dateFormatter);
+            return Result.success(parsedDate);
+        } catch (DateTimeParseException e) {
+            return Result.failure("Datoer skal være i formatet " + UserInterface.dateFormat + ".");
         }
     }
 

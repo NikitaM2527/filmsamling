@@ -13,7 +13,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public final class UserInterface {
-    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    static final String dateFormat = "dd-MM-yyyy";
+    static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dateFormat);
 
     private final Scanner scanner;
     private final Controller controller;
@@ -298,7 +299,9 @@ public final class UserInterface {
             return;
         }
 
-        controller.markAsWatched(selected);
+        LocalDate date = prompt("Indtast datoen (" + dateFormat + ")", Parsing::parseLocalDate);
+
+        controller.markAsWatched(selected, date);
 
         String watchedDate = selected.getLastWatched().format(dateFormatter);
         System.out.println(selected.getTitle() + " er markeret som set " + watchedDate);

@@ -49,8 +49,8 @@ public class Controller {
         return deleted;
     }
 
-    public void markAsWatched(Movie movie) {
-        movie.markAsWatched(LocalDate.now());
+    public void markAsWatched(Movie movie, LocalDate date) {
+        movie.markAsWatched(date);
         changed = true;
     }
 
