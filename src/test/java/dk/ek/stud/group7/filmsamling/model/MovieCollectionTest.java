@@ -1,6 +1,8 @@
 package dk.ek.stud.group7.filmsamling.model;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -95,6 +97,30 @@ public class MovieCollectionTest {
 
         // Assert
         assertEquals(0, numberOfMovies);
+    }
+
+    // getMoviesNotWatchedSince
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "2027-01-02;5", // All movies
+            "2027-01-01;4", // 'since' is exclusive
+            "2026-01-01;4",
+            // Movies with 'null' dates will always be returned
+            "2025-12-31;3",
+            "2020-01-01;3",
+            "2000-01-01;3",
+            "0000-01-01;3",
+    }, delimiter = ';')
+    void getMoviesNotWatchedSince_returnsExpectedNumberOfMovies(LocalDate since, int expectedNumber) {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+
+        // Act
+        int number = collection.getMoviesNotWatchedSince(since).size();
+
+        // Assert
+        assertEquals(expectedNumber, number);
     }
 
     // searchMovies
