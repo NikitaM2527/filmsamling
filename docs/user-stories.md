@@ -5,32 +5,31 @@ acceptkriterier, og hver del linker til kilden.
 
 ## Oversigt
 
-| ID | Titel | Type | Del | Status |
-|----|-------|------|-----|--------|
-| US1 | Opret en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
-| US2 | Menu | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
-| US3 | Vis alle film | Funktionel | [Del 1-4](#del-1-4-crud) | Delvist |
-| US4 | Søg efter film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
-| US5 | Redigér en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
-| US6 | Slet en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
-| US7 | Automatiske tests | Technical | [Del 5](#del-5-test) | Delvist |
-| US8 | Markér en film som set | Funktionel | [Del 5.5](#del-55-datoer) | Ja |
-| US9 | Film, jeg ikke har set længe | Funktionel | [Del 5.5](#del-55-datoer) | Ja |
-| US10 | Robust input | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
-| US11 | Kun gyldige film | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
-| US12 | Angiv datoen, jeg så filmen | Funktionel | [Del 6](#del-6-robusthed) | Nej |
-| US13 | Gem samlingen | Funktionel | [Del 7](#del-7-gem-og-indlæs) | Nej |
-| US14 | Gem kun, når der er ændringer | Technical | [Del 7](#del-7-gem-og-indlæs) | Nej |
-| US15 | Lag i koden | Technical | [Del 8](#del-8-code-review-og-packages) | Delvist |
-| US16 | Alfabetisk visning | Funktionel | [Del 9](#del-9-sortering) | Delvist |
-| US17 | Vælg, hvad der sorteres efter | Funktionel | [Del 9](#del-9-sortering) | Ja |
-| US18 | Sortér efter to ting | Ekstraopgave | [Del 9](#del-9-sortering) | Nej |
+| ID   | Titel                         | Type         | Del                                     | Status  |
+|------|-------------------------------|--------------|-----------------------------------------|---------|
+| US1  | Opret en film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US2  | Menu                          | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US3  | Vis alle film                 | Funktionel   | [Del 1-4](#del-1-4-crud)                | Delvist |
+| US4  | Søg efter film                | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US5  | Redigér en film               | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US6  | Slet en film                  | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
+| US7  | Automatiske tests             | Technical    | [Del 5](#del-5-test)                    | Delvist |
+| US8  | Markér en film som set        | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
+| US9  | Film, jeg ikke har set længe  | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
+| US10 | Robust input                  | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
+| US11 | Kun gyldige film              | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
+| US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Nej     |
+| US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
+| US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
+| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Delvist |
+| US16 | Alfabetisk visning            | Funktionel   | [Del 9](#del-9-sortering)               | Delvist |
+| US17 | Vælg, hvad der sorteres efter | Funktionel   | [Del 9](#del-9-sortering)               | Ja      |
+| US18 | Sortér efter to ting          | Ekstraopgave | [Del 9](#del-9-sortering)               | Nej     |
 
 **Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
 
 - **US3:** "Vis alle film" viser kun titel og årstal – ikke alle oplysninger.
-- **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler
-  (semikolon i titel).
+- **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler (semikolon i titel).
 - **US9:** Virker, men overskriften siger altid "30 dage", uanset hvad brugeren skriver.
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
 - **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
@@ -58,7 +57,8 @@ og den er enten **i farver** eller **sort-hvid**.
 
 ### US2 – Menu
 
-> Som filmentusiast vil jeg have en menu, så jeg kan vælge, hvad jeg vil gøre – og blive ved, indtil jeg selv vælger at stoppe.
+> Som filmentusiast vil jeg have en menu, så jeg kan vælge, hvad jeg vil gøre – og blive ved, indtil jeg selv vælger at
+> stoppe.
 
 - **Givet** at programmet er startet, **så** vises en menu med mindst "Opret en film" og "Afslut".
 - **Givet** at jeg har udført et valg, **når** det er færdigt, **så** vises menuen igen.
@@ -112,7 +112,8 @@ Kilde: [del-5-test.md – User story](https://github.com/EK-DAT-GBG-1SEM-E26AB/D
 
 *(technical story – brugeren ser den ikke, men udviklerne har brug for den)*
 
-> Som udvikler vil jeg have automatiske tests af programmets logik, så vi hurtigt kan se, om en ændring har ødelagt noget.
+> Som udvikler vil jeg have automatiske tests af programmets logik, så vi hurtigt kan se, om en ændring har ødelagt
+> noget.
 
 - Der er unit tests af `Movie` og af **alle** de offentlige metoder i `MovieCollection`.
 - Hver metode er testet i det normale tilfælde **og** i de tilfælde, hvor der ikke er noget at
@@ -139,7 +140,8 @@ Kilde: [del-5-datoer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26
 
 ### US9 – Film, jeg ikke har set længe
 
-> Som filmentusiast vil jeg kunne finde de film, jeg ikke har set længe, så jeg har noget at vælge imellem, når jeg vil se en film i aften.
+> Som filmentusiast vil jeg kunne finde de film, jeg ikke har set længe, så jeg har noget at vælge imellem, når jeg vil
+> se en film i aften.
 
 - Jeg angiver et antal dage, fx 365.
 - **Så** vises alle film, jeg **aldrig** har set, og alle film, jeg sidst så for **mere end** det
@@ -157,7 +159,8 @@ og
 
 ### US10 – Robust input
 
-> Som filmentusiast vil jeg have, at programmet ikke går ned, når jeg kommer til at skrive forkert, så jeg ikke mister mit arbejde.
+> Som filmentusiast vil jeg have, at programmet ikke går ned, når jeg kommer til at skrive forkert, så jeg ikke mister
+> mit arbejde.
 
 - **Givet** at programmet forventer et helt tal (årstal, længde, nummer), **når** jeg skriver noget
   andet, **så** får jeg at vide, at det ikke er et tal, og bliver spurgt igen.
@@ -170,7 +173,8 @@ og
 
 ### US11 – Kun gyldige film
 
-> Som filmentusiast vil jeg have, at programmet afviser oplysninger, der ikke kan passe, så min samling ikke fyldes med fejl.
+> Som filmentusiast vil jeg have, at programmet afviser oplysninger, der ikke kan passe, så min samling ikke fyldes med
+> fejl.
 
 - Titel, instruktør og genre må ikke være tomme.
 - Årstallet skal være mellem **1888** (den ældste bevarede film,
@@ -182,7 +186,8 @@ og
 
 ### US12 – Angiv datoen, jeg så filmen
 
-> Som filmentusiast vil jeg kunne skrive, hvilken dag jeg så en film, så jeg også kan registrere film, jeg så i sidste uge.
+> Som filmentusiast vil jeg kunne skrive, hvilken dag jeg så en film, så jeg også kan registrere film, jeg så i sidste
+> uge.
 
 - Menuvalg 6 hedder nu **Markér en film som set**. Programmet spørger om datoen på formen
   `dd-mm-åååå`. Trykker jeg bare Enter, bruges dagens dato.
@@ -197,7 +202,8 @@ Kilde: [del-7-filer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26A
 
 ### US13 – Gem samlingen
 
-> Som filmentusiast vil jeg have, at min filmsamling bliver gemt, så jeg ikke skal taste den ind igen, hver gang jeg starter programmet.
+> Som filmentusiast vil jeg have, at min filmsamling bliver gemt, så jeg ikke skal taste den ind igen, hver gang jeg
+> starter programmet.
 
 - **Givet** at jeg afslutter programmet med menuvalg 0, **så** gemmes samlingen i filen `movies.csv`.
 - **Givet** at programmet startes, og `movies.csv` findes, **så** indlæses filmene, og jeg får at
@@ -229,7 +235,8 @@ Kilde: [del-8-refaktorering.md – User story](https://github.com/EK-DAT-GBG-1SE
 
 *(technical story)*
 
-> Som udvikler vil jeg have koden delt i packages efter lag, så det er tydeligt, hvilke klasser der hører til brugerfladen, domænet og data – og så en ny udvikler hurtigt kan finde rundt.
+> Som udvikler vil jeg have koden delt i packages efter lag, så det er tydeligt, hvilke klasser der hører til
+> brugerfladen, domænet og data – og så en ny udvikler hurtigt kan finde rundt.
 
 - Klasserne ligger i tre packages: `ui`, `domainmodel` og `datasource`.
 - Programmet opfører sig **nøjagtig** som før.
@@ -250,7 +257,8 @@ Kilde: [del-9-sortering.md – User stories](https://github.com/EK-DAT-GBG-1SEM-
 
 ### US17 – Vælg, hvad der sorteres efter
 
-> Som filmentusiast vil jeg selv kunne vælge, hvad filmene sorteres efter, så jeg kan se samlingen på den måde, der passer mig lige nu.
+> Som filmentusiast vil jeg selv kunne vælge, hvad filmene sorteres efter, så jeg kan se samlingen på den måde, der
+> passer mig lige nu.
 
 - Et nyt menuvalg, **Vis film sorteret efter ...**, lader mig vælge mellem titel, instruktør,
   årstal, længde og genre.
@@ -260,7 +268,8 @@ Kilde: [del-9-sortering.md – User stories](https://github.com/EK-DAT-GBG-1SEM-
 
 *(Ekstraopgave – ikke et krav)*
 
-> Som filmentusiast vil jeg kunne sortere efter én ting og derefter en anden, fx instruktør og derefter årstal, så jeg kan se hver instruktørs film i rækkefølge.
+> Som filmentusiast vil jeg kunne sortere efter én ting og derefter en anden, fx instruktør og derefter årstal, så jeg
+> kan se hver instruktørs film i rækkefølge.
 
 - Efter det første valg kan jeg vælge et andet – eller "ingen".
 - Film, der er **ens** på det første, sorteres efter det andet. Film, der er forskellige på det
