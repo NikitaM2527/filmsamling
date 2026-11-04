@@ -21,7 +21,7 @@ acceptkriterier, og hver del linker til kilden.
 | US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
 | US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
 | US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
-| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Delvist |
+| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Ja |
 | US16 | Alfabetisk visning            | Funktionel   | [Del 9](#del-9-sortering)               | Delvist |
 | US17 | Vælg, hvad der sorteres efter | Funktionel   | [Del 9](#del-9-sortering)               | Ja      |
 | US18 | Sortér efter to ting          | Ekstraopgave | [Del 9](#del-9-sortering)               | Nej     |
@@ -29,12 +29,9 @@ acceptkriterier, og hver del linker til kilden.
 **Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
 
 - **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler (semikolon i titel).
-- **US9:** Virker, men overskriften siger altid "30 dage", uanset hvad brugeren skriver.
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
 - **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
   "alt eller intet" ved redigering mangler.
-- **US15:** Koden er delt i lag, men pakkerne hedder `ui`, `controller` og `model` i stedet for
-  `ui`, `domainmodel` og `datasource`.
 - **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
 
 ---
