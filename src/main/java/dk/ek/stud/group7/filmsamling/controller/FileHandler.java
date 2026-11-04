@@ -48,7 +48,18 @@ public class FileHandler {
     }
 
     private String toCsvLine(Movie movie) {
-        throw new UnsupportedOperationException();
+        String title = movie.getTitle();
+        String director = movie.getDirector();
+        String yearCreated = String.valueOf(movie.getYearCreated());
+        String isInColor = String.valueOf(movie.isInColor());
+        String lengthInMinutes = String.valueOf(movie.getLengthInMinutes());
+        String genre = movie.getGenre();
+        String lastWatched = "";
+        if (movie.hasBeenWatched()) {
+            lastWatched = movie.getLastWatched().toString();
+        }
+
+        return String.join(";", title, director, yearCreated, isInColor, lengthInMinutes, genre, lastWatched);
     }
 
     static Movie parseMovie(String line) {
