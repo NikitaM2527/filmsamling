@@ -14,6 +14,7 @@ Projektet udvikles som et terminalprogram i Java med fokus på objektorienteret 
 | Mathias | [mwnDK1402](https://github.com/mwnDK1402)     |
 | Nikolas | [NikolasCCT](https://github.com/NikolasCCT)   |
 
+
 ### Class diagram
 
 <picture>
