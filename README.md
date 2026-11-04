@@ -31,6 +31,24 @@ Filmsamlingen gemmes i en CSV-fil (`docs/movie.csv`), så filmene kan indlæses 
 Programmet benytter `FileHandler` til at håndtere indlæsning og lagring af film. 
 Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af de øvrige film.
 
+## User stories
+### Implementerede user stories
+
+### User stories, vi ikke nåede
+
+## Sådan køres programmet
+Projektet er udviklet i Java og kræver **JDK 25 (LTS)***.
+Programmet startes fra klassens `Main.java`:
+`dk.ek.stud.group7.filmsamling.Main`
+
+I IntelliJ:
+1. Åbn projektet i IntelliJ. 
+2. Kontrollér, at projektets JDK er sat til JDK 25. 
+3. Åbn `Main.java`.
+4. Kør programmets `main()`-metode ved at trykke på den grønne Run-knap. 
+
+Programmet afvikles i terminalen. 
+
 ## Faglige områder
 Projektet er udviklet i Java og anvender blandt andet: 
 - Objektorienteret programmering
