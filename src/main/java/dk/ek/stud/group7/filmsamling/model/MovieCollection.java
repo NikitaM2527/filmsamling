@@ -2,16 +2,11 @@ package dk.ek.stud.group7.filmsamling.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class MovieCollection {
-    private ArrayList<Movie> movies;
-
-    public MovieCollection() {
-        movies = new ArrayList<>();
-    }
+    private final ArrayList<Movie> movies = new ArrayList<>();
 
     public void initialLoad(ArrayList<Movie> loadedMovies) {
         for (Movie movie : loadedMovies) {
