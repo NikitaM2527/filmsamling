@@ -56,9 +56,7 @@ public final class UserInterface {
                 case "6" -> markMovieAsWatched();
                 case "7" -> showDaysSinceLastWatched();
                 case "8" -> sortByOptionsMenu();
-                case "0" -> {
-                    running = false;
-                }
+                case "0" -> running = false;
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
                     System.out.println();
@@ -187,7 +185,11 @@ public final class UserInterface {
             System.out.println("Filmlisten er tom!");
         } else {
             for (Movie movie : sorted) {
-                System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+                System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
+                System.out.println("  Instruktør: " + movie.getDirector());
+                System.out.println("  Genre: " + movie.getGenre());
+                System.out.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
+                System.out.println("  Sidst set: " + formatLastWatched(movie, LocalDate.now()));
             }
         }
     }
@@ -403,10 +405,7 @@ public final class UserInterface {
                     field = SortField.GENRE;
                     running = false;
                 }
-                case "0" -> {
-                    running = false;
-                    break;
-                }
+                case "0" -> running = false;
                 default -> {
                     System.out.println("Ukendt valg: " + choice);
                     System.out.println();
