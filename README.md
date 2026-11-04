@@ -36,6 +36,11 @@ Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af
 
 ### User stories, vi ikke nåede
 
+- **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
+- **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
+  "alt eller intet" ved redigering mangler.
+- **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
+
 ## Sådan køres programmet
 Projektet er udviklet i Java og kræver **JDK 21 (LTS)**.
 Programmet startes fra klassens `Main.java`:

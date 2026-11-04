@@ -13,7 +13,7 @@ acceptkriterier, og hver del linker til kilden.
 | US4  | Søg efter film                | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US5  | Redigér en film               | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
 | US6  | Slet en film                  | Funktionel   | [Del 1-4](#del-1-4-crud)                | Ja      |
-| US7  | Automatiske tests             | Technical    | [Del 5](#del-5-test)                    | Delvist |
+| US7  | Automatiske tests             | Technical    | [Del 5](#del-5-test)                    | Ja      |
 | US8  | Markér en film som set        | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
 | US9  | Film, jeg ikke har set længe  | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
 | US10 | Robust input                  | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
@@ -21,14 +21,13 @@ acceptkriterier, og hver del linker til kilden.
 | US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
 | US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
 | US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
-| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Ja |
+| US15 | Lag i koden                   | Technical    | [Del 8](#del-8-code-review-og-packages) | Ja      |
 | US16 | Alfabetisk visning            | Funktionel   | [Del 9](#del-9-sortering)               | Delvist |
 | US17 | Vælg, hvad der sorteres efter | Funktionel   | [Del 9](#del-9-sortering)               | Ja      |
 | US18 | Sortér efter to ting          | Ekstraopgave | [Del 9](#del-9-sortering)               | Nej     |
 
 **Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
 
-- **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler (semikolon i titel).
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
 - **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
   "alt eller intet" ved redigering mangler.
