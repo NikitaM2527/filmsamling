@@ -34,12 +34,11 @@ public final class UserInterface {
         boolean running = true;
         while (running) {
             try {
-                // controller.saveMoviesIfChanged();
                 if (controller.saveMoviesIfChanged()) {
                     System.out.println("Din filmsamling er blevet gemt");
                 }
             } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+                System.out.println("Fejl: Filmsamlingen kunne ikke gemmes");
             }
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
@@ -350,7 +349,14 @@ public final class UserInterface {
     }
 
     private void printGoodbye() {
-        System.out.println("Farvel! Vi har IKKE gemt dine ændringer.");
+        try {
+            if (controller.saveMoviesIfChanged()) {
+                System.out.println("Din filmsamling er blevet gemt");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fejl: Filmsamlingen kunne ikke gemmes");
+        }
+        System.out.println("Farvel! Vi har gemt dine ændringer.");
     }
 
     private <T> T prompt(String prompt, Function<String, Parsing.Result<T>> parser) {
