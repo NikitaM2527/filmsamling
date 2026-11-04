@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,6 +78,21 @@ public class FileHandlerTest {
         // Assert
         assertEquals(2, movies.size());
         assertEquals(1, fileHandler.getSkippedLineCount());
+    }
+
+    @Test
+    void loadMovies_isEmptyOnEmptyFile() throws IOException {
+        // Arrange
+        Path filePath = tempDir.resolve("isEmptyOnEmptyFile");
+        String fileName = filePath.toString();
+        Files.writeString(filePath, "");
+        FileHandler fileHandler = new FileHandler(fileName);
+
+        // Act
+        List<Movie> movies = fileHandler.loadMovies();
+
+        // Assert
+        assertTrue(movies.isEmpty());
     }
 
     @Test
