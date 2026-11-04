@@ -3,6 +3,7 @@ package dk.ek.stud.group7.filmsamling.model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -97,6 +98,140 @@ public class MovieCollectionTest {
 
         // Assert
         assertEquals(0, numberOfMovies);
+    }
+
+    // getMoviesSorted
+
+    @Test
+    void getMoviesSorted_byDefault() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<String> expectedTitles = List.of(
+                "Dune: Part One",
+                "Dune: Part Two",
+                "It",
+                "Jaws",
+                "WALL·E"
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSortedByTitle();
+        List<String> actualTitles = movies.stream()
+                .map(Movie::getTitle)
+                .toList();
+
+        // Assert
+        assertEquals(expectedTitles, actualTitles);
+    }
+
+    @Test
+    void getMoviesSorted_byTitle() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<String> expectedTitles = List.of(
+                "Dune: Part One",
+                "Dune: Part Two",
+                "It",
+                "Jaws",
+                "WALL·E"
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSorted(new TitleComparator());
+        List<String> actualTitles = movies.stream()
+                .map(Movie::getTitle)
+                .toList();
+
+        // Assert
+        assertEquals(expectedTitles, actualTitles);
+    }
+
+    @Test
+    void getMoviesSorted_byDirector() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<String> expectedDirectors = List.of(
+                "Andrew Stanton",
+                "Andy Muschietti",
+                "Denis Villeneuve",
+                "Denis Villeneuve",
+                "Steven Spielberg"
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSorted(new DirectorComparator());
+        List<String> actualDirectors = movies.stream()
+                .map(Movie::getDirector)
+                .toList();
+
+        // Assert
+        assertEquals(expectedDirectors, actualDirectors);
+    }
+
+    @Test
+    void getMoviesSorted_byYearCreated() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<Integer> expectedYearCreated = List.of(
+                1975,
+                2008,
+                2017,
+                2021,
+                2024
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSorted(new YearComparator());
+        List<Integer> actualYearCreated = movies.stream()
+                .map(Movie::getYearCreated)
+                .toList();
+
+        // Assert
+        assertEquals(expectedYearCreated, actualYearCreated);
+    }
+
+    @Test
+    void getMoviesSorted_byLengthInMinutes() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<Integer> expectedLengthInMinutes = List.of(
+                60 + 38,
+                2 * 60 + 4,
+                2 * 60 + 15,
+                2 * 60 + 35,
+                2 * 60 + 46
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSorted(new LengthComparator());
+        List<Integer> actualLengthInMinutes = movies.stream()
+                .map(Movie::getLengthInMinutes)
+                .toList();
+
+        // Assert
+        assertEquals(expectedLengthInMinutes, actualLengthInMinutes);
+    }
+
+    @Test
+    void getMoviesSorted_byGenre() {
+        // Arrange
+        MovieCollection collection = MovieCase.toCollection(validMovies);
+        List<String> expectedGenre = List.of(
+                "Action Epic",
+                "Action Epic",
+                "Adventure Epic",
+                "Coming-of-Age",
+                "Monster Horror"
+        );
+
+        // Act
+        List<Movie> movies = collection.getMoviesSorted(new GenreComparator());
+        List<String> actualGenre = movies.stream()
+                .map(Movie::getGenre)
+                .toList();
+
+        // Assert
+        assertEquals(expectedGenre, actualGenre);
     }
 
     // getMoviesNotWatchedSince
