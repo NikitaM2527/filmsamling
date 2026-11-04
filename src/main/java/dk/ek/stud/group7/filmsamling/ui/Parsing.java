@@ -72,10 +72,12 @@ final class Parsing {
         }
     }
 
-    static Result<LocalDate> parseLocalDate(String input) {
+    static Result<LocalDate> parsePastDate(String input) {
         try {
             LocalDate parsedDate = LocalDate.parse(input, UserInterface.dateFormatter);
-            return Result.success(parsedDate);
+            return parsedDate.isAfter(LocalDate.now())
+                    ? Result.failure("Du kan ikke have set filmen i fremtiden.")
+                    : Result.success(parsedDate);
         } catch (DateTimeParseException e) {
             return Result.failure("Datoer skal være i formatet " + UserInterface.dateFormat + ".");
         }
