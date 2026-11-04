@@ -1,4 +1,4 @@
-package dk.ek.stud.group7.filmsamling.controller;
+package dk.ek.stud.group7.filmsamling.io;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
-    private String fileName;
+    private final String fileName;
     private int skippedLineCount;
     private static final String HEADER = "title;director;yearCreated;inColor;lengthInMinutes;genre;lastWatched";
 
@@ -21,7 +21,7 @@ public class FileHandler {
     }
 
     public void saveMovies(ArrayList<Movie> movies) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File(fileName));
+        PrintStream output = new PrintStream(fileName);
         output.println(HEADER);
 
         for (Movie movie : movies) {

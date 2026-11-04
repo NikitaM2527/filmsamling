@@ -1,5 +1,6 @@
 package dk.ek.stud.group7.filmsamling.controller;
 
+import dk.ek.stud.group7.filmsamling.io.FileHandler;
 import dk.ek.stud.group7.filmsamling.model.*;
 
 import java.io.FileNotFoundException;

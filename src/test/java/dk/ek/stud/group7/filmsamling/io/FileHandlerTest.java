@@ -1,4 +1,4 @@
-package dk.ek.stud.group7.filmsamling.controller;
+package dk.ek.stud.group7.filmsamling.io;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
