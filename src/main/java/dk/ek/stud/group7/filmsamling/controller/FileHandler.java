@@ -36,7 +36,11 @@ public class FileHandler {
         Scanner scanner = new Scanner(new File(fileName));
         skippedLineCount = 0;
 
-        scanner.nextLine();
+        if (scanner.hasNextLine()) {
+            scanner.nextLine();
+        } else {
+            return movies;
+        }
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -47,6 +51,7 @@ public class FileHandler {
                 skippedLineCount++;
             }
         }
+        scanner.close();
         return movies;
     }
 
