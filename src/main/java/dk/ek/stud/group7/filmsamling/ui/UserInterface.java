@@ -4,6 +4,7 @@ import dk.ek.stud.group7.filmsamling.controller.Controller;
 import dk.ek.stud.group7.filmsamling.controller.SortField;
 import dk.ek.stud.group7.filmsamling.model.Movie;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,10 +27,20 @@ public final class UserInterface {
         System.out.println("""
                 Velkommen til vores filmsamling!
                 """);
+        loadMovies();
+        System.out.println();
         printMenuOptions();
 
         boolean running = true;
         while (running) {
+            try {
+                // controller.saveMoviesIfChanged();
+                if (controller.saveMoviesIfChanged()) {
+                    System.out.println("Din filmsamling er blevet gemt");
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             System.out.print("Vælg: ");
             String choice = scanner.nextLine().trim();
             System.out.println();
@@ -403,5 +414,18 @@ public final class UserInterface {
         }
         ArrayList<Movie> sorted = controller.getMoviesSortedBy(field);
         showAllMovies(sorted);
+    }
+
+    private void loadMovies() {
+        try {
+            int count = controller.loadMovies();
+            System.out.println(count + " film er indlæst.");
+            int skipped = controller.getSkippedLineCount();
+            if (skipped > 0) {
+                System.out.println("Advarsel: " + skipped + " linje(r) i filen kunne ikke læses og er sprunget over.");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Der er ingen gemt filmsamling endnu – du starter med en tom samling.");
+        }
     }
 }
