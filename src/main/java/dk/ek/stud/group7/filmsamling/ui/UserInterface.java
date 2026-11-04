@@ -138,7 +138,7 @@ public final class UserInterface {
             System.out.print(prompt);
             String input = scanner.nextLine();
             try {
-                setter.accept(input); // builder.genre(input)
+                setter.accept(input);
                 valid = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -182,7 +182,7 @@ public final class UserInterface {
                 } else {
                     throw new IllegalArgumentException("Indtast ja eller nej");
                 }
-                setter.accept(boolInput); // builder.genre(input)
+                setter.accept(boolInput);
                 valid = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
