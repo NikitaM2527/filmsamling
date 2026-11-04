@@ -185,7 +185,6 @@ public final class UserInterface {
     private void showAllMovies(ArrayList<Movie> sorted) {
         if (sorted.isEmpty()) {
             System.out.println("Filmlisten er tom!");
-        //} else if () {
         } else {
             for (Movie movie : sorted) {
                 System.out.println("- " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
@@ -225,12 +224,6 @@ public final class UserInterface {
                 }
             }
         }
-
-
-        //No movies in ArrayList
-        //Found 0 movies
-        //Found exact match
-        //Found multiple matches
     }
 
     private static void printAllMovieInfo(Movie movie) {
@@ -241,7 +234,6 @@ public final class UserInterface {
         System.out.println("Genre: " + movie.getGenre());
         System.out.println("Sidst set: " + formatLastWatched(movie, LocalDate.now()));
     }
-
 
     private void editMovie() {
         String query = prompt("Søg efter en titel", Parsing.Result::success);
