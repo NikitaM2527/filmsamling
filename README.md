@@ -26,7 +26,7 @@ Programmet indeholder følgende funktioner:
 8. **Sortér film**: Sortér filmsamlingen efter titel, instruktør, udgivelsesår, længde eller genre.
 
 ## Fillagring
-Filmsamlingen gemmes i en CSV-fil (`docs/movie.csv`), så filmene kan indlæses igen, når programmet startes på ny. 
+Filmsamlingen gemmes i en CSV-fil (`movies.csv`), så filmene kan indlæses igen, når programmet startes på ny. 
 
 Programmet benytter `FileHandler` til at håndtere indlæsning og lagring af film. 
 Ugyldige linjer i CSV-filen springes over, så de ikke forhindrer indlæsning af de øvrige film.
