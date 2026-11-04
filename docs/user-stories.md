@@ -19,8 +19,8 @@ acceptkriterier, og hver del linker til kilden.
 | US10 | Robust input | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
 | US11 | Kun gyldige film | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
 | US12 | Angiv datoen, jeg så filmen | Funktionel | [Del 6](#del-6-robusthed) | Nej |
-| US13 | Gem samlingen | Funktionel | [Del 7](#del-7-gem-og-indlæs) | Nej |
-| US14 | Gem kun, når der er ændringer | Technical | [Del 7](#del-7-gem-og-indlæs) | Nej |
+| US13 | Gem samlingen | Funktionel | [Del 7](#del-7-gem-og-indlæs) | Ja |
+| US14 | Gem kun, når der er ændringer | Technical | [Del 7](#del-7-gem-og-indlæs) | Ja |
 | US15 | Lag i koden | Technical | [Del 8](#del-8-code-review-og-packages) | Delvist |
 | US16 | Alfabetisk visning | Funktionel | [Del 9](#del-9-sortering) | Delvist |
 | US17 | Vælg, hvad der sorteres efter | Funktionel | [Del 9](#del-9-sortering) | Ja |
