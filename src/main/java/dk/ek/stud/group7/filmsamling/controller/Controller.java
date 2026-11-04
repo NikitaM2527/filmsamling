@@ -8,9 +8,12 @@ import java.util.Comparator;
 
 public class Controller {
     private final MovieCollection movieCollection;
+    private final FileHandler fileHandler;
+    private boolean changed;
 
-    public Controller(MovieCollection movieCollection) {
+    public Controller(MovieCollection movieCollection, FileHandler fileHandler) {
         this.movieCollection = movieCollection;
+        this.fileHandler = fileHandler;
     }
 
     public void addMovie(Movie movie) {
