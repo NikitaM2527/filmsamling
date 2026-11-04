@@ -5,30 +5,44 @@ acceptkriterier, og hver del linker til kilden.
 
 ## Oversigt
 
-| ID | Titel | Type | Del |
-|----|-------|------|-----|
-| US1 | Opret en film | Funktionel | [Del 1–4](#del-14--crud) |
-| US2 | Menu | Funktionel | [Del 1–4](#del-14--crud) |
-| US3 | Vis alle film | Funktionel | [Del 1–4](#del-14--crud) |
-| US4 | Søg efter film | Funktionel | [Del 1–4](#del-14--crud) |
-| US5 | Redigér en film | Funktionel | [Del 1–4](#del-14--crud) |
-| US6 | Slet en film | Funktionel | [Del 1–4](#del-14--crud) |
-| US7 | Automatiske tests | Technical | [Del 5](#del-5--test) |
-| US8 | Markér en film som set | Funktionel | [Del 5½](#del-5½--datoer) |
-| US9 | Film, jeg ikke har set længe | Funktionel | [Del 5½](#del-5½--datoer) |
-| US10 | Robust input | Funktionel | [Del 6](#del-6--robusthed) |
-| US11 | Kun gyldige film | Funktionel | [Del 6](#del-6--robusthed) |
-| US12 | Angiv datoen, jeg så filmen | Funktionel | [Del 6](#del-6--robusthed) |
-| US13 | Gem samlingen | Funktionel | [Del 7](#del-7--gem-og-indlæs) |
-| US14 | Gem kun, når der er ændringer | Technical | [Del 7](#del-7--gem-og-indlæs) |
-| US15 | Lag i koden | Technical | [Del 8](#del-8--code-review-og-packages) |
-| US16 | Alfabetisk visning | Funktionel | [Del 9](#del-9--sortering) |
-| US17 | Vælg, hvad der sorteres efter | Funktionel | [Del 9](#del-9--sortering) |
-| US18 | Sortér efter to ting | Ekstraopgave | [Del 9](#del-9--sortering) |
+| ID | Titel | Type | Del | Status |
+|----|-------|------|-----|--------|
+| US1 | Opret en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
+| US2 | Menu | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
+| US3 | Vis alle film | Funktionel | [Del 1-4](#del-1-4-crud) | Delvist |
+| US4 | Søg efter film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
+| US5 | Redigér en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
+| US6 | Slet en film | Funktionel | [Del 1-4](#del-1-4-crud) | Ja |
+| US7 | Automatiske tests | Technical | [Del 5](#del-5-test) | Delvist |
+| US8 | Markér en film som set | Funktionel | [Del 5.5](#del-55-datoer) | Ja |
+| US9 | Film, jeg ikke har set længe | Funktionel | [Del 5.5](#del-55-datoer) | Ja |
+| US10 | Robust input | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
+| US11 | Kun gyldige film | Funktionel | [Del 6](#del-6-robusthed) | Delvist |
+| US12 | Angiv datoen, jeg så filmen | Funktionel | [Del 6](#del-6-robusthed) | Nej |
+| US13 | Gem samlingen | Funktionel | [Del 7](#del-7-gem-og-indlæs) | Nej |
+| US14 | Gem kun, når der er ændringer | Technical | [Del 7](#del-7-gem-og-indlæs) | Nej |
+| US15 | Lag i koden | Technical | [Del 8](#del-8-code-review-og-packages) | Delvist |
+| US16 | Alfabetisk visning | Funktionel | [Del 9](#del-9-sortering) | Delvist |
+| US17 | Vælg, hvad der sorteres efter | Funktionel | [Del 9](#del-9-sortering) | Ja |
+| US18 | Sortér efter to ting | Ekstraopgave | [Del 9](#del-9-sortering) | Nej |
+
+**Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
+
+- **US3:** "Vis alle film" viser kun titel og årstal – ikke alle oplysninger.
+- **US7:** Der er tests, men ikke af alle offentlige metoder, og én test fejler
+  (semikolon i titel).
+- **US9:** Virker, men overskriften siger altid "30 dage", uanset hvad brugeren skriver.
+- **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
+- **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
+  "alt eller intet" ved redigering mangler.
+- **US12:** Programmet spørger ikke om datoen og bruger altid dagens dato.
+- **US15:** Koden er delt i lag, men pakkerne hedder `ui`, `controller` og `model` i stedet for
+  `ui`, `domainmodel` og `datasource`.
+- **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
 
 ---
 
-## Del 1–4 – CRUD
+## Del 1-4: CRUD
 
 Kilde: [del-1-4-crud.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-1-4-crud.md#user-stories)
 
@@ -90,7 +104,7 @@ og den er enten **i farver** eller **sort-hvid**.
 
 ---
 
-## Del 5 – Test
+## Del 5: Test
 
 Kilde: [del-5-test.md – User story](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-5-test.md#user-story)
 
@@ -109,7 +123,7 @@ Kilde: [del-5-test.md – User story](https://github.com/EK-DAT-GBG-1SEM-E26AB/D
 
 ---
 
-## Del 5½ – Datoer
+## Del 5.5: Datoer
 
 Kilde: [del-5-datoer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-5-datoer.md#user-stories)
 
@@ -134,7 +148,7 @@ Kilde: [del-5-datoer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26
 
 ---
 
-## Del 6 – Robusthed
+## Del 6: Robusthed
 
 Kilder:
 [del-6-exceptions.md – User story](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-6-exceptions.md#user-story)
@@ -177,7 +191,7 @@ og
 
 ---
 
-## Del 7 – Gem og indlæs
+## Del 7: Gem og indlæs
 
 Kilde: [del-7-filer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-7-filer.md#user-stories)
 
@@ -207,7 +221,7 @@ Kilde: [del-7-filer.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26A
 
 ---
 
-## Del 8 – Code review og packages
+## Del 8: Code review og packages
 
 Kilde: [del-8-refaktorering.md – User story](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-8-refaktorering.md#user-story)
 
@@ -223,7 +237,7 @@ Kilde: [del-8-refaktorering.md – User story](https://github.com/EK-DAT-GBG-1SE
 
 ---
 
-## Del 9 – Sortering
+## Del 9: Sortering
 
 Kilde: [del-9-sortering.md – User stories](https://github.com/EK-DAT-GBG-1SEM-E26AB/DAT-GBG-DA-E26AB/blob/main/projekter/filmsamling/del-9-sortering.md#user-stories)
 
