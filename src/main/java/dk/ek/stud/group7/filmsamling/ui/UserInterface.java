@@ -343,7 +343,7 @@ public final class UserInterface {
     private void showDaysSinceLastWatched() {
         int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
-        System.out.println("Film, du ikke har set i 30 dage eller aldrig har set:");
+        System.out.println("Film, du ikke har set i " + days  + " dage eller aldrig har set:");
 
         ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
 
