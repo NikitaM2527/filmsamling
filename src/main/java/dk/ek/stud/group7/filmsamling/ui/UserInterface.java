@@ -8,14 +8,13 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
 public final class UserInterface {
     private static final String dateFormat = "dd-MM-yyyy";
 
-    private final Scanner scanner;
+    private final ConsoleIO io;
     private final Controller controller;
 
     static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dateFormat);
@@ -26,13 +25,13 @@ public final class UserInterface {
                 .replace('y', 'å');
     }
 
-    public UserInterface(Controller controller) {
-        this.scanner = new Scanner(System.in);
+    public UserInterface(ConsoleIO io, Controller controller) {
+        this.io = io;
         this.controller = controller;
     }
 
     public void startProgram() {
-        System.out.println("""
+        io.println("""
         ====================================
 
            Velkommen til din filmsamling!
@@ -40,24 +39,24 @@ public final class UserInterface {
         ====================================
         """);
         loadMovies();
-        System.out.println();
+        io.println();
         printMenuOptions();
 
         boolean running = true;
         while (running) {
             try {
                 if (controller.saveMoviesIfChanged()) {
-                    System.out.println();
-                    System.out.println("Din filmsamling er blevet gemt");
+                    io.println();
+                    io.println("Din filmsamling er blevet gemt");
                 }
             } catch (FileNotFoundException e) {
-                System.out.println();
-                System.out.println("Fejl: Filmsamlingen kunne ikke gemmes");
+                io.println();
+                io.println("Fejl: Filmsamlingen kunne ikke gemmes");
             }
-            System.out.println();
-            System.out.print("Vælg: ");
-            String choice = scanner.nextLine().trim();
-            System.out.println();
+            io.println();
+            io.print("Vælg: ");
+            String choice = io.readLine().trim();
+            io.println();
             switch (choice) {
                 case "1" -> createMovie();
                 case "2" -> showAllMovies(controller.getMoviesSortedByTitle());
@@ -69,14 +68,14 @@ public final class UserInterface {
                 case "8" -> sortByOptionsMenu();
                 case "0" -> running = false;
                 default -> {
-                    System.out.println("Ukendt valg: " + choice);
-                    System.out.println();
+                    io.println("Ukendt valg: " + choice);
+                    io.println();
                     printMenuOptions();
                 }
             }
             if (running) {
                 waitForEnter();
-                System.out.println();
+                io.println();
                 printMenuOptions();
             }
         }
@@ -84,7 +83,7 @@ public final class UserInterface {
     }
 
     private void printMenuOptions() {
-        System.out.print("""
+        io.print("""
                 1. Opret en film
                 2. Vis alle film
                 3. Søg efter film
@@ -98,7 +97,7 @@ public final class UserInterface {
     }
 
     private void printSortOptions() {
-        System.out.println("""
+        io.println("""
                 Sortér efter:
                 1. Titel
                 2. Instruktør
@@ -110,9 +109,9 @@ public final class UserInterface {
     }
 
     private void waitForEnter() {
-        System.out.println();
-        System.out.print("Tryk 'Enter' for at gå tilbage til menuen...");
-        scanner.nextLine();
+        io.println();
+        io.print("Tryk 'Enter' for at gå tilbage til menuen...");
+        io.readLine();
     }
 
     private void createMovie() {
@@ -127,21 +126,21 @@ public final class UserInterface {
 
         Movie movie = builder.build();
         controller.addMovie(movie);
-        System.out.println();
-        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ") " + "er nu tilføjet til samlingen.");
-        System.out.println();
+        io.println();
+        io.println(movie.getTitle() + " (" + movie.getYearCreated() + ") " + "er nu tilføjet til samlingen.");
+        io.println();
     }
 
     private void promptString(String prompt, Consumer<String> setter) {
         boolean valid = false;
         do {
-            System.out.print(prompt);
-            String input = scanner.nextLine();
+            io.print(prompt);
+            String input = io.readLine();
             try {
                 setter.accept(input);
                 valid = true;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                io.println(e.getMessage());
             }
         } while (!valid);
     }
@@ -149,20 +148,20 @@ public final class UserInterface {
     private void promptInt(String prompt, Consumer<Integer> setter) {
         boolean valid = false;
         do {
-            System.out.print(prompt);
-            String input = scanner.nextLine().trim();
+            io.print(prompt);
+            String input = io.readLine().trim();
             try {
                 int intInput = Integer.parseInt(input);
                 setter.accept(intInput);
                 valid = true;
             } catch (NumberFormatException e) {
                 if (input.isEmpty()) {
-                    System.out.println("Indtast et helt tal.");
+                    io.println("Indtast et helt tal.");
                 } else {
-                    System.out.println(input + " er ikke er helt tal. Prøv igen.");
+                    io.println(input + " er ikke er helt tal. Prøv igen.");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                io.println(e.getMessage());
             }
         } while (!valid);
     }
@@ -170,8 +169,8 @@ public final class UserInterface {
     private void promptBoolean(String prompt, Consumer<Boolean> setter) {
         boolean valid = false;
         do {
-            System.out.print(prompt);
-            String input = scanner.nextLine();
+            io.print(prompt);
+            String input = io.readLine();
 
             try {
                 boolean boolInput;
@@ -185,14 +184,14 @@ public final class UserInterface {
                 setter.accept(boolInput);
                 valid = true;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                io.println(e.getMessage());
             }
         } while (!valid);
     }
 
     private void showAllMovies(ArrayList<Movie> sorted) {
         if (sorted.isEmpty()) {
-            System.out.println("Filmlisten er tom!");
+            io.println("Filmlisten er tom!");
         } else {
             for (Movie movie : sorted) {
                 printAllMovieInfo(movie);
@@ -216,12 +215,12 @@ public final class UserInterface {
         ArrayList<Movie> foundMovies = controller.searchMovies(title);
 
         if (controller.getMovies().isEmpty()) {
-            System.out.println("Der er ingen film i filmsamlingen.");
+            io.println("Der er ingen film i filmsamlingen.");
             return;
         }
 
         if (foundMovies.isEmpty()) {
-            System.out.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
+            io.println("Søgeresultatet: '" + title + "' fandt ingen resultater.");
         } else {
             for (Movie movie : foundMovies) {
                 printAllMovieInfo(movie);
@@ -229,12 +228,12 @@ public final class UserInterface {
         }
     }
 
-    private static void printAllMovieInfo(Movie movie) {
-        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
-        System.out.println("  Instruktør: " + movie.getDirector());
-        System.out.println("  Genre: " + movie.getGenre());
-        System.out.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
-        System.out.println("  Sidst set: " + formatLastWatched(movie, LocalDate.now()));
+    private void printAllMovieInfo(Movie movie) {
+        io.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
+        io.println("  Instruktør: " + movie.getDirector());
+        io.println("  Genre: " + movie.getGenre());
+        io.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
+        io.println("  Sidst set: " + formatLastWatched(movie, LocalDate.now()));
     }
 
     private void editMovie() {
@@ -243,7 +242,7 @@ public final class UserInterface {
         Movie selected = searchSingleMovie(query);
         if (selected == null) return;
 
-        System.out.println("Tryk Enter for at beholde den nuværende værdi.");
+        io.println("Tryk Enter for at beholde den nuværende værdi.");
 
         String title = promptWithDefault(
                 "Titel", Parsing::parseNotBlank,
@@ -265,15 +264,15 @@ public final class UserInterface {
                 selected.getGenre(), Object::toString);
 
         controller.editMovie(selected, title, director, yearCreated, inColor, lengthInMinutes, genre);
-        System.out.println();
+        io.println();
         printAllMovieInfo(selected);
     }
 
     private void printSearchResults(ArrayList<Movie> results) {
-        System.out.println("Søgningen giver flere resultater: ");
+        io.println("Søgningen giver flere resultater: ");
         for (int i = 0; i < results.size(); i++) {
             Movie movie = results.get(i);
-            System.out.println((i + 1) + ". " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+            io.println((i + 1) + ". " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
         }
     }
 
@@ -283,7 +282,7 @@ public final class UserInterface {
         Movie selected = searchSingleMovie(title);
 
         if (selected == null) {
-            System.out.println("Film findes ikke i samling.");
+            io.println("Film findes ikke i samling.");
             return;
         }
 
@@ -291,9 +290,9 @@ public final class UserInterface {
 
         if (answer) {
             controller.deleteMovie(selected);
-            System.out.println("Filmen er fjernet fra samlingen.");
+            io.println("Filmen er fjernet fra samlingen.");
         } else {
-            System.out.println("Filmen forbliver i samlingen.");
+            io.println("Filmen forbliver i samlingen.");
         }
     }
 
@@ -302,7 +301,7 @@ public final class UserInterface {
 
         Movie selected = searchSingleMovie(query);
         if (selected == null) {
-            System.out.println("Ingen film med den titel blev fundet.");
+            io.println("Ingen film med den titel blev fundet.");
             return;
         }
 
@@ -311,7 +310,7 @@ public final class UserInterface {
         controller.markAsWatched(selected, date);
 
         String watchedDate = selected.getLastWatched().format(dateFormatter);
-        System.out.println(selected.getTitle() + " er markeret som set " + watchedDate);
+        io.println(selected.getTitle() + " er markeret som set " + watchedDate);
     }
 
     private Movie searchSingleMovie(String query) {
@@ -330,7 +329,7 @@ public final class UserInterface {
         };
 
         if (selected == null) {
-            System.out.println("Ingen film med den titel blev fundet");
+            io.println("Ingen film med den titel blev fundet");
             return null;
         }
         return selected;
@@ -339,7 +338,7 @@ public final class UserInterface {
     private void showDaysSinceLastWatched() {
         int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
-        System.out.println("Film, du ikke har set i "
+        io.println("Film, du ikke har set i "
                 + days  + " " + (days == 1 ? "dag" : "dage")
                 + " eller aldrig har set:");
 
@@ -353,12 +352,12 @@ public final class UserInterface {
     private void printGoodbye() {
         try {
             if (controller.saveMoviesIfChanged()) {
-                System.out.println("Din filmsamling er blevet gemt");
+                io.println("Din filmsamling er blevet gemt");
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Fejl: Filmsamlingen kunne ikke gemmes");
+            io.println("Fejl: Filmsamlingen kunne ikke gemmes");
         }
-        System.out.println("Farvel! Vi har gemt dine ændringer.");
+        io.println("Farvel! Vi har gemt dine ændringer.");
     }
 
     private <T> T prompt(String prompt, Function<String, Parsing.Result<T>> parser) {
@@ -370,12 +369,12 @@ public final class UserInterface {
             T defaultValue, Function<T, String> format) {
         while (true) {
             String hint = defaultValue == null ? "" : " [" + format.apply(defaultValue) + "]";
-            System.out.print(prompt + hint + ": ");
-            String input = scanner.nextLine().trim();
+            io.print(prompt + hint + ": ");
+            String input = io.readLine().trim();
             if (defaultValue != null && input.isEmpty()) return defaultValue;
             Parsing.Result<T> result = parser.apply(input);
             if (result.success()) return result.output();
-            System.out.println("Ugyldigt input: " + result.reason());
+            io.println("Ugyldigt input: " + result.reason());
         }
     }
 
@@ -385,8 +384,8 @@ public final class UserInterface {
 
         boolean running = true;
         while (running) {
-            System.out.print("Vælg: ");
-            String choice = scanner.nextLine().trim().toLowerCase();
+            io.print("Vælg: ");
+            String choice = io.readLine().trim().toLowerCase();
 
             switch (choice) {
                 case "1", "titel"     -> {
@@ -411,14 +410,14 @@ public final class UserInterface {
                 }
                 case "0" -> running = false;
                 default -> {
-                    System.out.println("Ukendt valg: " + choice);
-                    System.out.println();
+                    io.println("Ukendt valg: " + choice);
+                    io.println();
                     printSortOptions();
                 }
             }
             if (running) {
                 waitForEnter();
-                System.out.println();
+                io.println();
                 printMenuOptions();
             }
         }
@@ -431,13 +430,13 @@ public final class UserInterface {
     private void loadMovies() {
         try {
             int count = controller.loadMovies();
-            System.out.println(count + " film er indlæst.");
+            io.println(count + " film er indlæst.");
             int skipped = controller.getSkippedLineCount();
             if (skipped > 0) {
-                System.out.println("Advarsel: " + skipped + " linje(r) i filen kunne ikke læses og er sprunget over.");
+                io.println("Advarsel: " + skipped + " linje(r) i filen kunne ikke læses og er sprunget over.");
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Der er ingen gemt filmsamling endnu – du starter med en tom samling.");
+            io.println("Der er ingen gemt filmsamling endnu – du starter med en tom samling.");
         }
     }
 }
