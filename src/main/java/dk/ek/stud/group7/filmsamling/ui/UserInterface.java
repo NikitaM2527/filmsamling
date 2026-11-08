@@ -32,12 +32,12 @@ public final class UserInterface {
 
     public void startProgram() {
         io.println("""
-        ====================================
-
-           Velkommen til din filmsamling!
-
-        ====================================
-        """);
+                ====================================
+                
+                   Velkommen til din filmsamling!
+                
+                ====================================
+                """);
         loadMovies();
         io.println();
         printMenuOptions();
@@ -339,7 +339,7 @@ public final class UserInterface {
         int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
         io.println("Film, du ikke har set i "
-                + days  + " " + (days == 1 ? "dag" : "dage")
+                + days + " " + (days == 1 ? "dag" : "dage")
                 + " eller aldrig har set:");
 
         ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
@@ -378,7 +378,7 @@ public final class UserInterface {
         }
     }
 
-    private void sortByOptionsMenu () {
+    private void sortByOptionsMenu() {
         printSortOptions();
         SortField field = null;
 
@@ -388,7 +388,7 @@ public final class UserInterface {
             String choice = io.readLine().trim().toLowerCase();
 
             switch (choice) {
-                case "1", "titel"     -> {
+                case "1", "titel" -> {
                     field = SortField.TITLE;
                     running = false;
                 }
@@ -396,15 +396,15 @@ public final class UserInterface {
                     field = SortField.DIRECTOR;
                     running = false;
                 }
-                case "3", "årstal"    -> {
+                case "3", "årstal" -> {
                     field = SortField.YEAR;
                     running = false;
                 }
-                case "4", "længde"    -> {
+                case "4", "længde" -> {
                     field = SortField.LENGTH;
                     running = false;
                 }
-                case "5", "genre"     -> {
+                case "5", "genre" -> {
                     field = SortField.GENRE;
                     running = false;
                 }
