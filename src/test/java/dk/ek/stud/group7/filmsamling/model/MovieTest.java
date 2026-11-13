@@ -92,7 +92,7 @@ class MovieTest {
     @ParameterizedTest
     @ValueSource(ints = {
             1888,
-            Integer.MAX_VALUE
+            2027
     })
     void builder_validYearCreated(int yearCreated) {
         assertDoesNotThrow(() -> new Movie.Builder().yearCreated(yearCreated));
@@ -111,6 +111,18 @@ class MovieTest {
                 new Movie.Builder().yearCreated(yearCreated));
 
         assertEquals(yearCreated, e.invalidYear);
+    }
+
+    @Test
+    void builder_nextYearDoesNotThrow() {
+        assertDoesNotThrow(() ->
+                new Movie.Builder().yearCreated(LocalDate.now().getYear() + 1));
+    }
+
+    @Test
+    void builder_afterNextYearThrows() {
+        assertThrows(MovieYear.YearAfterNextYearException.class, () ->
+                new Movie.Builder().yearCreated(LocalDate.now().getYear() + 2));
     }
 
     @ParameterizedTest

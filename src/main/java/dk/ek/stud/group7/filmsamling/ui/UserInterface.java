@@ -164,9 +164,10 @@ public final class UserInterface {
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-            }
-            catch (MovieYear.YearBefore1888Exception e) {
+            } catch (MovieYear.YearBefore1888Exception e) {
                 System.out.println("Verdens første film blev udgivet i " + MovieYear.EARLIEST_VALID_YEAR + ".");
+            } catch (MovieYear.YearAfterNextYearException e) {
+                System.out.println(e.invalidYear + " er for langt ud i fremtiden.");
             }
         } while (!valid);
     }

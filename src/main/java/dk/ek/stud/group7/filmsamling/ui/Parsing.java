@@ -23,6 +23,8 @@ final class Parsing {
                 return Result.success(new MovieYear(output));
             } catch (MovieYear.YearBefore1888Exception e) {
                 return Result.failure("Verdens første film blev udgivet i " + MovieYear.EARLIEST_VALID_YEAR + ".");
+            } catch (MovieYear.YearAfterNextYearException e) {
+                return Result.failure(e.invalidYear + " er for langt ud i fremtiden.");
             }
         } catch (NumberFormatException e) {
             return Result.failure("Indtast et heltal.");

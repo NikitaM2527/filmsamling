@@ -17,7 +17,7 @@ acceptkriterier, og hver del linker til kilden.
 | US8  | Markér en film som set        | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
 | US9  | Film, jeg ikke har set længe  | Funktionel   | [Del 5.5](#del-55-datoer)               | Ja      |
 | US10 | Robust input                  | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
-| US11 | Kun gyldige film              | Funktionel   | [Del 6](#del-6-robusthed)               | Delvist |
+| US11 | Kun gyldige film              | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
 | US12 | Angiv datoen, jeg så filmen   | Funktionel   | [Del 6](#del-6-robusthed)               | Ja      |
 | US13 | Gem samlingen                 | Funktionel   | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
 | US14 | Gem kun, når der er ændringer | Technical    | [Del 7](#del-7-gem-og-indlæs)           | Ja      |
@@ -29,8 +29,6 @@ acceptkriterier, og hver del linker til kilden.
 **Status** er vurderet ud fra koden i repoet. Opdatér kolonnen, når en story bliver færdig.
 
 - **US10:** Tal og ja/nej håndteres, men `j`/`n` og `0` = fortryd ved valg fra liste mangler.
-- **US11:** Tomme felter og nedre grænser tjekkes, men øvre årstal, dato i fremtiden og
-  "alt eller intet" ved redigering mangler.
 - **US16:** Filmene sorteres efter titel, men sammenligningen er case-sensitiv.
 
 ---
