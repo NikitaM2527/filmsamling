@@ -1,6 +1,7 @@
 package dk.ek.stud.group7.filmsamling.io;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import dk.ek.stud.group7.filmsamling.model.MovieYear;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,7 +64,7 @@ public class FileHandler {
     private String toCsvLine(Movie movie) {
         String title = movie.getTitle();
         String director = movie.getDirector();
-        String yearCreated = String.valueOf(movie.getYearCreated());
+        String yearCreated = String.valueOf(movie.getYearCreated().value());
         String isInColor = String.valueOf(movie.isInColor());
         String lengthInMinutes = String.valueOf(movie.getLengthInMinutes());
         String genre = movie.getGenre();
@@ -88,9 +89,9 @@ public class FileHandler {
             String genre = cells[5];
             LocalDate lastWatched = cells[6].isEmpty() ? null : LocalDate.parse(cells[6]);
 
-            return new Movie(title, director, yearCreated, inColor, lengthInMinutes, genre, lastWatched);
+            return new Movie(title, director, new MovieYear(yearCreated), inColor, lengthInMinutes, genre, lastWatched);
 
-        } catch (DateTimeParseException | IllegalArgumentException e) {
+        } catch (DateTimeParseException | IllegalArgumentException | MovieYear.YearBefore1888Exception e) {
             return null;
         }
     }

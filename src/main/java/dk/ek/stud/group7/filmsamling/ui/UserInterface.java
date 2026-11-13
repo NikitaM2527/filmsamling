@@ -3,6 +3,7 @@ package dk.ek.stud.group7.filmsamling.ui;
 import dk.ek.stud.group7.filmsamling.controller.Controller;
 import dk.ek.stud.group7.filmsamling.controller.SortField;
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import dk.ek.stud.group7.filmsamling.model.MovieYear;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -33,12 +34,12 @@ public final class UserInterface {
 
     public void startProgram() {
         System.out.println("""
-        ====================================
-
-           Velkommen til din filmsamling!
-
-        ====================================
-        """);
+                ====================================
+                
+                   Velkommen til din filmsamling!
+                
+                ====================================
+                """);
         loadMovies();
         System.out.println();
         printMenuOptions();
@@ -128,7 +129,7 @@ public final class UserInterface {
         Movie movie = builder.build();
         controller.addMovie(movie);
         System.out.println();
-        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ") " + "er nu tilføjet til samlingen.");
+        System.out.println(movie.getTitle() + " (" + movie.getYearCreated().value() + ") " + "er nu tilføjet til samlingen.");
         System.out.println();
     }
 
@@ -163,6 +164,9 @@ public final class UserInterface {
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+            }
+            catch (MovieYear.YearBefore1888Exception e) {
+                System.out.println("Verdens første film blev udgivet i " + MovieYear.EARLIEST_VALID_YEAR + ".");
             }
         } while (!valid);
     }
@@ -230,7 +234,7 @@ public final class UserInterface {
     }
 
     private static void printAllMovieInfo(Movie movie) {
-        System.out.println(movie.getTitle() + " (" + movie.getYearCreated() + ")");
+        System.out.println(movie.getTitle() + " (" + movie.getYearCreated().value() + ")");
         System.out.println("  Instruktør: " + movie.getDirector());
         System.out.println("  Genre: " + movie.getGenre());
         System.out.println("  Længde: " + movie.getLengthInMinutes() + " minutter, " + (movie.isInColor() ? "farver" : "uden farver"));
@@ -251,9 +255,9 @@ public final class UserInterface {
         String director = promptWithDefault(
                 "Instruktør", Parsing::parseNotBlank,
                 selected.getDirector(), Object::toString);
-        int yearCreated = this.<Integer>promptWithDefault(
+        MovieYear yearCreated = this.promptWithDefault(
                 "Årstal", Parsing::parseYearCreated,
-                selected.getYearCreated(), Object::toString);
+                selected.getYearCreated(), y -> String.valueOf(y.value()));
         boolean inColor = promptWithDefault(
                 "I farver (ja/nej)", Parsing::parseBoolean,
                 selected.isInColor(), (color) -> color ? "ja" : "nej");
@@ -273,7 +277,7 @@ public final class UserInterface {
         System.out.println("Søgningen giver flere resultater: ");
         for (int i = 0; i < results.size(); i++) {
             Movie movie = results.get(i);
-            System.out.println((i + 1) + ". " + movie.getTitle() + " (" + movie.getYearCreated() + ")");
+            System.out.println((i + 1) + ". " + movie.getTitle() + " (" + movie.getYearCreated().value() + ")");
         }
     }
 
@@ -340,7 +344,7 @@ public final class UserInterface {
         int days = prompt("Indtast dage", Parsing::parsePositiveInt);
 
         System.out.println("Film, du ikke har set i "
-                + days  + " " + (days == 1 ? "dag" : "dage")
+                + days + " " + (days == 1 ? "dag" : "dage")
                 + " eller aldrig har set:");
 
         ArrayList<Movie> movies = controller.getMoviesNotWatchedForDays(days);
@@ -379,7 +383,7 @@ public final class UserInterface {
         }
     }
 
-    private void sortByOptionsMenu () {
+    private void sortByOptionsMenu() {
         printSortOptions();
         SortField field = null;
 
@@ -389,7 +393,7 @@ public final class UserInterface {
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "1", "titel"     -> {
+                case "1", "titel" -> {
                     field = SortField.TITLE;
                     running = false;
                 }
@@ -397,15 +401,15 @@ public final class UserInterface {
                     field = SortField.DIRECTOR;
                     running = false;
                 }
-                case "3", "årstal"    -> {
+                case "3", "årstal" -> {
                     field = SortField.YEAR;
                     running = false;
                 }
-                case "4", "længde"    -> {
+                case "4", "længde" -> {
                     field = SortField.LENGTH;
                     running = false;
                 }
-                case "5", "genre"     -> {
+                case "5", "genre" -> {
                     field = SortField.GENRE;
                     running = false;
                 }

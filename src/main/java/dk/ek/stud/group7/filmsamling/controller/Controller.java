@@ -31,7 +31,7 @@ public class Controller {
         return new ArrayList<>(movieCollection.searchMovies(searchText));
     }
 
-    public boolean editMovie(Movie movie, String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
+    public boolean editMovie(Movie movie, String title, String director, MovieYear yearCreated, boolean inColor, int lengthInMinutes, String genre) {
         boolean edited = movieCollection.editMovie(movie, title, director, yearCreated, inColor, lengthInMinutes, genre);
 
         if (edited) {

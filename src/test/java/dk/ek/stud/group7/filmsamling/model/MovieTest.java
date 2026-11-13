@@ -56,7 +56,7 @@ class MovieTest {
     @ParameterizedTest
     @NullSource
     @FieldSource("blankStrings")
-    @ValueSource(strings = "|") // Pipes break the CSV file
+    @ValueSource(strings = "|" /* Pipes break the CSV file */)
     void builder_invalidTitles(String title) {
         assertThrows(IllegalArgumentException.class, () ->
                 new Movie.Builder().title(title));
@@ -95,8 +95,7 @@ class MovieTest {
             Integer.MAX_VALUE
     })
     void builder_validYearCreated(int yearCreated) {
-        assertDoesNotThrow(() ->
-                new Movie.Builder().yearCreated(yearCreated));
+        assertDoesNotThrow(() -> new Movie.Builder().yearCreated(yearCreated));
     }
 
     @ParameterizedTest
@@ -108,8 +107,10 @@ class MovieTest {
             1887
     })
     void builder_invalidYearCreated(int yearCreated) {
-        assertThrows(IllegalArgumentException.class, () ->
+        var e = assertThrows(MovieYear.YearBefore1888Exception.class, () ->
                 new Movie.Builder().yearCreated(yearCreated));
+
+        assertEquals(yearCreated, e.invalidYear);
     }
 
     @ParameterizedTest
@@ -178,8 +179,7 @@ class MovieTest {
     @NullSource
     @FieldSource("validLastWatchedCases")
     void builder_validLastWatched(LocalDate lastWatched) {
-        assertDoesNotThrow(() ->
-                new Movie.Builder().lastWatched(lastWatched));
+        assertDoesNotThrow(() -> new Movie.Builder().lastWatched(lastWatched));
     }
 
     @Test
@@ -206,7 +206,7 @@ class MovieTest {
         movieToChange = new Movie(
                 "Jaws",
                 "Steven Spielberg",
-                1975,
+                new MovieYear(1975),
                 true,
                 2 * 60 + 4,
                 "Monster Horror",
@@ -244,13 +244,22 @@ class MovieTest {
     void yearCreated_changePersists() {
         // Arrange
         Movie original = movieToChange;
-        int newYearCreated = 1941;
+        MovieYear newYearCreated = new MovieYear(1941);
 
         // Act
         original.setYearCreated(newYearCreated);
 
         // Assert
         assertEquals(newYearCreated, original.getYearCreated());
+    }
+
+    @Test
+    void yearCreated_nullYearThrows() {
+        // Arrange
+        Movie original = movieToChange;
+
+        // Act
+        assertThrows(NullPointerException.class, () -> original.setYearCreated(null));
     }
 
     @Test

@@ -1,9 +1,14 @@
 package dk.ek.stud.group7.filmsamling.ui;
 
+import dk.ek.stud.group7.filmsamling.model.MovieYear;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.function.Function;
 
+// Ignore this class; it was our first attempt at parsing.
+// Rules for valid data should exist in the domain model,
+// but this class duplicates that logic, risking divergence.
 final class Parsing {
     static Result<String> parseNotBlank(String input) {
         return input.isBlank()
@@ -11,16 +16,16 @@ final class Parsing {
                 : Result.success(input);
     }
 
-    static Result<Integer> parseYearCreated(String input) {
+    static Result<MovieYear> parseYearCreated(String input) {
         try {
             int output = Integer.parseInt(input);
-            if (output < 1888) {
-                return Result.failure(
-                        "Verdens første film blev udgivet i 1888");
+            try {
+                return Result.success(new MovieYear(output));
+            } catch (MovieYear.YearBefore1888Exception e) {
+                return Result.failure("Verdens første film blev udgivet i " + MovieYear.EARLIEST_VALID_YEAR + ".");
             }
-            return Result.success(output);
         } catch (NumberFormatException e) {
-            return Result.failure("Indtast et heltal");
+            return Result.failure("Indtast et heltal.");
         }
     }
 

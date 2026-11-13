@@ -56,7 +56,14 @@ public class MovieCollection {
         return matches;
     }
 
-    public boolean editMovie(Movie movie, String title, String director, int yearCreated, boolean inColor, int lengthInMinutes, String genre) {
+    public boolean editMovie(
+            Movie movie,
+            String title,
+            String director,
+            MovieYear yearCreated,
+            boolean inColor,
+            int lengthInMinutes,
+            String genre) {
         if (!movies.contains(movie)) {
             return false;
         }

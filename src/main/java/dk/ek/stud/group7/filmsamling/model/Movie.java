@@ -2,11 +2,12 @@ package dk.ek.stud.group7.filmsamling.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public class Movie implements Comparable<Movie> {
     private String title;
     private String director;
-    private int yearCreated;
+    private MovieYear yearCreated;
     private boolean inColor;
     private int lengthInMinutes;
     private String genre;
@@ -26,20 +27,19 @@ public class Movie implements Comparable<Movie> {
     public Movie(
             String title,
             String director,
-            int yearCreated,
+            MovieYear yearCreated,
             boolean inColor,
             int lengthInMinutes,
             String genre,
             LocalDate lastWatched) {
         validateTitle(title);
         validateDirector(director);
-        validateYearCreated(yearCreated);
         validateLengthInMinutes(lengthInMinutes);
         validateGenre(genre);
 
         this.title = title;
         this.director = director;
-        this.yearCreated = yearCreated;
+        this.yearCreated = Objects.requireNonNull(yearCreated, "yearCreated must not be null");
         this.inColor = inColor;
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
@@ -79,19 +79,12 @@ public class Movie implements Comparable<Movie> {
         this.director = director;
     }
 
-    public int getYearCreated() {
+    public MovieYear getYearCreated() {
         return yearCreated;
     }
 
-    private static void validateYearCreated(int year) {
-        if (year < 1888) {
-            throw new IllegalArgumentException("Den første film er fra år 1888");
-        }
-    }
-
-    public void setYearCreated(int yearCreated) {
-        validateYearCreated(yearCreated);
-        this.yearCreated = yearCreated;
+    public void setYearCreated(MovieYear yearCreated) {
+        this.yearCreated = Objects.requireNonNull(yearCreated, "yearCreated must not be null");
     }
 
     public boolean isInColor() {
@@ -156,7 +149,7 @@ public class Movie implements Comparable<Movie> {
     public static class Builder {
         private String title;
         private String director;
-        private int yearCreated;
+        private MovieYear yearCreated;
         private boolean inColor;
         private int lengthInMinutes;
         private String genre;
@@ -175,8 +168,7 @@ public class Movie implements Comparable<Movie> {
         }
 
         public Builder yearCreated(int year) {
-            validateYearCreated(year);
-            this.yearCreated = year;
+            this.yearCreated = new MovieYear(year);
             return this;
         }
 

@@ -182,7 +182,7 @@ public class MovieCollectionTest {
         // Act
         List<Movie> movies = collection.getMoviesSorted(new YearComparator());
         List<Integer> actualYearCreated = movies.stream()
-                .map(Movie::getYearCreated)
+                .map(m -> m.getYearCreated().value())
                 .toList();
 
         // Assert
@@ -423,7 +423,7 @@ public class MovieCollectionTest {
         boolean success = collection.editMovie(movie,
                 "Foobar",
                 "Somebody",
-                2001,
+                new MovieYear(2001),
                 true,
                 90,
                 "Run-of-the-mill");

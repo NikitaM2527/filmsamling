@@ -26,7 +26,7 @@ record MovieCase(
         return new Movie(
                 title,
                 director,
-                yearCreated,
+                new MovieYear(yearCreated),
                 inColor,
                 lengthInMinutes,
                 genre,
@@ -38,7 +38,7 @@ record MovieCase(
         return new MovieCase(
                 movie.getTitle(),
                 movie.getDirector(),
-                movie.getYearCreated(),
+                movie.getYearCreated().value(),
                 movie.isInColor(),
                 movie.getLengthInMinutes(),
                 movie.getGenre(),

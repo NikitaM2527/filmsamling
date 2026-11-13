@@ -1,6 +1,7 @@
 package dk.ek.stud.group7.filmsamling.ui;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import dk.ek.stud.group7.filmsamling.model.MovieYear;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.FieldSource;
 
@@ -31,7 +32,7 @@ class UserInterfaceTest {
     @FieldSource("lastWatchedCases")
     void formatLastWatched(LastWatchedCase testCase) {
         // Arrange
-        Movie movie = new Movie("_", "_", 1888, false, 1, "_", null);
+        Movie movie = new Movie("_", "_", new MovieYear(1888), false, 1, "_", null);
         if (testCase.lastWatched != null)
             movie.markAsWatched(testCase.lastWatched);
 

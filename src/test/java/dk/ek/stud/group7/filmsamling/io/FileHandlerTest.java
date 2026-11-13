@@ -1,6 +1,7 @@
 package dk.ek.stud.group7.filmsamling.io;
 
 import dk.ek.stud.group7.filmsamling.model.Movie;
+import dk.ek.stud.group7.filmsamling.model.MovieYear;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
